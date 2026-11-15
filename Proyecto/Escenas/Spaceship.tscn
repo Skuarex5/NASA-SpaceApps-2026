@@ -1,0 +1,79 @@
+[gd_scene format=3 uid="uid://8bah3ji7ihg2"]
+
+[ext_resource type="Script" uid="uid://b1axc765x0ywc" path="res://Proyecto/Codigos/nave.gd" id="1_2uhv5"]
+[ext_resource type="PackedScene" uid="uid://dlihengwm1lve" path="res://Proyecto/Modelos/spaceship/source/SpaceShip.fbx" id="1_wfdm8"]
+[ext_resource type="PackedScene" uid="uid://wxq0jha2576x" path="res://Proyecto/Efectos/FuegoMotor/EngineFlame.tscn" id="3_dg2ro"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_wfdm8"]
+size = Vector3(24.717224, 5.942444, 24.941895)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bfnnt"]
+bg_color = Color(0.0009897909, 0.116910644, 0.18117815, 1)
+border_color = Color(0.3960901, 0.4274646, 0.20252699, 1)
+corner_detail = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bdgh4"]
+bg_color = Color(0.03944315, 0.5806067, 0.85398674, 1)
+corner_detail = 10
+
+[node name="Spaceship" type="Node3D" unique_id=440212658]
+
+[node name="RigidBody3D" type="RigidBody3D" parent="." unique_id=1592770894 node_paths=PackedStringArray("nave_visual", "motor_izquierdo", "motor_derecho")]
+script = ExtResource("1_2uhv5")
+nave_visual = NodePath("SpaceShip")
+motor_izquierdo = NodePath("SpaceShip/MotorIzquierdo")
+motor_derecho = NodePath("SpaceShip/MotorDerecho")
+fuerza_motor = 1500.0
+fuerza_vertical = 200.0
+fuerza_giro = 7.0
+
+[node name="SpaceShip" parent="RigidBody3D" unique_id=1317250033 instance=ExtResource("1_wfdm8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0.08877599, 0, 0.72653294)
+
+[node name="MotorDerecho" parent="RigidBody3D/SpaceShip" unique_id=1519000600 instance=ExtResource("3_dg2ro")]
+transform = Transform3D(-1, 4.3528848e-07, -3.8213705e-15, 0, -2.1764424e-07, -0.9999998, -8.742278e-08, -4.97912, 4.371138e-08, -3.204205, 1.198215, -13.581605)
+
+[node name="MotorIzquierdo" parent="RigidBody3D/SpaceShip" unique_id=121471482 instance=ExtResource("3_dg2ro")]
+transform = Transform3D(-1, 4.3528848e-07, -3.8213705e-15, 0, -2.1764424e-07, -0.9999998, -8.742278e-08, -4.97912, 4.371138e-08, 5.1990194, 1.1870911, -13.465918)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D" unique_id=467070491]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.35812378, 1.768158, 1.6388149)
+shape = SubResource("BoxShape3D_wfdm8")
+
+[node name="Camera3D" type="Camera3D" parent="RigidBody3D" unique_id=1903536810]
+transform = Transform3D(1, 0, 0, 0, 0.9856629, 0.16872671, 0, -0.16872671, 0.9856629, 0, 13.385887, 26.758184)
+
+[node name="HUDBoost" type="CanvasLayer" parent="RigidBody3D" unique_id=1264365548]
+
+[node name="VBoxContainer" type="VBoxContainer" parent="RigidBody3D/HUDBoost" unique_id=796126315]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -153.0
+offset_top = -40.0
+offset_right = 153.0
+offset_bottom = 14.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="BarraBoost" type="ProgressBar" parent="RigidBody3D/HUDBoost/VBoxContainer" unique_id=861660051]
+custom_minimum_size = Vector2(260, 10)
+layout_mode = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_bfnnt")
+theme_override_styles/fill = SubResource("StyleBoxFlat_bdgh4")
+value = 100.0
+show_percentage = false
+
+[node name="CanvasLayer" type="CanvasLayer" parent="RigidBody3D/HUDBoost/VBoxContainer" unique_id=389472313]
+layer = 11
+
+[node name="EstadoBoost" type="Label" parent="RigidBody3D/HUDBoost/VBoxContainer/CanvasLayer" unique_id=54889395]
+offset_left = 423.0
+offset_top = 608.0
+offset_right = 729.0
+offset_bottom = 619.0
+theme_override_font_sizes/font_size = 7
+horizontal_alignment = 1
+vertical_alignment = 1

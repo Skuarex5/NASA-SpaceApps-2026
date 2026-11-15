@@ -1,0 +1,58 @@
+[gd_scene format=3 uid="uid://si38p0lg54mf"]
+
+[ext_resource type="Texture2D" uid="uid://chfhy8l5aio5y" path="res://Proyecto/Texturas/MenuMisiones/Panel HUD futurista con borde cian resplandeciente.png" id="1_wdpss"]
+[ext_resource type="Script" uid="uid://bmb7ctvc058kx" path="res://Proyecto/Codigos/mission_planet.gd" id="2_rnu7k"]
+[ext_resource type="Texture2D" uid="uid://beetyyco6v58t" path="res://Proyecto/Texturas/MenuMisiones/checkbox_sin_marcar_original.png" id="3_j73el"]
+[ext_resource type="Texture2D" uid="uid://dqe6ixpm5qwto" path="res://Proyecto/Texturas/MenuMisiones/checkbox_marcada_original.png" id="4_rnu7k"]
+
+[node name="MissionAroundPlanet" type="TextureRect" unique_id=1686412030]
+z_index = 1
+offset_right = 304.0
+offset_bottom = 104.0
+texture = ExtResource("1_wdpss")
+expand_mode = 1
+script = ExtResource("2_rnu7k")
+caja_normal = ExtResource("1_wdpss")
+caja_activa = ExtResource("1_wdpss")
+check_vacio = ExtResource("3_j73el")
+check_marcado = ExtResource("4_rnu7k")
+
+[node name="Check" type="TextureRect" parent="." unique_id=1125263633]
+z_index = 1
+layout_mode = 0
+offset_left = 14.0
+offset_top = 31.0
+offset_right = 54.0
+offset_bottom = 71.0
+texture = ExtResource("3_j73el")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1719217741]
+layer = 11
+
+[node name="Titulo" type="Label" parent="CanvasLayer" unique_id=1328020342]
+offset_left = 54.0
+offset_top = 39.0
+offset_right = 215.0
+offset_bottom = 62.0
+theme_override_font_sizes/font_size = 10
+text = "Titulo"
+autowrap_mode = 3
+
+[node name="Descripcion" type="Label" parent="CanvasLayer" unique_id=985664849]
+offset_left = 54.0
+offset_top = 54.0
+offset_right = 212.0
+offset_bottom = 77.0
+theme_override_colors/font_color = Color(0.7602972, 0.76029724, 0.7602972, 1)
+theme_override_font_sizes/font_size = 6
+text = "Descripcion de la misión"
+autowrap_mode = 3
+
+[node name="Contador" type="Label" parent="CanvasLayer" unique_id=73714853]
+offset_left = 260.0
+offset_top = 40.0
+offset_right = 292.0
+offset_bottom = 63.0
+text = "0/1"

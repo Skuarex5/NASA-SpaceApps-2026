@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="DatosMision" format=3 uid="uid://2kxx7ki0ytw5"]
+
+[ext_resource type="Script" uid="uid://mg344itko8aa" path="res://Proyecto/Codigos/datos_mision.gd" id="1_rcdbl"]
+
+[resource]
+script = ExtResource("1_rcdbl")
+id = "RoundPlanet"
+titulo = "Viaje al planeta Lukba"
+descripcion = "Pilota tu nave espacial y rodea al planeta Lukba."
+metadata/_custom_type_script = "uid://mg344itko8aa"

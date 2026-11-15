@@ -1,0 +1,261 @@
+[gd_scene format=3 uid="uid://c8bu2y5vom810"]
+
+[ext_resource type="Texture2D" uid="uid://cfknn68k70drr" path="res://Proyecto/Texturas/8k_stars_milky_way.jpg" id="1_b0vyx"]
+[ext_resource type="PackedScene" uid="uid://bnia1vm470rcn" path="res://Proyecto/Escenas/Character.tscn" id="2_1bbqr"]
+[ext_resource type="PackedScene" uid="uid://8bah3ji7ihg2" path="res://Proyecto/Escenas/Spaceship.tscn" id="3_asbru"]
+[ext_resource type="PackedScene" uid="uid://behax0gbg1skw" path="res://Proyecto/Modelos/mercury-planet/source/Mercury.fbx" id="3_b0vyx"]
+[ext_resource type="Material" uid="uid://bo2pdl6rpwj3n" path="res://Proyecto/Modelos/mercury-planet/textures/mercury.tres" id="4_asbru"]
+[ext_resource type="PackedScene" uid="uid://cmqg107vu77v4" path="res://Proyecto/Modelos/planet-of-phoenix/source/Phoenix_Planet.fbx" id="5_b0vyx"]
+[ext_resource type="Material" uid="uid://bkpjolxx0pa5l" path="res://Proyecto/Modelos/planet-of-phoenix/textures/phoenix.tres" id="6_asbru"]
+[ext_resource type="PackedScene" uid="uid://cu1hlcvqxl41x" path="res://Proyecto/Escenas/MissionMenu.tscn" id="8_i7rkf"]
+[ext_resource type="PackedScene" uid="uid://coemrri434td5" path="res://Proyecto/Escenas/FiltroPantalla.tscn" id="9_4tvbl"]
+[ext_resource type="PackedScene" uid="uid://bwvj4xrq8v47i" path="res://Proyecto/Escenas/SpaceshipInterior.tscn" id="10_kg8wx"]
+[ext_resource type="Texture2D" uid="uid://cyt73aw5nnjia" path="res://Proyecto/Modelos/NaveInterior/216669eb-acd0-4357-9072-c961ca59f3ff.png" id="11_o884h"]
+[ext_resource type="PackedScene" uid="uid://c3ayyvou6qw1v" path="res://Proyecto/Modelos/cockpit-chair/source/Cockpit Chair.fbx" id="12_luopn"]
+[ext_resource type="Texture2D" uid="uid://16m7bo80f3u6" path="res://Proyecto/Modelos/monitoring-station/textures/hologram_glass_Base_color.png" id="13_7x70b"]
+[ext_resource type="Texture2D" uid="uid://c13jj87viscoi" path="res://Proyecto/Modelos/monitoring-station/textures/table_Base_color.png" id="13_dv60a"]
+[ext_resource type="ArrayMesh" uid="uid://cm5tjx2mx5l3l" path="res://Proyecto/Modelos/monitoring-station/source/Stol2.obj" id="13_fult5"]
+[ext_resource type="Texture2D" uid="uid://dic4s14m7t4ck" path="res://Proyecto/Modelos/monitoring-station/textures/hologram_glass_Emissive.png" id="14_soggu"]
+[ext_resource type="Texture2D" uid="uid://bpm8hoky8m5dy" path="res://Proyecto/Modelos/monitoring-station/textures/hologram_glass_Metallic.png" id="15_54t36"]
+[ext_resource type="Texture2D" uid="uid://ceb27x3lgje8t" path="res://Proyecto/Modelos/monitoring-station/textures/hologram_glass_Normal_OpenGL.png" id="16_a7jm4"]
+[ext_resource type="Texture2D" uid="uid://b53l3mr3pcism" path="res://Proyecto/Modelos/monitoring-station/textures/hologram_glass_Roughness.png" id="17_wkny5"]
+[ext_resource type="Texture2D" uid="uid://gtc8qys5xr53" path="res://Proyecto/Modelos/monitoring-station/textures/table_Metallic.png" id="19_f4xn1"]
+[ext_resource type="Texture2D" uid="uid://deyni01wsfk1w" path="res://Proyecto/Modelos/monitoring-station/textures/table_Normal_OpenGL.png" id="20_1p8cx"]
+[ext_resource type="Texture2D" uid="uid://kmj2lxtd2xww" path="res://Proyecto/Modelos/monitoring-station/textures/table_Roughness.png" id="21_rk1tb"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_6j3vh"]
+panorama = ExtResource("1_b0vyx")
+filter = false
+
+[sub_resource type="Sky" id="Sky_g2txl"]
+sky_material = SubResource("PanoramaSkyMaterial_6j3vh")
+process_mode = 1
+radiance_size = 6
+
+[sub_resource type="Environment" id="Environment_cdbmq"]
+background_mode = 2
+sky = SubResource("Sky_g2txl")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_cdbmq"]
+size = Vector3(58.365356, 3.0808105, 150.59709)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_g2txl"]
+size = Vector3(2.890625, 25.849487, 160.73059)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_6j3vh"]
+size = Vector3(21.646423, 23.173523, 2.8583984)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_owfcd"]
+size = Vector3(70.78613, 22.005432, 2.463379)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_faclm"]
+size = Vector3(1.3706055, 21.054443, 16.692932)
+
+[sub_resource type="BoxMesh" id="BoxMesh_cdbmq"]
+size = Vector3(48.47705, 1, 140.04688)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kg8wx"]
+albedo_texture = ExtResource("11_o884h")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qd08q"]
+size = Vector3(49.3114, 1.0097656, 144.41772)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7rlic"]
+albedo_texture = ExtResource("13_7x70b")
+metallic = 1.0
+metallic_texture = ExtResource("15_54t36")
+roughness_texture = ExtResource("17_wkny5")
+emission_enabled = true
+emission_texture = ExtResource("14_soggu")
+normal_enabled = true
+normal_texture = ExtResource("16_a7jm4")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dv60a"]
+albedo_color = Color(0.51125896, 0.5112589, 0.5112589, 1)
+albedo_texture = ExtResource("13_dv60a")
+metallic = 1.0
+metallic_texture = ExtResource("19_f4xn1")
+roughness_texture = ExtResource("21_rk1tb")
+normal_enabled = true
+normal_texture = ExtResource("20_1p8cx")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_x1mm8"]
+size = Vector3(1.0776367, 1.171875, 1.9094238)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_we32a"]
+size = Vector3(0.053222656, 1.9291382, 2.0488892)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_q4m7x"]
+size = Vector3(1.1079102, 1.6875, 1)
+
+[node name="Main" type="Node3D" unique_id=1564911020]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1868712856]
+environment = SubResource("Environment_cdbmq")
+
+[node name="Character" parent="." unique_id=941812742 instance=ExtResource("2_1bbqr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35.87562, 0.35435116, -0.17922783)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=548447179]
+transform = Transform3D(1, 0, 0, 0, 0.3655364, 0.93079704, 0, -0.93079704, 0.3655364, 0, 2.7379322, 0)
+
+[node name="Spaceship" parent="." unique_id=440212658 instance=ExtResource("3_asbru")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -241.72618, 1398.3123, -315.76248)
+
+[node name="RigidBody3D" parent="Spaceship" index="0" unique_id=1592770894 node_paths=PackedStringArray("astronauta", "camara_astronauta")]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
+astronauta = NodePath("../../Character/CharacterBody3D")
+camara_astronauta = NodePath("../../Character/CharacterBody3D/Camera/Camera3D")
+multiplicador_boost = 15.0
+impulso_boost = 300.0
+
+[node name="Planetas" type="Node3D" parent="." unique_id=1472366907]
+
+[node name="Mercury" parent="Planetas" unique_id=1508835386 instance=ExtResource("3_b0vyx")]
+transform = Transform3D(138.15979, 0, 0, 0, 138.15979, 0, 0, 0, 138.15979, -925.104, 542.53894, 1776.4207)
+
+[node name="Sphere001" parent="Planetas/Mercury" index="0" unique_id=1744049652]
+transform = Transform3D(1.0000001, 0, 0, 0, 0, 1.0000001, 0, -1.0000001, 0, -0.3432846, 1.4604967, 0.33741856)
+surface_material_override/0 = ExtResource("4_asbru")
+
+[node name="Phoenix_Planet" parent="Planetas" unique_id=727171191 instance=ExtResource("5_b0vyx")]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 3383.4856, 1684.1237, 1190.537)
+
+[node name="Phoenix_LOD0" parent="Planetas/Phoenix_Planet" index="0" unique_id=1953664052]
+transform = Transform3D(1500, 0, 0, 0, -6.556708e-05, 1500, 0, -1500, -6.556708e-05, 0, 0, 0)
+surface_material_override/0 = ExtResource("6_asbru")
+
+[node name="MissionMenu" parent="." unique_id=1451330343 instance=ExtResource("8_i7rkf")]
+
+[node name="Filtro" type="CanvasLayer" parent="." unique_id=1851181955]
+layer = 10
+visible = false
+
+[node name="FiltroPantalla" parent="Filtro" unique_id=122117172 instance=ExtResource("9_4tvbl")]
+
+[node name="SpaceshipInterior" parent="." unique_id=1369203454 instance=ExtResource("10_kg8wx")]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 35.43793, -4.7683716e-07, 1.0072937)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="SpaceshipInterior" unique_id=940103116]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SpaceshipInterior/StaticBody3D" unique_id=248912407]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8545227, 1.040405, -5.464792)
+shape = SubResource("BoxShape3D_cdbmq")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="SpaceshipInterior/StaticBody3D" unique_id=228669178]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.07483, 12.424745, -7.8008413)
+shape = SubResource("BoxShape3D_g2txl")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="SpaceshipInterior/StaticBody3D" unique_id=1893196438]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.003448, 12.424745, -7.8008413)
+shape = SubResource("BoxShape3D_g2txl")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="SpaceshipInterior/StaticBody3D" unique_id=1541557255]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.602509, 9.252778, -5.54834)
+shape = SubResource("BoxShape3D_6j3vh")
+
+[node name="CollisionShape3D5" type="CollisionShape3D" parent="SpaceshipInterior/StaticBody3D" unique_id=1778020274]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.235748, 9.252778, -46.903976)
+shape = SubResource("BoxShape3D_6j3vh")
+
+[node name="CollisionShape3D6" type="CollisionShape3D" parent="SpaceshipInterior/StaticBody3D" unique_id=1141839231]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.218933, 9.252778, -28.284748)
+shape = SubResource("BoxShape3D_6j3vh")
+
+[node name="CollisionShape3D7" type="CollisionShape3D" parent="SpaceshipInterior/StaticBody3D" unique_id=1021177258]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.218933, 9.252778, -48.08589)
+shape = SubResource("BoxShape3D_6j3vh")
+
+[node name="CollisionShape3D8" type="CollisionShape3D" parent="SpaceshipInterior/StaticBody3D" unique_id=131704318]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.255127, 9.252778, 31.985455)
+shape = SubResource("BoxShape3D_6j3vh")
+
+[node name="CollisionShape3D9" type="CollisionShape3D" parent="SpaceshipInterior/StaticBody3D" unique_id=1832877914]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.506104, 9.252778, 31.985455)
+shape = SubResource("BoxShape3D_6j3vh")
+
+[node name="CollisionShape3D14" type="CollisionShape3D" parent="SpaceshipInterior/StaticBody3D" unique_id=1601283396]
+transform = Transform3D(0.8245664, 0, -0.5657652, 0, 1, 0, 0.5657652, 0, 0.8245664, -16.506104, 9.252778, 58.233315)
+shape = SubResource("BoxShape3D_6j3vh")
+
+[node name="CollisionShape3D15" type="CollisionShape3D" parent="SpaceshipInterior/StaticBody3D" unique_id=554446603]
+transform = Transform3D(0.82301086, 0, 0.5680258, 0, 1, 0, -0.5680258, 0, 0.82301086, 17.222534, 9.252778, 57.040253)
+shape = SubResource("BoxShape3D_6j3vh")
+
+[node name="CollisionShape3D10" type="CollisionShape3D" parent="SpaceshipInterior/StaticBody3D" unique_id=1067212827]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 7.661377, 9.252778, -72.90306)
+shape = SubResource("BoxShape3D_6j3vh")
+
+[node name="CollisionShape3D11" type="CollisionShape3D" parent="SpaceshipInterior/StaticBody3D" unique_id=306201655]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -0.24401855, 9.252778, -67.05067)
+shape = SubResource("BoxShape3D_6j3vh")
+
+[node name="CollisionShape3D12" type="CollisionShape3D" parent="SpaceshipInterior/StaticBody3D" unique_id=856411120]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.0368347, 10.502716, -71.6004)
+shape = SubResource("BoxShape3D_owfcd")
+
+[node name="CollisionShape3D13" type="CollisionShape3D" parent="SpaceshipInterior/StaticBody3D" unique_id=1458377880]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.0368347, 10.502716, 59.881187)
+shape = SubResource("BoxShape3D_owfcd")
+
+[node name="CollisionShape3D16" type="CollisionShape3D" parent="SpaceshipInterior/StaticBody3D" unique_id=1223429037]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.4877625, 10.027222, -45.802757)
+shape = SubResource("BoxShape3D_faclm")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="SpaceshipInterior" unique_id=140972140]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.43774414, 21.152462, -7.4064946)
+mesh = SubResource("BoxMesh_cdbmq")
+surface_material_override/0 = SubResource("StandardMaterial3D_kg8wx")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="SpaceshipInterior/MeshInstance3D" unique_id=239064511]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SpaceshipInterior/MeshInstance3D/StaticBody3D" unique_id=930900087]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.14849854, -0.0048828125, -0.25158644)
+shape = SubResource("BoxShape3D_qd08q")
+
+[node name="Lights" type="Node" parent="SpaceshipInterior" unique_id=1146649288]
+
+[node name="SpotLight3D" type="SpotLight3D" parent="SpaceshipInterior/Lights" unique_id=131506876]
+transform = Transform3D(1, 0, 0, 0, -0.08176717, 0.9966515, 0, -0.9966515, -0.08176717, 35.185505, 1.9501922, -0.29388952)
+
+[node name="SpotLight3D2" type="SpotLight3D" parent="SpaceshipInterior/Lights" unique_id=1518705935]
+transform = Transform3D(1, 0, 0, 0, -0.08176717, 0.9966515, 0, -0.9966515, -0.08176717, 35.185505, 1.9501922, -4.4961)
+
+[node name="SpotLight3D3" type="SpotLight3D" parent="SpaceshipInterior/Lights" unique_id=1747829208]
+transform = Transform3D(1, 0, 0, 0, -0.08176717, 0.9966515, 0, -0.9966515, -0.08176717, 35.185505, 1.9501922, 5.5561147)
+
+[node name="SpotLight3D4" type="SpotLight3D" parent="SpaceshipInterior/Lights" unique_id=669612073]
+transform = Transform3D(1, 0, 0, 0, -0.08176717, 0.9966515, 0, -0.9966515, -0.08176717, 35.185505, 1.9501922, 2.5136113)
+
+[node name="Muebles" type="Node3D" parent="SpaceshipInterior" unique_id=1076245822]
+
+[node name="Stol2" type="MeshInstance3D" parent="SpaceshipInterior/Muebles" unique_id=891883921]
+transform = Transform3D(-4.3711393e-07, 0, 8.110861, 0, 7.4241376, 0, -10, 0, -3.54537e-07, -1.2503662, 2.580812, 53.074146)
+mesh = ExtResource("13_fult5")
+surface_material_override/0 = SubResource("StandardMaterial3D_7rlic")
+surface_material_override/1 = SubResource("StandardMaterial3D_dv60a")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="SpaceshipInterior/Muebles/Stol2" unique_id=742276655]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SpaceshipInterior/Muebles/Stol2/StaticBody3D" unique_id=1267670270]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 1.0125234e-12, 0, 1, 0.03881836, 0.08593747, -0.008911133)
+shape = SubResource("BoxShape3D_x1mm8")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="SpaceshipInterior/Muebles/Stol2/StaticBody3D" unique_id=241654328]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 1.104894e-12, 0, 1, -0.30032778, 0.46456906, 0.0039978027)
+shape = SubResource("BoxShape3D_we32a")
+
+[node name="Cockpit Chair" parent="SpaceshipInterior/Muebles" unique_id=827819402 instance=ExtResource("12_luopn")]
+transform = Transform3D(-0.04013338, 0, -4.999839, 0, 5, 0, 4.999839, 0, -0.04013338, -0.32070923, 2.58081, 43.64911)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="SpaceshipInterior/Muebles/Cockpit Chair" unique_id=1284064583]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SpaceshipInterior/Muebles/Cockpit Chair/StaticBody3D" unique_id=77182489]
+transform = Transform3D(0.9999999, 0, 0, 0, 0.99999976, 0, 0, 0, 0.9999999, 0.10334587, 0.767632, -0.00039672852)
+shape = SubResource("BoxShape3D_q4m7x")
+
+[editable path="Character"]
+[editable path="Character/CharacterBody3D/Model/Idle"]
+[editable path="Spaceship"]
+[editable path="Planetas/Mercury"]
+[editable path="Planetas/Phoenix_Planet"]

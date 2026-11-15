@@ -1,0 +1,15 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://bkpjolxx0pa5l"]
+
+[ext_resource type="Texture2D" uid="uid://b2go0fsxwmrsx" path="res://Proyecto/Modelos/planet-of-phoenix/textures/Phoenix_LOD0Albedo.tga.png" id="1_x8jvl"]
+[ext_resource type="Texture2D" uid="uid://dk1s85nop4ioc" path="res://Proyecto/Modelos/planet-of-phoenix/textures/Phoenix_LOD0_AO.tga.png" id="2_ybcfa"]
+[ext_resource type="Texture2D" uid="uid://dj3tcuuyqjmc4" path="res://Proyecto/Modelos/planet-of-phoenix/textures/Phoenix_LOD0_Metalic.tga.png" id="3_dd841"]
+[ext_resource type="Texture2D" uid="uid://dpln5l8f822ei" path="res://Proyecto/Modelos/planet-of-phoenix/textures/Phoenix_LOD0_Normal.tga.png" id="4_261p1"]
+
+[resource]
+albedo_texture = ExtResource("1_x8jvl")
+metallic = 1.0
+metallic_texture = ExtResource("3_dd841")
+normal_enabled = true
+normal_texture = ExtResource("4_261p1")
+ao_enabled = true
+ao_texture = ExtResource("2_ybcfa")

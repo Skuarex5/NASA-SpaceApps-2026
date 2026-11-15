@@ -1,0 +1,89 @@
+[gd_scene format=3 uid="uid://cn4kh2jfwv70e"]
+
+[ext_resource type="Script" uid="uid://ddwqbaa2qojlq" path="res://Proyecto/Codigos/menu.gd" id="1_mcljw"]
+[ext_resource type="Texture2D" uid="uid://dwj2wqhyattog" path="res://Proyecto/Texturas/Menu/Imagen de ChatGPT 7 nov 2026, 02_05_50.png" id="1_r0glc"]
+[ext_resource type="Texture2D" uid="uid://dsylamq18vk8d" path="res://Proyecto/Texturas/Menu/Imagen de ChatGPT 7 nov 2026, 02_06_01.png" id="2_mcljw"]
+[ext_resource type="Texture2D" uid="uid://c4uwkdjmp0cng" path="res://Proyecto/Texturas/Menu/play_normal.png" id="3_ge7w6"]
+[ext_resource type="Texture2D" uid="uid://7xapkxv3e3e5" path="res://Proyecto/Texturas/Menu/play_selected.png" id="4_yr6bq"]
+[ext_resource type="Texture2D" uid="uid://cjf6i4kjww2da" path="res://Proyecto/Texturas/Menu/options_normal.png" id="5_75oo5"]
+[ext_resource type="Texture2D" uid="uid://hx757bt8fa5c" path="res://Proyecto/Texturas/Menu/options_selected.png" id="6_g0cbi"]
+[ext_resource type="Texture2D" uid="uid://c140kiwinq131" path="res://Proyecto/Texturas/Menu/credits_normal.png" id="7_cd84p"]
+[ext_resource type="Texture2D" uid="uid://s78a8e1h218c" path="res://Proyecto/Texturas/Menu/credits_selected.png" id="8_mtcdl"]
+[ext_resource type="Texture2D" uid="uid://dpsndj7wcpdwg" path="res://Proyecto/Texturas/Menu/quit_normal.png" id="9_m7kbr"]
+[ext_resource type="Texture2D" uid="uid://bcsyofltmb3t3" path="res://Proyecto/Texturas/Menu/quit_selected.png" id="10_s21mw"]
+[ext_resource type="AudioStream" uid="uid://2bslwk0pqk4r" path="res://Proyecto/Sonidos/bckgmusic.mp3" id="11_wx21f"]
+
+[node name="Menu" type="Control" unique_id=1119493293]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_mcljw")
+
+[node name="Background" type="TextureRect" parent="." unique_id=900685145]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_r0glc")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="Logo" type="TextureRect" parent="." unique_id=44116930]
+layout_mode = 0
+offset_left = 31.0
+offset_top = 38.0
+offset_right = 558.0
+offset_bottom = 292.0
+texture = ExtResource("2_mcljw")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="MenuButtons" type="VBoxContainer" parent="." unique_id=1970716094]
+layout_mode = 0
+offset_left = 126.99999
+offset_top = 275.0
+offset_right = 1390.3334
+offset_bottom = 1351.0
+scale = Vector2(0.26, 0.24)
+theme_override_constants/separation = 12
+
+[node name="Play" type="TextureButton" parent="MenuButtons" unique_id=2078814485]
+custom_minimum_size = Vector2(480, 260)
+layout_mode = 2
+texture_normal = ExtResource("3_ge7w6")
+texture_hover = ExtResource("4_yr6bq")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Settings" type="TextureButton" parent="MenuButtons" unique_id=1422636845]
+custom_minimum_size = Vector2(480, 260)
+layout_mode = 2
+texture_normal = ExtResource("5_75oo5")
+texture_hover = ExtResource("6_g0cbi")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Credits" type="TextureButton" parent="MenuButtons" unique_id=179222766]
+custom_minimum_size = Vector2(480, 260)
+layout_mode = 2
+texture_normal = ExtResource("7_cd84p")
+texture_hover = ExtResource("8_mtcdl")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Exit" type="TextureButton" parent="MenuButtons" unique_id=68301761]
+custom_minimum_size = Vector2(480, 260)
+layout_mode = 2
+texture_normal = ExtResource("9_m7kbr")
+texture_hover = ExtResource("10_s21mw")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer2D" parent="." unique_id=2099005208]
+stream = ExtResource("11_wx21f")
+autoplay = true

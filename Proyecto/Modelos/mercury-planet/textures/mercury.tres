@@ -1,0 +1,11 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://bo2pdl6rpwj3n"]
+
+[ext_resource type="Texture2D" uid="uid://b1p7is2wqxcjn" path="res://Proyecto/Modelos/mercury-planet/textures/8k_mercury_gs.jpg" id="1_2163i"]
+[ext_resource type="Texture2D" uid="uid://dy1jkuxv4yvw4" path="res://Proyecto/Modelos/mercury-planet/textures/Mercury_N.jpg" id="2_11ona"]
+[ext_resource type="Texture2D" uid="uid://85besfhv2165" path="res://Proyecto/Modelos/mercury-planet/textures/Mercury_R.jpg" id="3_6nbst"]
+
+[resource]
+albedo_texture = ExtResource("1_2163i")
+roughness_texture = ExtResource("3_6nbst")
+normal_enabled = true
+normal_texture = ExtResource("2_11ona")

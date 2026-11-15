@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://cu1hlcvqxl41x"]
+
+[ext_resource type="Script" uid="uid://mg344itko8aa" path="res://Proyecto/Codigos/datos_mision.gd" id="1_5epo2"]
+[ext_resource type="Script" uid="uid://bgi4r4luy7fou" path="res://Proyecto/Codigos/sistema_misiones.gd" id="1_swql0"]
+[ext_resource type="Texture2D" uid="uid://bbomsq8kqajri" path="res://Proyecto/Texturas/MenuMisiones/Panel de misiones futurista.png" id="2_bqwm4"]
+[ext_resource type="Resource" uid="uid://2kxx7ki0ytw5" path="res://Proyecto/Misiones/planet-round.tres" id="3_rxpvu"]
+[ext_resource type="PackedScene" uid="uid://si38p0lg54mf" path="res://Proyecto/Escenas/MisionItem.tscn.tscn" id="4_rxpvu"]
+
+[node name="MissionMenu" type="Control" unique_id=1451330343]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_swql0")
+misiones = Array[ExtResource("1_5epo2")]([ExtResource("3_rxpvu")])
+escena_item = ExtResource("4_rxpvu")
+
+[node name="PanelMisiones" type="Control" parent="." unique_id=1900436543]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Fondo" type="TextureRect" parent="PanelMisiones" unique_id=561160198]
+layout_mode = 0
+offset_left = 8.0
+offset_top = -87.0
+offset_right = 334.0
+offset_bottom = 311.0
+texture = ExtResource("2_bqwm4")
+expand_mode = 1
+
+[node name="ListaMisiones" type="Control" parent="PanelMisiones" unique_id=1328953437]
+anchors_preset = 0
+offset_left = 19.0
+offset_top = 41.0
+offset_right = 302.0
+offset_bottom = 168.0
