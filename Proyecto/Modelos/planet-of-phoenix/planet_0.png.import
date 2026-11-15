@@ -1,0 +1,44 @@
+[remap]
+
+importer="texture"
+type="CompressedTexture2D"
+uid="uid://dklyr7c2scaj3"
+path.s3tc="res://.godot/imported/planet_0.png-6393ad5a14aea29c3e7cdc115f1f8c5e.s3tc.ctex"
+metadata={
+"imported_formats": ["s3tc_bptc"],
+"vram_texture": true
+}
+generator_parameters={
+"md5": "07634ccd5085bc2f3a3f24bf8ae8e6e4"
+}
+
+[deps]
+
+source_file="res://Proyecto/Modelos/planet-of-phoenix/planet_0.png"
+dest_files=["res://.godot/imported/planet_0.png-6393ad5a14aea29c3e7cdc115f1f8c5e.s3tc.ctex"]
+
+[params]
+
+compress/mode=2
+compress/high_quality=false
+compress/lossy_quality=0.7
+compress/uastc_level=0
+compress/rdo_quality_loss=0.0
+compress/hdr_compression=1
+compress/normal_map=0
+compress/channel_pack=0
+mipmaps/generate=true
+mipmaps/limit=-1
+roughness/mode=8
+roughness/src_normal="res://Proyecto/Modelos/planet-of-phoenix/planet_2.png"
+process/channel_remap/red=0
+process/channel_remap/green=1
+process/channel_remap/blue=2
+process/channel_remap/alpha=3
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/normal_map_invert_y=false
+process/hdr_as_srgb=false
+process/hdr_clamp_exposure=false
+process/size_limit=0
+detect_3d/compress_to=0
