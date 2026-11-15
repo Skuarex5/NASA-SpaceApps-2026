@@ -108,7 +108,11 @@ func crear_ventanas() -> void:
 		"SPACE EXPLORER\n\n"
 		+ "Educational Space Exploration Game\n\n"
 		+ "Explore, Learn and Discover\n\n"
-		+ "Developed by UruBots"
+		+ "Developed by UruBots\n\n"
+		+ "Images generated using artificial intelligence (AI).\n\n"
+		+ "Asteroid 1999 RQ36 model:\n"
+		+ "NASA / Christopher R. Meaney\n"
+		+ "NASA 3D Resources (optimized for gameplay)."
 	)
 
 	add_child(ventana_creditos)

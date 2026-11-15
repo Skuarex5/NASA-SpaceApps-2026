@@ -1,5 +1,9 @@
 [gd_scene format=3 uid="uid://8bah3ji7ihg2"]
 
+[ext_resource type="Material" path="res://Proyecto/Materiales/NaveExterior.tres" id="4_material"]
+[ext_resource type="Environment" path="res://Proyecto/Materiales/EspacioExterior.tres" id="5_entorno"]
+[ext_resource type="Script" path="res://Proyecto/Codigos/luces_nave.gd" id="6_luces"]
+
 [ext_resource type="Script" uid="uid://b1axc765x0ywc" path="res://Proyecto/Codigos/nave.gd" id="1_2uhv5"]
 [ext_resource type="PackedScene" uid="uid://dlihengwm1lve" path="res://Proyecto/Modelos/spaceship/source/SpaceShip.fbx" id="1_wfdm8"]
 [ext_resource type="PackedScene" uid="uid://wxq0jha2576x" path="res://Proyecto/Efectos/FuegoMotor/EngineFlame.tscn" id="3_dg2ro"]
@@ -16,9 +20,19 @@ corner_detail = 10
 bg_color = Color(0.03944315, 0.5806067, 0.85398674, 1)
 corner_detail = 10
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_recursos"]
+bg_color = Color(0.015, 0.035, 0.055, 0.88)
+border_width_left = 2
+border_color = Color(0.1, 0.75, 0.85, 0.8)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_left = 6
+corner_radius_bottom_right = 6
+
 [node name="Spaceship" type="Node3D" unique_id=440212658]
 
 [node name="RigidBody3D" type="RigidBody3D" parent="." unique_id=1592770894 node_paths=PackedStringArray("nave_visual", "motor_izquierdo", "motor_derecho")]
+continuous_cd = true
 script = ExtResource("1_2uhv5")
 nave_visual = NodePath("SpaceShip")
 motor_izquierdo = NodePath("SpaceShip/MotorIzquierdo")
@@ -30,11 +44,17 @@ fuerza_giro = 7.0
 [node name="SpaceShip" parent="RigidBody3D" unique_id=1317250033 instance=ExtResource("1_wfdm8")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0.08877599, 0, 0.72653294)
 
+[node name="Starship" parent="RigidBody3D/SpaceShip" index="0"]
+surface_material_override/0 = ExtResource("4_material")
+
+[node name="LucesNave" type="Node3D" parent="RigidBody3D/SpaceShip"]
+script = ExtResource("6_luces")
+
 [node name="MotorDerecho" parent="RigidBody3D/SpaceShip" unique_id=1519000600 instance=ExtResource("3_dg2ro")]
-transform = Transform3D(-1, 4.3528848e-07, -3.8213705e-15, 0, -2.1764424e-07, -0.9999998, -8.742278e-08, -4.97912, 4.371138e-08, -3.204205, 1.198215, -13.581605)
+position = Vector3(-4.1644, 1.0975, -10.45)
 
 [node name="MotorIzquierdo" parent="RigidBody3D/SpaceShip" unique_id=121471482 instance=ExtResource("3_dg2ro")]
-transform = Transform3D(-1, 4.3528848e-07, -3.8213705e-15, 0, -2.1764424e-07, -0.9999998, -8.742278e-08, -4.97912, 4.371138e-08, 5.1990194, 1.1870911, -13.465918)
+position = Vector3(4.1249, 1.1186, -10.45)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D" unique_id=467070491]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.35812378, 1.768158, 1.6388149)
@@ -42,6 +62,7 @@ shape = SubResource("BoxShape3D_wfdm8")
 
 [node name="Camera3D" type="Camera3D" parent="RigidBody3D" unique_id=1903536810]
 transform = Transform3D(1, 0, 0, 0, 0.9856629, 0.16872671, 0, -0.16872671, 0.9856629, 0, 13.385887, 26.758184)
+environment = ExtResource("5_entorno")
 
 [node name="HUDBoost" type="CanvasLayer" parent="RigidBody3D" unique_id=1264365548]
 
@@ -77,3 +98,107 @@ offset_bottom = 619.0
 theme_override_font_sizes/font_size = 7
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="HUDControles" type="CanvasLayer" parent="RigidBody3D"]
+layer = 12
+visible = false
+
+[node name="Controles" type="Label" parent="RigidBody3D/HUDControles"]
+anchor_top = 0.45
+anchor_bottom = 0.45
+offset_left = 16.0
+offset_right = 290.0
+offset_bottom = 195.0
+mouse_filter = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.95)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_font_sizes/font_size = 14
+text = "CONTROLES DE NAVE
+W / S – Avanzar / retroceder
+A / D – Girar
+Espacio – Subir
+Ctrl – Bajar
+Shift – Turbo
+Clic derecho – Girar camara
+Q – Volver al interior"
+
+[node name="Recursos" type="PanelContainer" parent="RigidBody3D/HUDControles"]
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_top = 0.45
+anchor_bottom = 0.45
+offset_left = -262.0
+offset_right = -16.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_recursos")
+
+[node name="Margen" type="MarginContainer" parent="RigidBody3D/HUDControles/Recursos"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="Datos" type="VBoxContainer" parent="RigidBody3D/HUDControles/Recursos/Margen"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 6
+
+[node name="Titulo" type="Label" parent="RigidBody3D/HUDControles/Recursos/Margen/Datos"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.3, 0.9, 1, 1)
+theme_override_font_sizes/font_size = 16
+text = "RECURSOS DE NAVE"
+
+[node name="Salud" type="Label" parent="RigidBody3D/HUDControles/Recursos/Margen/Datos"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 14
+
+[node name="BarraSalud" type="ProgressBar" parent="RigidBody3D/HUDControles/Recursos/Margen/Datos"]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+mouse_filter = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_bfnnt")
+theme_override_styles/fill = SubResource("StyleBoxFlat_bdgh4")
+show_percentage = false
+
+[node name="Combustible" type="Label" parent="RigidBody3D/HUDControles/Recursos/Margen/Datos"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 14
+
+[node name="BarraCombustible" type="ProgressBar" parent="RigidBody3D/HUDControles/Recursos/Margen/Datos"]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+mouse_filter = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_bfnnt")
+theme_override_styles/fill = SubResource("StyleBoxFlat_bdgh4")
+show_percentage = false
+
+[node name="Reserva" type="Label" parent="RigidBody3D/HUDControles/Recursos/Margen/Datos"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 13
+
+[node name="Separador" type="HSeparator" parent="RigidBody3D/HUDControles/Recursos/Margen/Datos"]
+layout_mode = 2
+
+[node name="Peso" type="Label" parent="RigidBody3D/HUDControles/Recursos/Margen/Datos"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 14
+
+[node name="BarraPeso" type="ProgressBar" parent="RigidBody3D/HUDControles/Recursos/Margen/Datos"]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+mouse_filter = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_bfnnt")
+theme_override_styles/fill = SubResource("StyleBoxFlat_bdgh4")
+show_percentage = false
+
+[node name="Aviso" type="Label" parent="RigidBody3D/HUDControles/Recursos/Margen/Datos"]
+custom_minimum_size = Vector2(0, 34)
+layout_mode = 2
+theme_override_font_sizes/font_size = 13
+autowrap_mode = 3
+
+[editable path="RigidBody3D/SpaceShip"]

@@ -7,16 +7,11 @@ extends TextureRect
 @export var check_vacio: Texture2D
 @export var check_marcado: Texture2D
 
-@onready var check: TextureRect = $Check
-@onready var titulo: Label = $CanvasLayer/Titulo
-@onready var descripcion: Label = $CanvasLayer/Descripcion
-@onready var contador: Label = $CanvasLayer/Contador
+@onready var check: TextureRect = $Margen/Contenido/Check
+@onready var titulo: Label = $Margen/Contenido/Textos/Titulo
+@onready var descripcion: Label = $Margen/Contenido/Textos/Descripcion
+@onready var contador: Label = $Margen/Contenido/Contador
 
-@onready var capa_textos: CanvasLayer = $CanvasLayer
-
-func _process(_delta: float) -> void:
-	capa_textos.transform = get_global_transform_with_canvas()
-	
 func configurar(
 	mision: DatosMision,
 	progreso: int,
@@ -26,6 +21,7 @@ func configurar(
 	# Mostrar informacion
 	titulo.text = mision.titulo
 	descripcion.text = mision.descripcion
+	tooltip_text = mision.titulo + "\n" + mision.descripcion
 
 	# Mostrar contador
 	contador.visible = mision.mostrar_contador

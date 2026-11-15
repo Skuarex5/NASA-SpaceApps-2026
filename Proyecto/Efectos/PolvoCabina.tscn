@@ -1,0 +1,59 @@
+[gd_scene load_steps=8 format=3]
+
+[sub_resource type="Gradient" id="Gradient_mota"]
+offsets = PackedFloat32Array(0, 0.3, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0.6, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_mota"]
+gradient = SubResource("Gradient_mota")
+width = 32
+height = 32
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 0.5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_polvo"]
+transparency = 1
+vertex_color_use_as_albedo = true
+albedo_color = Color(0.82, 0.88, 0.95, 0.55)
+albedo_texture = SubResource("GradientTexture2D_mota")
+roughness = 1.0
+billboard_mode = 3
+billboard_keep_scale = true
+
+[sub_resource type="QuadMesh" id="QuadMesh_mota"]
+material = SubResource("StandardMaterial3D_polvo")
+size = Vector2(0.06, 0.06)
+
+[sub_resource type="Gradient" id="Gradient_vida"]
+offsets = PackedFloat32Array(0, 0.2, 0.8, 1)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 0.7, 1, 1, 1, 0.7, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_vida"]
+gradient = SubResource("Gradient_vida")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_polvo"]
+emission_shape = 3
+emission_box_extents = Vector3(14, 6, 48)
+direction = Vector3(0.25, 0.08, 1)
+spread = 90.0
+initial_velocity_min = 0.02
+initial_velocity_max = 0.08
+gravity = Vector3(0, 0, 0)
+scale_min = 0.6
+scale_max = 1.2
+color_ramp = SubResource("GradientTexture1D_vida")
+
+[node name="PolvoCabina" type="GPUParticles3D"]
+cast_shadow = 0
+visibility_range_end = 15.0
+amount = 320
+lifetime = 18.0
+preprocess = 18.0
+randomness = 1.0
+use_fixed_seed = true
+seed = 4815
+local_coords = true
+visibility_aabb = AABB(-18, -10, -52, 36, 20, 104)
+process_material = SubResource("ParticleProcessMaterial_polvo")
+draw_pass_1 = SubResource("QuadMesh_mota")

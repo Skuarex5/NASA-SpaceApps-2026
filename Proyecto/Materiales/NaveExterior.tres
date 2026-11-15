@@ -1,0 +1,22 @@
+[gd_resource type="ShaderMaterial" load_steps=8 format=3]
+
+[ext_resource type="Texture2D" path="res://Proyecto/Modelos/spaceship/textures/Material.001_Base_color.jpg" id="1"]
+[ext_resource type="Texture2D" path="res://Proyecto/Modelos/spaceship/textures/Material.001_Metallic.jpg" id="2"]
+[ext_resource type="Texture2D" path="res://Proyecto/Modelos/spaceship/textures/Material.001_Roughness.jpg" id="3"]
+[ext_resource type="Texture2D" path="res://Proyecto/Modelos/spaceship/textures/Material.001_Normal_DirectX.jpg" id="4"]
+[ext_resource type="Texture2D" path="res://Proyecto/Modelos/spaceship/textures/Material.001_Mixed_AO.jpg" id="5"]
+[ext_resource type="Texture2D" path="res://Proyecto/Modelos/spaceship/textures/Material.001_Emissive.jpg" id="6"]
+[ext_resource type="Shader" path="res://Proyecto/Efectos/nave_superficie.gdshader" id="7"]
+
+[resource]
+resource_name = "Nave - paneles PBR"
+shader = ExtResource("7")
+shader_parameter/color_base = ExtResource("1")
+shader_parameter/metal = ExtResource("2")
+shader_parameter/rugosidad = ExtResource("3")
+shader_parameter/normales = ExtResource("4")
+shader_parameter/oclusion = ExtResource("5")
+shader_parameter/luces = ExtResource("6")
+shader_parameter/intensidad_relieve = 0.8
+shader_parameter/intensidad_emision = 1.8
+shader_parameter/microdesgaste = 0.08

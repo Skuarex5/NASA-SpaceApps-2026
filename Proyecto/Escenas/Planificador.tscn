@@ -1,0 +1,31 @@
+[gd_scene load_steps=15 format=3]
+
+[ext_resource type="Script" path="res://Proyecto/Codigos/planificador.gd" id="1"]
+[ext_resource type="Texture2D" path="res://Proyecto/Texturas/InteraccionEscritorio/fondo_planificador.png" id="2_fondo"]
+[ext_resource type="Texture2D" path="res://Proyecto/Texturas/InteraccionEscritorio/configuracion.png" id="3_configuracion"]
+[ext_resource type="Texture2D" path="res://Proyecto/Texturas/InteraccionEscritorio/recursos_nave.png" id="4_recursos"]
+[ext_resource type="Texture2D" path="res://Proyecto/Texturas/InteraccionEscritorio/combustible.png" id="5_combustible"]
+[ext_resource type="Texture2D" path="res://Proyecto/Texturas/InteraccionEscritorio/equipamiento.png" id="6_equipo"]
+[ext_resource type="Texture2D" path="res://Proyecto/Texturas/InteraccionEscritorio/herramienta_camara.png" id="7_camara"]
+[ext_resource type="Texture2D" path="res://Proyecto/Texturas/InteraccionEscritorio/herramienta_radar.png" id="8_radar"]
+[ext_resource type="Texture2D" path="res://Proyecto/Texturas/InteraccionEscritorio/herramienta_kit_reparacion.png" id="9_kit"]
+[ext_resource type="Texture2D" path="res://Proyecto/Texturas/InteraccionEscritorio/herramienta_oxigeno.png" id="10_oxigeno"]
+[ext_resource type="Texture2D" path="res://Proyecto/Texturas/InteraccionEscritorio/herramienta_provisiones.png" id="11_provisiones"]
+[ext_resource type="Texture2D" path="res://Proyecto/Texturas/InteraccionEscritorio/herramienta_escaner_mineral.png" id="12_escaner"]
+[ext_resource type="Texture2D" path="res://Proyecto/Texturas/InteraccionEscritorio/herramienta_taladro.png" id="13_taladro"]
+[ext_resource type="Texture2D" path="res://Proyecto/Texturas/InteraccionEscritorio/herramienta_baliza.png" id="14_baliza"]
+
+[node name="Planificador" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1")
+imagen_fondo = ExtResource("2_fondo")
+imagen_configuracion = ExtResource("3_configuracion")
+imagen_recursos = ExtResource("4_recursos")
+imagen_combustible = ExtResource("5_combustible")
+imagen_herramientas = ExtResource("6_equipo")
+imagenes_herramientas = Array[Texture2D]([ExtResource("7_camara"), ExtResource("8_radar"), ExtResource("9_kit"), ExtResource("10_oxigeno"), ExtResource("11_provisiones"), ExtResource("12_escaner"), ExtResource("13_taladro"), ExtResource("14_baliza")])

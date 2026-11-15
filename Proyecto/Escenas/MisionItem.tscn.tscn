@@ -5,54 +5,80 @@
 [ext_resource type="Texture2D" uid="uid://beetyyco6v58t" path="res://Proyecto/Texturas/MenuMisiones/checkbox_sin_marcar_original.png" id="3_j73el"]
 [ext_resource type="Texture2D" uid="uid://dqe6ixpm5qwto" path="res://Proyecto/Texturas/MenuMisiones/checkbox_marcada_original.png" id="4_rnu7k"]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_tarjeta"]
+atlas = ExtResource("1_wdpss")
+region = Rect2(64, 180, 2048, 356)
+
 [node name="MissionAroundPlanet" type="TextureRect" unique_id=1686412030]
-z_index = 1
-offset_right = 304.0
-offset_bottom = 104.0
-texture = ExtResource("1_wdpss")
+custom_minimum_size = Vector2(276, 64)
+layout_mode = 2
+size_flags_horizontal = 1
+mouse_filter = 1
+clip_contents = true
+texture = SubResource("AtlasTexture_tarjeta")
 expand_mode = 1
 script = ExtResource("2_rnu7k")
-caja_normal = ExtResource("1_wdpss")
-caja_activa = ExtResource("1_wdpss")
+caja_normal = SubResource("AtlasTexture_tarjeta")
+caja_activa = SubResource("AtlasTexture_tarjeta")
 check_vacio = ExtResource("3_j73el")
 check_marcado = ExtResource("4_rnu7k")
 
-[node name="Check" type="TextureRect" parent="." unique_id=1125263633]
-z_index = 1
+[node name="Margen" type="MarginContainer" parent="."]
 layout_mode = 0
-offset_left = 14.0
-offset_top = 31.0
-offset_right = 54.0
-offset_bottom = 71.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_top = 6
+theme_override_constants/margin_bottom = 6
+
+[node name="Contenido" type="HBoxContainer" parent="Margen"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 6
+
+[node name="Check" type="TextureRect" parent="Margen/Contenido"]
+custom_minimum_size = Vector2(18, 18)
+layout_mode = 2
+size_flags_vertical = 4
+mouse_filter = 2
 texture = ExtResource("3_j73el")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1719217741]
-layer = 11
+[node name="Textos" type="VBoxContainer" parent="Margen/Contenido"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+mouse_filter = 2
+theme_override_constants/separation = 2
 
-[node name="Titulo" type="Label" parent="CanvasLayer" unique_id=1328020342]
-offset_left = 54.0
-offset_top = 39.0
-offset_right = 215.0
-offset_bottom = 62.0
-theme_override_font_sizes/font_size = 10
+[node name="Titulo" type="Label" parent="Margen/Contenido/Textos"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_font_sizes/font_size = 11
 text = "Titulo"
 autowrap_mode = 3
+max_lines_visible = 1
+text_overrun_behavior = 3
 
-[node name="Descripcion" type="Label" parent="CanvasLayer" unique_id=985664849]
-offset_left = 54.0
-offset_top = 54.0
-offset_right = 212.0
-offset_bottom = 77.0
-theme_override_colors/font_color = Color(0.7602972, 0.76029724, 0.7602972, 1)
-theme_override_font_sizes/font_size = 6
-text = "Descripcion de la misión"
+[node name="Descripcion" type="Label" parent="Margen/Contenido/Textos"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_colors/font_color = Color(0.76, 0.83, 0.85, 1)
+theme_override_font_sizes/font_size = 9
+text = "Descripcion"
 autowrap_mode = 3
+max_lines_visible = 2
+text_overrun_behavior = 3
 
-[node name="Contador" type="Label" parent="CanvasLayer" unique_id=73714853]
-offset_left = 260.0
-offset_top = 40.0
-offset_right = 292.0
-offset_bottom = 63.0
+[node name="Contador" type="Label" parent="Margen/Contenido"]
+layout_mode = 2
+size_flags_vertical = 4
+mouse_filter = 2
+theme_override_font_sizes/font_size = 10
 text = "0/1"

@@ -1,0 +1,41 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://bymqm2qp4aq1t"]
+
+[ext_resource type="Texture2D" uid="uid://b0qerrgtidv2t" path="res://Proyecto/Materiales/MicrotejidoNormal.tres" id="1"]
+[ext_resource type="Texture2D" path="res://Proyecto/Materiales/SuciedadTraje.tres" id="2_suciedad"]
+
+[sub_resource type="Gradient" id="Gradient_fibras"]
+colors = PackedColorArray(0.84, 0.84, 0.82, 1, 1, 1, 0.98, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_fibras"]
+seed = 2026
+frequency = 0.12
+fractal_octaves = 3
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_fibras"]
+width = 256
+height = 256
+noise = SubResource("FastNoiseLite_fibras")
+color_ramp = SubResource("Gradient_fibras")
+seamless = true
+
+[resource]
+resource_name = "Traje - tejido tecnico marfil"
+albedo_color = Color(0.83, 0.82, 0.78, 1)
+albedo_texture = SubResource("NoiseTexture2D_fibras")
+metallic_specular = 0.25
+roughness = 0.92
+roughness_texture = SubResource("NoiseTexture2D_fibras")
+normal_enabled = true
+normal_scale = 0.32
+normal_texture = ExtResource("1")
+detail_enabled = true
+detail_blend_mode = 3
+detail_uv_layer = 1
+detail_albedo = ExtResource("2_suciedad")
+uv1_scale = Vector3(9, 9, 9)
+uv1_triplanar = true
+uv1_triplanar_sharpness = 4.0
+uv2_scale = Vector3(85, 85, 85)
+uv2_triplanar = true
+uv2_triplanar_sharpness = 4.0
+texture_filter = 5

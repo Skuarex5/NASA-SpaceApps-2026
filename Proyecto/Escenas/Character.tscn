@@ -1,5 +1,14 @@
 [gd_scene format=3 uid="uid://bnia1vm470rcn"]
 
+[ext_resource type="Material" path="res://Proyecto/Materiales/CascoEsmalte.tres" id="8_casco"]
+[ext_resource type="Material" path="res://Proyecto/Materiales/VisorDorado.tres" id="9_visor"]
+[ext_resource type="Material" path="res://Proyecto/Materiales/TrajeTejido.tres" id="10_tela"]
+[ext_resource type="Texture2D" path="res://Proyecto/Materiales/MicrotejidoNormal.tres" id="11_microdetalle"]
+[ext_resource type="Script" path="res://Proyecto/Codigos/camara_colision.gd" id="12_colision_camara"]
+[ext_resource type="Script" path="res://Proyecto/Codigos/luces_casco.gd" id="13_luces_casco"]
+[ext_resource type="Texture2D" path="res://Proyecto/Materiales/SuciedadTraje.tres" id="14_suciedad"]
+[ext_resource type="Script" path="res://Proyecto/Codigos/desgaste_traje.gd" id="15_desgaste"]
+
 [ext_resource type="Script" uid="uid://c665stsjgepnw" path="res://Proyecto/Codigos/jugador.gd" id="1_2du0o"]
 [ext_resource type="PackedScene" uid="uid://bilq062eh4jp5" path="res://Proyecto/Animaciones/Idle.fbx" id="2_ej4fh"]
 [ext_resource type="Animation" uid="uid://bbc4xs21bx5iv" path="res://Proyecto/Animaciones/idle_exported.res" id="3_r12x7"]
@@ -7,6 +16,70 @@
 [ext_resource type="Animation" uid="uid://ckksblh0ni7v2" path="res://Proyecto/Animaciones/jump_exported.res" id="4_uth7i"]
 [ext_resource type="Animation" uid="uid://r7wp2t0n1ctr" path="res://Proyecto/Animaciones/running_exported.res" id="5_knx76"]
 [ext_resource type="Animation" uid="uid://deyufsq7x7aj0" path="res://Proyecto/Animaciones/walking_exported.res" id="6_crthh"]
+
+[sub_resource type="StandardMaterial3D" id="Material_correas"]
+resource_name = "Correas - fibra tecnica"
+albedo_color = Color(0.19, 0.21, 0.22, 1)
+metallic_specular = 0.2
+roughness = 0.95
+normal_enabled = true
+normal_scale = 0.28
+normal_texture = ExtResource("11_microdetalle")
+uv1_scale = Vector3(16, 16, 16)
+uv1_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="Material_goma"]
+resource_name = "Guantes y juntas - goma mate"
+albedo_color = Color(0.105, 0.12, 0.128, 1)
+metallic_specular = 0.25
+roughness = 0.83
+
+[sub_resource type="StandardMaterial3D" id="Material_herrajes"]
+resource_name = "Herrajes - aluminio cepillado"
+albedo_color = Color(0.57, 0.62, 0.64, 1)
+metallic = 0.9
+roughness = 0.36
+
+[sub_resource type="StandardMaterial3D" id="Material_gunmetal"]
+resource_name = "Conectores - metal oscuro"
+albedo_color = Color(0.25, 0.28, 0.29, 1)
+metallic = 0.75
+roughness = 0.42
+
+[sub_resource type="StandardMaterial3D" id="Material_naranja"]
+resource_name = "Protecciones - naranja de seguridad"
+albedo_color = Color(0.96, 0.36, 0.055, 1)
+roughness = 0.55
+clearcoat_enabled = true
+clearcoat = 0.18
+clearcoat_roughness = 0.35
+detail_enabled = true
+detail_blend_mode = 3
+detail_uv_layer = 1
+detail_albedo = ExtResource("14_suciedad")
+uv2_scale = Vector3(85, 85, 85)
+uv2_triplanar = true
+uv2_triplanar_sharpness = 4.0
+
+[sub_resource type="StandardMaterial3D" id="Material_pantallas"]
+resource_name = "Instrumentos - cristal ahumado"
+albedo_color = Color(0.065, 0.11, 0.14, 1)
+metallic = 0.15
+roughness = 0.18
+clearcoat_enabled = true
+clearcoat = 0.8
+clearcoat_roughness = 0.1
+emission_enabled = true
+emission = Color(0.025, 0.38, 0.65, 1)
+emission_energy_multiplier = 1.6
+
+[sub_resource type="StandardMaterial3D" id="Material_indicadores"]
+resource_name = "Indicadores del traje - blanco frio"
+albedo_color = Color(0.89, 0.96, 1, 1)
+roughness = 0.3
+emission_enabled = true
+emission = Color(0.55, 0.78, 1, 1)
+emission_energy_multiplier = 1.3
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_cdbmq"]
 radius = 0.19140625
@@ -81,6 +154,10 @@ shape = SubResource("CapsuleShape3D_cdbmq")
 
 [node name="Model" type="Node3D" parent="CharacterBody3D" unique_id=255741924]
 
+[node name="DesgasteTraje" type="Node" parent="CharacterBody3D/Model" node_paths=PackedStringArray("esqueleto")]
+script = ExtResource("15_desgaste")
+esqueleto = NodePath("../Idle/Armature/Skeleton3D")
+
 [node name="Idle" parent="CharacterBody3D/Model" unique_id=1813272223 instance=ExtResource("2_ej4fh")]
 
 [node name="Skeleton3D" parent="CharacterBody3D/Model/Idle/Armature" parent_id_path=PackedInt32Array(1813272223, 2117646267) index="0" unique_id=592001538]
@@ -136,11 +213,60 @@ bones/61/rotation = Quaternion(-0.090083405, 0.0007458902, -0.0082901595, 0.9958
 bones/62/rotation = Quaternion(0.47010565, 0.10090422, -0.0542034, 0.87514627)
 bones/63/rotation = Quaternion(0.34922776, 0.043794557, -0.016342336, 0.93587124)
 
+[node name="Astronaut | Original mesh - assigned materials" parent="CharacterBody3D/Model/Idle/Armature/Skeleton3D" index="0"]
+surface_material_override/0 = ExtResource("10_tela")
+surface_material_override/1 = ExtResource("8_casco")
+surface_material_override/2 = SubResource("Material_naranja")
+surface_material_override/3 = SubResource("Material_goma")
+surface_material_override/4 = SubResource("Material_correas")
+surface_material_override/5 = SubResource("Material_herrajes")
+surface_material_override/6 = ExtResource("9_visor")
+surface_material_override/7 = SubResource("Material_pantallas")
+surface_material_override/11 = SubResource("Material_indicadores")
+surface_material_override/12 = SubResource("Material_gunmetal")
+
+[node name="Astronaut | Original mesh - assigned materials_002" parent="CharacterBody3D/Model/Idle/Armature/Skeleton3D" index="1"]
+surface_material_override/0 = ExtResource("10_tela")
+surface_material_override/1 = ExtResource("8_casco")
+surface_material_override/2 = SubResource("Material_naranja")
+surface_material_override/3 = SubResource("Material_goma")
+surface_material_override/4 = SubResource("Material_correas")
+surface_material_override/5 = SubResource("Material_herrajes")
+surface_material_override/6 = SubResource("Material_pantallas")
+surface_material_override/8 = SubResource("Material_gunmetal")
+
+[node name="LucesCasco" type="BoneAttachment3D" parent="CharacterBody3D/Model/Idle/Armature/Skeleton3D" node_paths=PackedStringArray("astronauta", "malla")]
+bone_name = "mixamorig_Head"
+script = ExtResource("13_luces_casco")
+astronauta = NodePath("../../../../..")
+malla = NodePath("../Astronaut | Original mesh - assigned materials")
+
+[node name="LuzIzquierda" type="SpotLight3D" parent="CharacterBody3D/Model/Idle/Armature/Skeleton3D/LucesCasco"]
+position = Vector3(-0.085, 0.065, 0.115)
+rotation_degrees = Vector3(-6, 180, 0)
+light_color = Color(0.82, 0.91, 1, 1)
+light_energy = 1.2
+spot_range = 6.0
+spot_attenuation = 1.8
+spot_angle = 35.0
+shadow_enabled = true
+
+[node name="LuzDerecha" type="SpotLight3D" parent="CharacterBody3D/Model/Idle/Armature/Skeleton3D/LucesCasco"]
+position = Vector3(0.085, 0.065, 0.115)
+rotation_degrees = Vector3(-6, 180, 0)
+light_color = Color(0.82, 0.91, 1, 1)
+light_energy = 1.2
+spot_range = 6.0
+spot_attenuation = 1.8
+spot_angle = 35.0
+shadow_enabled = true
+
 [node name="Camera" type="Node3D" parent="CharacterBody3D" unique_id=613400536]
 
 [node name="Camera3D" type="Camera3D" parent="CharacterBody3D/Camera" unique_id=106664245]
 transform = Transform3D(-1, -3.983787e-15, -8.742276e-08, -2.4623045e-08, 0.9595158, 0.28165483, 8.388351e-08, 0.28165483, -0.9595158, -0.070388824, 1.097676, -1.2094449)
 current = true
+script = ExtResource("12_colision_camara")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="CharacterBody3D" unique_id=2020735907]
 root_node = NodePath("../Model/Idle/Armature")

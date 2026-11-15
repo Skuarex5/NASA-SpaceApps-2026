@@ -6,6 +6,20 @@
 [ext_resource type="Resource" uid="uid://2kxx7ki0ytw5" path="res://Proyecto/Misiones/planet-round.tres" id="3_rxpvu"]
 [ext_resource type="PackedScene" uid="uid://si38p0lg54mf" path="res://Proyecto/Escenas/MisionItem.tscn.tscn" id="4_rxpvu"]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_panel"]
+atlas = ExtResource("2_bqwm4")
+region = Rect2(10, 360, 1066, 720)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pestana"]
+bg_color = Color(0.025, 0.09, 0.13, 0.96)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.08, 0.75, 0.85, 1)
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+
 [node name="MissionMenu" type="Control" unique_id=1451330343]
 layout_mode = 3
 anchors_preset = 15
@@ -13,27 +27,63 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 script = ExtResource("1_swql0")
 misiones = Array[ExtResource("1_5epo2")]([ExtResource("3_rxpvu")])
 escena_item = ExtResource("4_rxpvu")
 
 [node name="PanelMisiones" type="Control" parent="." unique_id=1900436543]
 anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 334.0
+offset_bottom = 338.0
+scale = Vector2(0.75, 0.75)
+mouse_filter = 2
 
 [node name="Fondo" type="TextureRect" parent="PanelMisiones" unique_id=561160198]
 layout_mode = 0
-offset_left = 8.0
-offset_top = -87.0
-offset_right = 334.0
-offset_bottom = 311.0
-texture = ExtResource("2_bqwm4")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = SubResource("AtlasTexture_panel")
 expand_mode = 1
 
-[node name="ListaMisiones" type="Control" parent="PanelMisiones" unique_id=1328953437]
-anchors_preset = 0
-offset_left = 19.0
-offset_top = 41.0
-offset_right = 302.0
-offset_bottom = 168.0
+[node name="ScrollMisiones" type="ScrollContainer" parent="PanelMisiones"]
+layout_mode = 0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 18.0
+offset_top = 94.0
+offset_right = -18.0
+offset_bottom = -28.0
+grow_horizontal = 2
+grow_vertical = 2
+horizontal_scroll_mode = 0
+
+[node name="ListaMisiones" type="VBoxContainer" parent="PanelMisiones/ScrollMisiones" unique_id=1328953437]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+theme_override_constants/separation = 6
+
+[node name="PestanaMisiones" type="Button" parent="."]
+z_index = 5
+layout_mode = 0
+offset_left = 248.5
+offset_top = 88.0
+offset_right = 280.5
+offset_bottom = 132.0
+focus_mode = 0
+mouse_default_cursor_shape = 2
+theme_override_colors/font_color = Color(0.2, 0.95, 1, 1)
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_pestana")
+theme_override_styles/hover = SubResource("StyleBoxFlat_pestana")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_pestana")
+text = "‹"
+tooltip_text = "Guardar misiones hacia la izquierda"

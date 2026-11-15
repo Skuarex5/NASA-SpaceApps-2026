@@ -8,6 +8,67 @@ extends RigidBody3D
 @export_group("Interaccion")
 @export var astronauta: CharacterBody3D
 @export var camara_astronauta: Camera3D
+@export var gestor_inventario: Node
+
+@export_group("Combustible (litros)")
+@export_range(1.0, 100000.0) var capacidad_combustible: float = 100.0
+@export_range(0.0, 100000.0) var combustible_actual: float = 40.0
+@export_range(0.0, 100000.0) var combustible_reserva: float = 200.0
+@export_range(0.0, 20.0, 0.01) var consumo_motor: float = 0.45
+@export_range(0.0, 20.0, 0.01) var consumo_maniobras: float = 0.12
+@export_range(0.0, 30.0, 0.01) var consumo_turbo: float = 2.4
+@export_range(0.01, 10.0, 0.01) var combustible_arranque_turbo: float = 0.5
+
+var plan_mision: Dictionary = {}
+
+@export_group("Salud del casco")
+@export_range(1.0, 10000.0) var salud_maxima: float = 100.0
+@export_range(0.0, 10000.0) var salud_actual: float = 100.0
+@export_range(0.0, 100.0, 0.1) var velocidad_minima_dano: float = 2.5
+@export_range(0.0, 20.0, 0.1) var dano_por_velocidad: float = 1.5
+
+var _espera_impactos: Dictionary = {}
+var _velocidad_anterior := Vector3.ZERO
+
+@export_group("Peso de expedicion (kg)")
+@export_range(1.0, 1000000.0) var peso_limite: float = 1500.0
+@export_range(0.0, 1000000.0) var peso_vacio: float = 1000.0
+@export_range(0.0, 100.0, 0.01) var peso_litro_combustible: float = 1.0
+
+
+func calcular_peso(peso_herramientas: float) -> float:
+	return maxf(peso_vacio, 0) + maxf(peso_herramientas, 0) + (
+		maxf(combustible_actual, 0) + maxf(combustible_reserva, 0)
+	) * maxf(peso_litro_combustible, 0)
+
+
+func peso_carga_actual() -> float:
+	if is_instance_valid(gestor_inventario):
+		var ids: Array[String] = []
+		return gestor_inventario.objetos.peso_restante(ids)
+	return maxf(float(plan_mision.get("peso_carga_kg", 0)), 0)
+
+
+func peso_actual() -> float:
+	return calcular_peso(peso_carga_actual())
+
+
+func reparar_nave() -> float:
+	var reparado := maxf(salud_maxima - salud_actual, 0)
+	salud_actual = salud_maxima
+	_actualizar_hud_recursos()
+	_actualizar_hud_boost()
+	return reparado
+
+
+func cargar_combustible(cantidad: float) -> float:
+	var transferido := minf(maxf(cantidad, 0.0), minf(
+		maxf(combustible_reserva, 0.0), maxf(capacidad_combustible - combustible_actual, 0.0)
+	))
+	combustible_actual += transferido
+	combustible_reserva -= transferido
+	_actualizar_hud_recursos()
+	return transferido
 
 @export_group("Modelo y motores")
 @export var nave_visual: Node3D
@@ -41,6 +102,15 @@ extends RigidBody3D
 @export var freno_angular: float = 4.0
 
 @onready var camara_nave: Camera3D = $Camera3D
+@onready var hud_controles: CanvasLayer = $HUDControles
+@onready var texto_salud: Label = $HUDControles/Recursos/Margen/Datos/Salud
+@onready var barra_salud: ProgressBar = $HUDControles/Recursos/Margen/Datos/BarraSalud
+@onready var texto_combustible: Label = $HUDControles/Recursos/Margen/Datos/Combustible
+@onready var barra_combustible: ProgressBar = $HUDControles/Recursos/Margen/Datos/BarraCombustible
+@onready var texto_reserva: Label = $HUDControles/Recursos/Margen/Datos/Reserva
+@onready var texto_peso: Label = $HUDControles/Recursos/Margen/Datos/Peso
+@onready var barra_peso: ProgressBar = $HUDControles/Recursos/Margen/Datos/BarraPeso
+@onready var aviso_recursos: Label = $HUDControles/Recursos/Margen/Datos/Aviso
 
 @onready var hud_boost: CanvasLayer = $HUDBoost
 @onready var barra_boost: ProgressBar = $HUDBoost/VBoxContainer/BarraBoost
@@ -74,6 +144,9 @@ var tiempo_recarga: float = 0.0
 # =====================================
 
 func _ready() -> void:
+	max_contacts_reported = 16
+	salud_actual = clampf(salud_actual, 0, salud_maxima)
+	hud_controles.hide()
 	hud_boost.hide()
 	capa_texto_boost.hide()
 	barra_boost.value = 100.0
@@ -136,6 +209,7 @@ func _ready() -> void:
 	_configurar_camara()
 
 	_apagar_motores()
+	_actualizar_hud_recursos()
 
 	print("Sistema de nave inicializado")
 
@@ -204,7 +278,19 @@ func _input(event: InputEvent) -> void:
 # FISICAS Y CONTROLES
 # =====================================
 
+func _unhandled_input(event: InputEvent) -> void:
+	# La entrada se solicita desde el escritorio. Q conserva la salida al pilotar.
+	if pilotando and event.is_action_pressed("navegar") and not event.is_echo():
+		salir_nave()
+		get_viewport().set_input_as_handled()
+
+
 func _physics_process(delta: float) -> void:
+	_velocidad_anterior = linear_velocity
+	for id in _espera_impactos.keys():
+		_espera_impactos[id] -= delta
+		if _espera_impactos[id] <= 0:
+			_espera_impactos.erase(id)
 
 	# Actualizar temporizadores siempre,
 	# incluso cuando estamos fuera de la nave.
@@ -220,16 +306,6 @@ func _physics_process(delta: float) -> void:
 	
 	_actualizar_hud_boost()
 	
-	# Q PARA ENTRAR O SALIR
-	if Input.is_action_just_pressed("navegar"):
-
-		if pilotando:
-			salir_nave()
-		else:
-			entrar_nave()
-
-		return
-
 	if not pilotando:
 		return
 
@@ -271,6 +347,8 @@ func _physics_process(delta: float) -> void:
 		vertical,
 		respuesta_motor * delta
 	)
+	var usando_turbo := tiempo_boost > 0
+	var fraccion_combustible := _consumir_combustible(delta) if salud_actual > 0 else 0.0
 
 	# MOTOR PRINCIPAL
 	if absf(avance_actual) > 0.001:
@@ -279,15 +357,17 @@ func _physics_process(delta: float) -> void:
 			-global_basis.z
 			* avance_actual
 			* fuerza_motor
+			* fraccion_combustible
 		)
 
 	# PROPULSION EXTRA DEL TURBO
-	if tiempo_boost > 0.0:
+	if usando_turbo:
 
 		apply_central_force(
 			-global_basis.z
 			* fuerza_motor
 			* multiplicador_boost
+			* fraccion_combustible
 		)
 
 	# SUBIR / BAJAR
@@ -297,6 +377,7 @@ func _physics_process(delta: float) -> void:
 			Vector3.UP
 			* vertical_actual
 			* fuerza_vertical
+			* fraccion_combustible
 		)
 
 	# GIRAR
@@ -306,10 +387,95 @@ func _physics_process(delta: float) -> void:
 			Vector3.UP
 			* giro_actual
 			* fuerza_giro
+			* fraccion_combustible
 		)
+	if combustible_actual <= 0 or salud_actual <= 0:
+		tiempo_boost = 0
+		avance_actual = 0
+		giro_actual = 0
+		vertical_actual = 0
 
 	_animar_inclinacion(delta)
 	_animar_motores()
+	_actualizar_hud_recursos()
+	_actualizar_hud_boost()
+
+
+func _integrate_forces(estado: PhysicsDirectBodyState3D) -> void:
+	if not pilotando or salud_actual <= 0:
+		return
+	# Agrupar los contactos de cada roca evita contar varias caras como varios golpes.
+	var impactos: Dictionary = {}
+	for i in estado.get_contact_count():
+		var cuerpo := estado.get_contact_collider_object(i)
+		if not is_instance_valid(cuerpo) or not cuerpo.is_in_group("asteroides"):
+			continue
+		var id := cuerpo.get_instance_id()
+		var normal := (estado.transform.basis * estado.get_contact_local_normal(i)).normalized()
+		var velocidad := maxf(-_velocidad_anterior.dot(normal), 0)
+		velocidad = maxf(velocidad, estado.get_contact_impulse(i).length() / maxf(mass, 0.001))
+		impactos[id] = maxf(float(impactos.get(id, 0)), velocidad)
+	for id in impactos:
+		_registrar_impacto(id, impactos[id])
+
+
+func _registrar_impacto(id: int, velocidad: float) -> void:
+	if not pilotando or salud_actual <= 0 or _espera_impactos.has(id):
+		return
+	if velocidad <= velocidad_minima_dano:
+		return
+	_espera_impactos[id] = 0.75
+	var dano := minf((velocidad - velocidad_minima_dano) * dano_por_velocidad, 40.0)
+	salud_actual = maxf(salud_actual - dano, 0)
+	_actualizar_hud_recursos()
+
+
+func _consumir_combustible(delta: float) -> float:
+	var litros_segundo := absf(avance_actual) * consumo_motor
+	litros_segundo += (absf(vertical_actual) + absf(giro_actual)) * consumo_maniobras
+	if tiempo_boost > 0:
+		litros_segundo += consumo_turbo
+	var solicitado := maxf(litros_segundo * delta, 0)
+	if solicitado <= 0:
+		return 1.0 if combustible_actual > 0 else 0.0
+	var gastado := minf(maxf(combustible_actual, 0), solicitado)
+	combustible_actual = maxf(combustible_actual - gastado, 0)
+	return gastado / solicitado
+
+
+func _actualizar_hud_recursos() -> void:
+	if not is_node_ready():
+		return
+	texto_salud.text = "SALUD DEL CASCO   %.0f / %.0f" % [salud_actual, salud_maxima]
+	barra_salud.max_value = salud_maxima
+	barra_salud.value = salud_actual
+	var color_salud := Color("ff8979") if salud_actual <= salud_maxima * 0.25 else Color("ffbc66") if salud_actual <= salud_maxima * 0.5 else Color("77efbd")
+	texto_salud.modulate = color_salud
+	barra_salud.modulate = color_salud
+	texto_combustible.text = "COMBUSTIBLE\n%.1f / %.1f L" % [combustible_actual, capacidad_combustible]
+	barra_combustible.max_value = maxf(capacidad_combustible, 1)
+	barra_combustible.value = combustible_actual
+	texto_reserva.text = "Reserva a bordo: %.1f L" % combustible_reserva
+	var total := peso_actual()
+	texto_peso.text = "PESO TOTAL\n%.1f / %.1f kg\nObjetos: %.1f kg" % [total, peso_limite, peso_carga_actual()]
+	barra_peso.max_value = maxf(peso_limite, 1)
+	barra_peso.value = total
+	texto_peso.modulate = Color("ffbc66") if total > peso_limite else Color.WHITE
+	if salud_actual <= 0:
+		aviso_recursos.text = "Casco inutilizado: motores apagados.\nQ: volver al interior."
+		aviso_recursos.modulate = Color("ff8979")
+	elif combustible_actual <= 0:
+		aviso_recursos.text = "Sin combustible.\nQ: volver al interior para cargar."
+		aviso_recursos.modulate = Color("ff8979")
+	elif combustible_actual <= capacidad_combustible * 0.2:
+		aviso_recursos.text = "Combustible bajo: recarga pronto."
+		aviso_recursos.modulate = Color("ffbc66")
+	elif salud_actual <= salud_maxima * 0.25:
+		aviso_recursos.text = "Casco en estado critico."
+		aviso_recursos.modulate = Color("ff8979")
+	else:
+		aviso_recursos.text = ""
+	barra_combustible.modulate = aviso_recursos.modulate if combustible_actual <= capacidad_combustible * 0.2 else Color.WHITE
 
 
 # =====================================
@@ -320,8 +486,9 @@ func _activar_boost() -> void:
 
 	# No permitir otro boost
 	# hasta terminar la recarga.
-	if tiempo_recarga > 0.0:
+	if tiempo_recarga > 0.0 or not pilotando or salud_actual <= 0 or combustible_actual < combustible_arranque_turbo:
 		return
+	combustible_actual -= combustible_arranque_turbo
 
 	tiempo_boost = duracion_boost
 	tiempo_recarga = recarga_boost
@@ -409,15 +576,22 @@ func _actualizar_motor(
 	if motor == null:
 		return
 
-	motor.visible = intensidad > 0.05
+	if motor.has_method("actualizar_intensidad"):
+		motor.call("actualizar_intensidad", intensidad, tiempo_boost > 0)
+	else:
+		motor.visible = intensidad > 0.05
 
 
 func _apagar_motores() -> void:
 
 	if motor_izquierdo != null:
+		if motor_izquierdo.has_method("apagar"):
+			motor_izquierdo.call("apagar")
 		motor_izquierdo.hide()
 
 	if motor_derecho != null:
+		if motor_derecho.has_method("apagar"):
+			motor_derecho.call("apagar")
 		motor_derecho.hide()
 
 
@@ -426,6 +600,8 @@ func _apagar_motores() -> void:
 # =====================================
 
 func entrar_nave() -> void:
+	hud_controles.show()
+	_actualizar_hud_recursos()
 	hud_boost.show()
 	capa_texto_boost.show()
 	posicion_guardada = astronauta.global_transform
@@ -452,6 +628,8 @@ func entrar_nave() -> void:
 	avance_actual = 0.0
 	giro_actual = 0.0
 	vertical_actual = 0.0
+	_velocidad_anterior = Vector3.ZERO
+	_espera_impactos.clear()
 
 	freeze = false
 	sleeping = false
@@ -469,6 +647,14 @@ func entrar_nave() -> void:
 
 
 func _actualizar_hud_boost() -> void:
+	if salud_actual <= 0:
+		barra_boost.value = 0
+		estado_boost.text = "CASCO INUTILIZADO"
+		return
+	if combustible_actual <= 0:
+		barra_boost.value = 0
+		estado_boost.text = "SIN COMBUSTIBLE"
+		return
 
 	# Mientras el turbo esta activo:
 	# la barra baja de 100 a 0.
@@ -507,6 +693,7 @@ func _actualizar_hud_boost() -> void:
 		estado_boost.text = "BOOST LISTO [SHIFT]"
 
 func salir_nave() -> void:
+	hud_controles.hide()
 	hud_boost.hide()
 	pilotando = false
 	capa_texto_boost.hide()

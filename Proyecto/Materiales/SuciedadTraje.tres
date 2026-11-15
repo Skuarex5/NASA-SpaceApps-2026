@@ -1,0 +1,17 @@
+[gd_resource type="NoiseTexture2D" format=3 uid="uid://yydlkvojaflu"]
+
+[sub_resource type="Gradient" id="Gradient_polvo"]
+offsets = PackedFloat32Array(0, 0.28, 0.45, 0.58, 0.7, 1)
+colors = PackedColorArray(0.28, 0.25, 0.21, 1, 0.48, 0.44, 0.37, 1, 0.76, 0.73, 0.65, 1, 0.96, 0.95, 0.91, 1, 1, 1, 1, 1, 1, 1, 1, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_polvo"]
+seed = 417
+frequency = 0.025
+fractal_octaves = 4
+fractal_gain = 0.6
+
+[resource]
+resource_name = "Polvo y manchas irregulares del traje"
+noise = SubResource("FastNoiseLite_polvo")
+color_ramp = SubResource("Gradient_polvo")
+seamless = true
