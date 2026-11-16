@@ -1,0 +1,128 @@
+[gd_scene format=4]
+
+[ext_resource type="Texture2D" path="res://Proyecto/Materiales/Interior/VariacionSuave.tres" id="1_hg1ft"]
+[ext_resource type="Texture2D" path="res://Proyecto/Materiales/Interior/MicroGrano.tres" id="2_u4i03"]
+[ext_resource type="Material" path="res://Proyecto/Materiales/Interior/MetalCepillado.tres" id="3_vfp56"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_r2y67"]
+resource_name = "Window frame - titanium alloy"
+cull_mode = 2
+albedo_color = Color(0.24, 0.31, 0.35, 1)
+albedo_texture = ExtResource("1_hg1ft")
+metallic = 0.75
+roughness = 0.38
+normal_enabled = true
+normal_scale = 0.07
+normal_texture = ExtResource("2_u4i03")
+uv1_scale = Vector3(3, 3, 3)
+uv1_triplanar = true
+uv1_triplanar_sharpness = 8.0
+uv1_world_triplanar = true
+texture_filter = 5
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_hg1ft"]
+_surfaces = [{
+"aabb": AABB(-0.13, -0.79, -1.0600001, 0.21, 1.58, 2.1200001),
+"attribute_data": PackedByteArray("hesRv3E9Sr/NzAy/XI9Cv83MDD9cj0K/hesRP3E9Sr9cj0I/zcwMv3E9Sj+F6xG/XI9CP83MDD9xPUo/hesRP83MDD9cj0I/hesRP3E9Sj/NzAy/XI9CP4XrEb9xPUo/XI9Cv83MDD9xPUq/hesRP1yPQr/NzAy/cT1Kv4XrEb+PwvW+ZmYmv4/C9T5mZia/ZmYmP4/C9b5mZiY/j8L1Po/C9T5mZiY/j8L1vmZmJj9mZia/j8L1PmZmJr+PwvW+j8L1vmZmJr+PwvU+ZmYmv2ZmJj+PwvW+ZmYmP4/C9T6PwvU+ZmYmP4/C9b5mZiY/ZmYmv4/C9T5mZia/j8L1voXrEb9xPUq/hesRP3E9Sr9xPUo/hesRv3E9Sj+F6xE/hesRP3E9Sj+F6xG/cT1KP3E9Sr+F6xE/cT1Kv4XrEb8="),
+"format": 34359742487,
+"index_count": 240,
+"index_data": PackedByteArray("AAABAAIAAAACAAMAAwACAAQAAwAEAAUABQAEAAYABQAGAAcABwAGAAgABwAIAAkACQAIAAoACQAKAAsACwAKAAwACwAMAA0ADQAMAA4ADQAOAA8ADwAOAAEADwABAAAAAQAQABEAAQARAAIAAgARABIAAgASAAQABAASABMABAATAAYABgATABQABgAUAAgACAAUABUACAAVAAoACgAVABYACgAWAAwADAAWABcADAAXAA4ADgAXABAADgAQAAEAEAAYABkAEAAZABEAEQAZABoAEQAaABIAEgAaABsAEgAbABMAEwAbABwAEwAcABQAFAAcAB0AFAAdABUAFQAdAB4AFQAeABYAFgAeAB8AFgAfABcAFwAfABgAFwAYABAAGAAgACEAGAAhABkAGQAhACIAGQAiABoAGgAiACMAGgAjABsAGwAjACQAGwAkABwAHAAkACUAHAAlAB0AHQAlACYAHQAmAB4AHgAmACcAHgAnAB8AHwAnACAAHwAgABgAIAAAAAMAIAADACEAIQADAAUAIQAFACIAIgAFAAcAIgAHACMAIwAHAAkAIwAJACQAJAAJAAsAJAALACUAJQALAA0AJQANACYAJgANAA8AJgAPACcAJwAPAAAAJwAAACAA"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 40,
+"vertex_data": PackedByteArray("zczMvXE9Sr89Cle/uB4FvlyPQr+F61G/uB4FvlyPQr+F61E/zczMvXE9Sr89Clc/uB4Fvs3MDL8K14M/zczMvYXrEb8Vroc/uB4Fvs3MDD8K14M/zczMvYXrET8Vroc/uB4FvlyPQj+F61E/zczMvXE9Sj89Clc/uB4FvlyPQj+F61G/zczMvXE9Sj89Cle/uB4Fvs3MDD8K14O/zczMvYXrET8Vroe/uB4Fvs3MDL8K14O/zczMvYXrEb8Vroe/uB4FvmZmJr8AAEC/uB4FvmZmJr8AAEA/uB4Fvo/C9b4ehWs/uB4Fvo/C9T4ehWs/uB4FvmZmJj8AAEA/uB4FvmZmJj8AAEC/uB4Fvo/C9T4ehWu/uB4Fvo/C9b4ehWu/CtejPWZmJr8AAEC/CtejPWZmJr8AAEA/CtejPY/C9b4ehWs/CtejPY/C9T4ehWs/CtejPWZmJj8AAEA/CtejPWZmJj8AAEC/CtejPY/C9T4ehWu/CtejPY/C9b4ehWu/CtejPXE9Sr89Cle/CtejPXE9Sr89Clc/CtejPYXrEb8Vroc/CtejPYXrET8Vroc/CtejPXE9Sj89Clc/CtejPXE9Sj89Cle/CtejPYXrET8Vroe/CtejPYXrEb8Vroe/0kFtIfs5Fcm5GjNWYWoky7gnFGAGfJfQFV1HPDMl/tfMKexwbZvcw5FeQGPRse2PuCfMhzacQrcVXV6ZvZVtncwpuJrWhjSxkV7SwSBSaKvrH7en+m3PsLZDFd3hKv+mEg/LqQFk3LS+HJHef0pLlc0HR1g/Xx6+XxnpIhNYcqchRAS2D2WyqUAtwsc6TD2oGw4hxCFU9KeCGjs4GU2huwU23TvGVG3Rw0e+UqVvBtshRONx+7BDr8NHgZoymMCoO7hArYJRGcz5ySHEh1592HzlwscNttK34vHdO9uiYqq90js4Q3eMpt27+knqTxCqO7h9ZXxQHKbduxuOZlOHsvnJ3TsPZbKpO7i+UjpMPajdu+NxIVT0pzu4gZoZTaG73bsEtsZUbdG90sLHpW8G2+LxIcT7sEOvfOU7ODKYwKg=")
+}]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_htkv4"]
+resource_name = "Technical polymer"
+cull_mode = 2
+albedo_color = Color(0.018, 0.025, 0.03, 1)
+albedo_texture = ExtResource("1_hg1ft")
+roughness = 0.9
+normal_enabled = true
+normal_scale = 0.06
+normal_texture = ExtResource("2_u4i03")
+uv1_scale = Vector3(4, 4, 4)
+uv1_triplanar = true
+uv1_triplanar_sharpness = 8.0
+uv1_world_triplanar = true
+texture_filter = 5
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_u4i03"]
+_surfaces = [{
+"aabb": AABB(-0.04, -0.65, -0.91999996, 0.004999999, 1.3, 1.8399999),
+"attribute_data": PackedByteArray("j8L1vmZmJr8zM/O+XI8ivzMz8z5cjyK/j8L1PmZmJr9cjyI/MzPzvmZmJj+PwvW+XI8iPzMz8z5mZiY/j8L1PjMz8z5cjyI/j8L1PmZmJj8zM/O+XI8iP4/C9b5mZiY/XI8ivzMz8z5mZia/j8L1PlyPIr8zM/O+ZmYmv4/C9b4="),
+"format": 34359742487,
+"index_count": 48,
+"index_data": PackedByteArray("AAABAAIAAAACAAMAAwACAAQAAwAEAAUABQAEAAYABQAGAAcABwAGAAgABwAIAAkACQAIAAoACQAKAAsACwAKAAwACwAMAA0ADQAMAA4ADQAOAA8ADwAOAAEADwABAAAA"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 16,
+"vertex_data": PackedByteArray("CtcjvWZmJr8AAEC/KVwPvVyPIr9SuD6/KVwPvVyPIr9SuD4/CtcjvWZmJr8AAEA/KVwPvTMz874Urmc/CtcjvY/C9b4ehWs/KVwPvTMz8z4Urmc/CtcjvY/C9T4ehWs/KVwPvVyPIj9SuD4/CtcjvWZmJj8AAEA/KVwPvVyPIj9SuD6/CtcjvWZmJj8AAEC/KVwPvTMz8z4Urme/CtcjvY/C9T4ehWu/KVwPvTMz874Urme/CtcjvY/C9b4ehWu/0yMsnAF/KbFeJ6CY6Ydssisc0qORcFSyoBhep0Fr/LK9Dl6n+WWgtaUH0qOpZEi4pQcrXFNigL+9DqBY2mT0w6AYoFjBa2XKKxwrXPNwvczTI9Jj9H7kzl0nXmfRiGHMXSdBccSYaMTTI1l4yZ15v9MjpYd7mXm4XSe9jsuU4LU=")
+}]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ylp1w"]
+resource_name = "Pressure glass - subtle blue tint"
+transparency = 1
+cull_mode = 2
+albedo_color = Color(0.55, 0.75, 0.83, 0.08)
+metallic_specular = 0.25
+roughness = 0.13
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_vfp56"]
+_surfaces = [{
+"aabb": AABB(0, -0.638, -0.908, 1e-05, 1.276, 1.816),
+"attribute_data": PackedByteArray("AAAAPwAAAD9gObQ84E8NvjVeej/gTw2+AAAAPwAAAD81Xno/4E8NvvypkT9gObQ8AAAAPwAAAD/8qZE/YDm0PPypkT81Xno/AAAAPwAAAD/8qZE/NV56PzVeej/8qZE/AAAAPwAAAD81Xno//KmRP2A5tDz8qZE/AAAAPwAAAD9gObQ8/KmRP+BPDb41Xno/AAAAPwAAAD/gTw2+NV56P+BPDb5gObQ8AAAAPwAAAD/gTw2+YDm0PGA5tDzgTw2+"),
+"format": 34359738391,
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 24,
+"vertex_data": PackedByteArray("AAAAAAAAAAAAAAAAAAAAAPhTI7/tfD+/AAAAAPhTI7/tfD8/AAAAAAAAAAAAAAAAAAAAAPhTI7/tfD8/AAAAAGq89L6wcmg/AAAAAAAAAAAAAAAAAAAAAGq89L6wcmg/AAAAAGq89D6wcmg/AAAAAAAAAAAAAAAAAAAAAGq89D6wcmg/AAAAAPhTIz/tfD8/AAAAAAAAAAAAAAAAAAAAAPhTIz/tfD8/AAAAAPhTIz/tfD+/AAAAAAAAAAAAAAAAAAAAAPhTIz/tfD+/AAAAAGq89D6wcmi/AAAAAAAAAAAAAAAAAAAAAGq89D6wcmi/AAAAAGq89L6wcmi/AAAAAAAAAAAAAAAAAAAAAGq89L6wcmi/AAAAAPhTI7/tfD+/AAAAgP9//78AAACA/3//vwAAAID/f/+/AAAAgP9//78AAACA/3//vwAAAID/f/+/AAAAgP9//78AAACA/3//vwAAAID/f/+/AAAAgP9//78AAACA/3//vwAAAID/f/+/AAAAgP9//78AAACA/3//vwAAAID/f/+/AAAAgP9//78AAACA/3//vwAAAID/f/+/AAAAgP9//78AAACA/3//vwAAAID/f/+/AAAAgP9//78AAACA/3//vwAAAID/f/+/")
+}]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_74rn8"]
+top_radius = 0.018
+bottom_radius = 0.018
+height = 0.012
+radial_segments = 8
+
+[node name="VentanaCabina" type="Node3D" unique_id=1113372938]
+
+[node name="MarcoMetalico" type="MeshInstance3D" parent="." unique_id=1066098250]
+material_override = SubResource("StandardMaterial3D_r2y67")
+mesh = SubResource("ArrayMesh_hg1ft")
+metadata/conservar_material = true
+
+[node name="JuntaHermetica" type="MeshInstance3D" parent="." unique_id=1733850436]
+material_override = SubResource("StandardMaterial3D_htkv4")
+mesh = SubResource("ArrayMesh_u4i03")
+metadata/conservar_material = true
+
+[node name="CristalPresurizado" type="MeshInstance3D" parent="." unique_id=963801216]
+material_override = SubResource("StandardMaterial3D_ylp1w")
+mesh = SubResource("ArrayMesh_vfp56")
+metadata/conservar_material = true
+
+[node name="Perno3" type="MeshInstance3D" parent="." unique_id=1374585715]
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, -0.136, 0.715, 0)
+material_override = ExtResource("3_vfp56")
+mesh = SubResource("CylinderMesh_74rn8")
+metadata/conservar_material = true
+
+[node name="Perno4" type="MeshInstance3D" parent="." unique_id=1296906685]
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, -0.136, -0.715, 0)
+material_override = ExtResource("3_vfp56")
+mesh = SubResource("CylinderMesh_74rn8")
+metadata/conservar_material = true
+
+[node name="Perno5" type="MeshInstance3D" parent="." unique_id=844592346]
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, -0.136, 0, 0.98499995)
+material_override = ExtResource("3_vfp56")
+mesh = SubResource("CylinderMesh_74rn8")
+metadata/conservar_material = true
+
+[node name="Perno6" type="MeshInstance3D" parent="." unique_id=197893912]
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, -0.136, 0, -0.98499995)
+material_override = ExtResource("3_vfp56")
+mesh = SubResource("CylinderMesh_74rn8")
+metadata/conservar_material = true

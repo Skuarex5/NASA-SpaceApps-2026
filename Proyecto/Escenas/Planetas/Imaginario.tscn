@@ -1,0 +1,8 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://Proyecto/Modelos/Planetas/Imaginario/imaginario.glb" id="modelo"]
+
+[node name="Imaginario" instance=ExtResource("modelo")]
+transform = Transform3D(6.044789, 0, 0, 0, 6.034692, 0, 0, 0, 7.478182, 3892.7207, 358.90442, 2817.0972)
+metadata/bioma_superficie = 7
+metadata/display_name = "Imaginary"

@@ -5,6 +5,7 @@ enum Estado { ESPACIO, CARGANDO, SUPERFICIE }
 @export var nave: RigidBody3D
 @export var astronauta: CharacterBody3D
 @export var planetas: Node3D
+@export var rocky: CharacterBody3D
 @export_range(2.0, 10.0, 0.1) var distancia_despegue: float = 3.0
 @export_range(1.0, 6.0, 0.25) var escala_nave_aterrizada: float = 3.0
 
@@ -44,7 +45,7 @@ func _ready() -> void:
 		if primera:
 			continue
 		var radio := caja.size[caja.get_longest_axis_index()] * 0.5
-		destinos.append({"nodo": planeta, "nombre": str(planeta.name), "centro": caja.get_center(),
+		destinos.append({"nodo": planeta, "nombre": str(planeta.get_meta("display_name", planeta.name)), "centro": caja.get_center(),
 			"radio": radio, "entrada": radio + maxf(20, radio * 0.06), "indice": destinos.size()})
 	posicion_anterior = nave.global_position
 
@@ -76,7 +77,7 @@ func _crear_interfaz() -> void:
 	tecla_despegue.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	opcion_despegue.add_child(tecla_despegue)
 	var texto_despegue := Label.new()
-	texto_despegue.text = "Despegar y volver al espacio"
+	texto_despegue.text = "Take off and return to space"
 	texto_despegue.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
 	texto_despegue.add_theme_font_size_override("font_size", 16)
 	texto_despegue.add_theme_color_override("font_shadow_color", Color.BLACK)
@@ -159,7 +160,7 @@ func _mostrar_carga(texto: String) -> void:
 
 
 func _aterrizar(destino: Dictionary) -> void:
-	_mostrar_carga("Entrando en %s…" % destino.nombre)
+	_mostrar_carga("Entering %s…" % destino.nombre)
 	await get_tree().process_frame
 	await get_tree().process_frame
 	planeta_actual = destino
@@ -191,21 +192,19 @@ func _aterrizar(destino: Dictionary) -> void:
 	nave._apagar_motores()
 	nave.hud_controles.hide()
 	nave.hud_boost.hide()
-	nave.capa_texto_boost.hide()
 	nave.set_physics_process(false)
 	nave.set_process_input(false)
-	texto_carga.text = "Preparando superficie de %s…" % destino.nombre
+	texto_carga.text = "Preparing the surface of %s…" % destino.nombre
 	if not superficies.has(destino.indice):
 		var superficie := preload("res://Proyecto/Codigos/superficie_planeta.gd").new()
 		superficie.name = "Superficie_%s" % destino.nombre
-		superficie.bioma = int(destino.indice) % 2
+		superficie.bioma = int(destino.nodo.get_meta("bioma_superficie", int(destino.indice) % 2))
 		superficie.nombre_planeta = destino.nombre
 		superficie.astronauta = astronauta
 		superficie.position = Vector3(10000 + int(destino.indice) * 1500, -10000, 0)
 		get_parent().add_child(superficie)
 		superficies[destino.indice] = superficie
 	superficie_actual = superficies[destino.indice]
-	superficie_actual.establecer_activa(true)
 	var punto_aterrizaje: Vector3 = superficie_actual.punto_nave * escala_nave_aterrizada
 	nave.global_transform = Transform3D(Basis.IDENTITY.scaled(transform_vuelo.basis.get_scale() * escala_nave_aterrizada), superficie_actual.to_global(punto_aterrizaje))
 	nave.collision_layer = nave.capa_nave
@@ -220,10 +219,11 @@ func _aterrizar(destino: Dictionary) -> void:
 	astronauta.girando_camara = false
 	astronauta.camera_pivot.rotation = Vector3.ZERO
 	astronauta.modelo.rotation = Vector3.ZERO
-	astronauta.gravedad_espacial = 3.7 if superficie_actual.bioma == 0 else 8.0
+	superficie_actual.establecer_activa(true)
+	astronauta.gravedad_espacial = float(superficie_actual.perfil.gravedad)
 	astronauta.gravedad_descenso = astronauta.gravedad_espacial
 	astronauta.velocidad_maxima_caida = 12.0
-	astronauta.fuerza_salto = 3.6 if superficie_actual.bioma == 0 else 4.8
+	astronauta.fuerza_salto = clampf(sqrt(astronauta.gravedad_espacial * 2.6), 3.0, 5.2)
 	astronauta.collision_layer = nave.capa_astronauta
 	astronauta.collision_mask = nave.mascara_astronauta
 	nave.personaje_visual.show()
@@ -232,7 +232,9 @@ func _aterrizar(destino: Dictionary) -> void:
 	astronauta.set_process_unhandled_input(true)
 	nave.camara_astronauta.environment = superficie_actual.entorno
 	nave.camara_astronauta.make_current()
-	titulo_planeta.text = "%s · Superficie" % destino.nombre
+	if is_instance_valid(rocky):
+		rocky.preparar_superficie()
+	titulo_planeta.text = "%s · %s" % [destino.nombre, superficie_actual.perfil.clima]
 	titulo_planeta.show()
 	await get_tree().process_frame
 	await get_tree().process_frame
@@ -240,8 +242,8 @@ func _aterrizar(destino: Dictionary) -> void:
 	await _terminar_carga(Estado.SUPERFICIE)
 
 
-func _despegar() -> void:
-	_mostrar_carga("Despegando de %s…" % planeta_actual.nombre)
+func _despegar(emergencia: bool = false) -> void:
+	_mostrar_carga("Emergency evacuation from %s…" % planeta_actual.nombre if emergencia else "Taking off from %s…" % planeta_actual.nombre)
 	await get_tree().process_frame
 	await get_tree().process_frame
 	superficie_actual.establecer_activa(false)
@@ -258,6 +260,8 @@ func _despegar() -> void:
 	nave.set_physics_process(true)
 	nave.set_process_input(true)
 	nave.entrar_nave()
+	if is_instance_valid(rocky):
+		rocky.volver_a_cabina()
 	# Entrar a pilotar no debe sustituir la posicion guardada en la cabina.
 	nave.posicion_guardada = transform_interior
 	posicion_anterior = nave.global_position

@@ -2,6 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://btpvweopqt5xj" path="res://Proyecto/Modelos/NaveInterior/SpaceshipInterior.fbx" id="1_fiang"]
 [ext_resource type="Material" path="res://Proyecto/Materiales/InteriorPaneles.tres" id="2_r28qk"]
+[ext_resource type="ArrayMesh" path="res://Proyecto/Modelos/Muebles/cabina_con_ventana.res" id="3_ventana"]
 
 [node name="SpaceshipInterior" type="Node3D" unique_id=1369203454]
 
@@ -9,6 +10,7 @@
 transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, -0.71343994, 2.8228912, -5.6030545)
 
 [node name="Cube_003" parent="SpaceshipInterior" index="0" unique_id=985451589]
+mesh = ExtResource("3_ventana")
 surface_material_override/0 = ExtResource("2_r28qk")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=653904290]

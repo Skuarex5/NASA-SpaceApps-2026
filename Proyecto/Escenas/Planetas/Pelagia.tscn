@@ -1,0 +1,42 @@
+[gd_scene load_steps=7 format=3]
+
+[ext_resource type="Shader" path="res://Proyecto/Efectos/planeta_orbital.gdshader" id="superficie"]
+[ext_resource type="Shader" path="res://Proyecto/Efectos/atmosfera_planeta.gdshader" id="atmosfera"]
+
+[sub_resource type="ShaderMaterial" id="Superficie"]
+shader = ExtResource("superficie")
+shader_parameter/color_oscuro = Vector3(0.04, 0.12, 0.23)
+shader_parameter/color_claro = Vector3(0.22, 0.46, 0.34)
+shader_parameter/color_nubes = Vector3(0.70, 0.82, 0.86)
+shader_parameter/cobertura = 0.64
+shader_parameter/semilla = 21.0
+
+[sub_resource type="SphereMesh" id="Planeta"]
+radius = 260.0
+height = 520.0
+radial_segments = 64
+rings = 32
+
+[sub_resource type="ShaderMaterial" id="Bruma"]
+shader = ExtResource("atmosfera")
+shader_parameter/color_atmosfera = Vector3(0.70, 0.82, 0.86)
+
+[sub_resource type="SphereMesh" id="Atmosfera"]
+radius = 269.1
+height = 538.2
+radial_segments = 48
+rings = 24
+
+[node name="Pelagia" type="Node3D"]
+position = Vector3(-2600, -400, 3300)
+metadata/bioma_superficie = 2
+metadata/display_name = "Pelagia"
+
+[node name="SuperficieOrbital" type="MeshInstance3D" parent="."]
+mesh = SubResource("Planeta")
+material_override = SubResource("Superficie")
+
+[node name="Atmosfera" type="MeshInstance3D" parent="."]
+mesh = SubResource("Atmosfera")
+material_override = SubResource("Bruma")
+cast_shadow = 0

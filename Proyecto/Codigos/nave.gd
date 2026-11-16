@@ -93,8 +93,9 @@ func cargar_combustible(cantidad: float) -> float:
 @export var inclinacion_lateral: float = 15.0
 @export var inclinacion_frontal: float = 6.0
 
-@export_group("Camara")
+@export_group("Camera")
 @export var sensibilidad_mouse: float = 0.003
+@export var invertir_camara_vertical: bool = false
 @export var limite_vertical: float = 70.0
 
 @export_group("Fisicas")
@@ -103,6 +104,8 @@ func cargar_combustible(cantidad: float) -> float:
 
 @onready var camara_nave: Camera3D = $Camera3D
 @onready var hud_controles: CanvasLayer = $HUDControles
+@onready var panel_recursos: PanelContainer = $HUDControles/Recursos
+@onready var pestana_recursos: Button = $HUDControles/PestanaRecursos
 @onready var texto_salud: Label = $HUDControles/Recursos/Margen/Datos/Salud
 @onready var barra_salud: ProgressBar = $HUDControles/Recursos/Margen/Datos/BarraSalud
 @onready var texto_combustible: Label = $HUDControles/Recursos/Margen/Datos/Combustible
@@ -114,13 +117,13 @@ func cargar_combustible(cantidad: float) -> float:
 
 @onready var hud_boost: CanvasLayer = $HUDBoost
 @onready var barra_boost: ProgressBar = $HUDBoost/VBoxContainer/BarraBoost
-@onready var estado_boost: Label = $HUDBoost/VBoxContainer/CanvasLayer/EstadoBoost
-@onready var capa_texto_boost: CanvasLayer = $HUDBoost/VBoxContainer/CanvasLayer
+@onready var estado_boost: Label = $HUDBoost/VBoxContainer/BarraBoost/EstadoBoost
 
 var pivote_camara: Node3D
 var personaje_visual: Node3D
 
 var pilotando: bool = false
+var recursos_ocultos: bool = false
 var posicion_guardada: Transform3D
 
 var capa_astronauta: int
@@ -147,10 +150,11 @@ func _ready() -> void:
 	max_contacts_reported = 16
 	salud_actual = clampf(salud_actual, 0, salud_maxima)
 	hud_controles.hide()
+	pestana_recursos.pressed.connect(func(): establecer_recursos_ocultos(not recursos_ocultos))
+	establecer_recursos_ocultos(false)
 	hud_boost.hide()
-	capa_texto_boost.hide()
 	barra_boost.value = 100.0
-	estado_boost.text = "BOOST LISTO [SHIFT]"
+	estado_boost.text = "BOOST READY [SHIFT]"
 	_configurar_estilo_barra()
 	gravity_scale = 0.0
 
@@ -263,6 +267,7 @@ func _input(event: InputEvent) -> void:
 		pivote_camara.rotation.x -= (
 			movimiento.screen_relative.y
 			* sensibilidad_mouse
+			* (-1.0 if invertir_camara_vertical else 1.0)
 		)
 
 		var limite: float = deg_to_rad(limite_vertical)
@@ -430,6 +435,15 @@ func _registrar_impacto(id: int, velocidad: float) -> void:
 	_actualizar_hud_recursos()
 
 
+func establecer_recursos_ocultos(ocultar: bool) -> void:
+	recursos_ocultos = ocultar
+	panel_recursos.visible = not ocultar
+	pestana_recursos.text = "‹" if ocultar else "›"
+	pestana_recursos.tooltip_text = "Show ship resources" if ocultar else "Hide ship resources"
+	pestana_recursos.offset_left = -44.0 if ocultar else panel_recursos.offset_left - 28.0
+	pestana_recursos.offset_right = -16.0 if ocultar else panel_recursos.offset_left
+
+
 func _consumir_combustible(delta: float) -> float:
 	var litros_segundo := absf(avance_actual) * consumo_motor
 	litros_segundo += (absf(vertical_actual) + absf(giro_actual)) * consumo_maniobras
@@ -446,32 +460,32 @@ func _consumir_combustible(delta: float) -> float:
 func _actualizar_hud_recursos() -> void:
 	if not is_node_ready():
 		return
-	texto_salud.text = "SALUD DEL CASCO   %.0f / %.0f" % [salud_actual, salud_maxima]
+	texto_salud.text = "HULL HEALTH   %.0f / %.0f" % [salud_actual, salud_maxima]
 	barra_salud.max_value = salud_maxima
 	barra_salud.value = salud_actual
 	var color_salud := Color("ff8979") if salud_actual <= salud_maxima * 0.25 else Color("ffbc66") if salud_actual <= salud_maxima * 0.5 else Color("77efbd")
 	texto_salud.modulate = color_salud
 	barra_salud.modulate = color_salud
-	texto_combustible.text = "COMBUSTIBLE\n%.1f / %.1f L" % [combustible_actual, capacidad_combustible]
+	texto_combustible.text = "FUEL\n%.1f / %.1f L" % [combustible_actual, capacidad_combustible]
 	barra_combustible.max_value = maxf(capacidad_combustible, 1)
 	barra_combustible.value = combustible_actual
-	texto_reserva.text = "Reserva a bordo: %.1f L" % combustible_reserva
+	texto_reserva.text = "Onboard reserve: %.1f L" % combustible_reserva
 	var total := peso_actual()
-	texto_peso.text = "PESO TOTAL\n%.1f / %.1f kg\nObjetos: %.1f kg" % [total, peso_limite, peso_carga_actual()]
+	texto_peso.text = "TOTAL WEIGHT\n%.1f / %.1f kg\nItems: %.1f kg" % [total, peso_limite, peso_carga_actual()]
 	barra_peso.max_value = maxf(peso_limite, 1)
 	barra_peso.value = total
 	texto_peso.modulate = Color("ffbc66") if total > peso_limite else Color.WHITE
 	if salud_actual <= 0:
-		aviso_recursos.text = "Casco inutilizado: motores apagados.\nQ: volver al interior."
+		aviso_recursos.text = "Hull disabled: engines offline.\nQ: return inside."
 		aviso_recursos.modulate = Color("ff8979")
 	elif combustible_actual <= 0:
-		aviso_recursos.text = "Sin combustible.\nQ: volver al interior para cargar."
+		aviso_recursos.text = "Out of fuel.\nQ: return inside to refuel."
 		aviso_recursos.modulate = Color("ff8979")
 	elif combustible_actual <= capacidad_combustible * 0.2:
-		aviso_recursos.text = "Combustible bajo: recarga pronto."
+		aviso_recursos.text = "Low fuel: refuel soon."
 		aviso_recursos.modulate = Color("ffbc66")
 	elif salud_actual <= salud_maxima * 0.25:
-		aviso_recursos.text = "Casco en estado critico."
+		aviso_recursos.text = "Hull critically damaged."
 		aviso_recursos.modulate = Color("ff8979")
 	else:
 		aviso_recursos.text = ""
@@ -603,7 +617,6 @@ func entrar_nave() -> void:
 	hud_controles.show()
 	_actualizar_hud_recursos()
 	hud_boost.show()
-	capa_texto_boost.show()
 	posicion_guardada = astronauta.global_transform
 	
 	pilotando = true
@@ -649,11 +662,11 @@ func entrar_nave() -> void:
 func _actualizar_hud_boost() -> void:
 	if salud_actual <= 0:
 		barra_boost.value = 0
-		estado_boost.text = "CASCO INUTILIZADO"
+		estado_boost.text = "HULL DISABLED"
 		return
 	if combustible_actual <= 0:
 		barra_boost.value = 0
-		estado_boost.text = "SIN COMBUSTIBLE"
+		estado_boost.text = "OUT OF FUEL"
 		return
 
 	# Mientras el turbo esta activo:
@@ -664,7 +677,7 @@ func _actualizar_hud_boost() -> void:
 		) * 100.0
 
 		estado_boost.text = (
-			"TURBO ACTIVO: %.1f s" % tiempo_boost
+			"BOOST ACTIVE: %.1f s" % tiempo_boost
 		)
 
 	# Durante la recarga:
@@ -684,19 +697,18 @@ func _actualizar_hud_boost() -> void:
 		barra_boost.value = progreso * 100.0
 
 		estado_boost.text = (
-			"RECARGANDO: %.1f s" % tiempo_recarga
+			"RECHARGING: %.1f s" % tiempo_recarga
 		)
 
 	# Turbo disponible.
 	else:
 		barra_boost.value = 100.0
-		estado_boost.text = "BOOST LISTO [SHIFT]"
+		estado_boost.text = "BOOST READY [SHIFT]"
 
 func salir_nave() -> void:
 	hud_controles.hide()
 	hud_boost.hide()
 	pilotando = false
-	capa_texto_boost.hide()
 
 	# Desactivar turbo si estaba activo.
 	# La recarga continua igualmente.

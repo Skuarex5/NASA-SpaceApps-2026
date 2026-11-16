@@ -5,8 +5,8 @@ uniform float suciedad : hint_range(0.0, 1.0) = 0.85;
 uniform float desgaste : hint_range(0.0, 1.0) = 0.35;
 uniform vec4 color_polvo : source_color = vec4(0.34, 0.28, 0.20, 1.0);
 uniform vec4 color_roce : source_color = vec4(0.52, 0.50, 0.44, 1.0);
-// El modelo importado mide aproximadamente 0.01 unidades antes del esqueleto.
-uniform float escala_modelo = 100.0;
+// VERTEX ya incluye la escala del esqueleto cuando llega al shader.
+uniform float escala_modelo = 1.0;
 varying vec3 punto_traje;
 varying vec3 normal_traje;
 

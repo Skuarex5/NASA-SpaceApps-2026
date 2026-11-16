@@ -46,12 +46,12 @@ func actualizar() -> void:
 	icono.texture = objeto.get("icono")
 	inicial.text = str(objeto.get("nombre", "")).left(2).to_upper() if icono.texture == null else ""
 	cantidad.text = str(objeto.cantidad) if int(objeto.get("cantidad", 0)) > 1 else ""
-	tooltip_text = "Slot vacio"
+	tooltip_text = "Empty slot"
 	if not objeto.is_empty():
-		tooltip_text = "%s\nCantidad: %d · Peso unitario: %.2f kg" % [objeto.nombre, objeto.cantidad, objeto.peso]
+		tooltip_text = "%s\nQuantity: %d · Unit weight: %.2f kg" % [objeto.nombre, objeto.cantidad, objeto.peso]
 		if not str(objeto.get("planeta", "")).is_empty():
-			tooltip_text += "\nOrigen: " + str(objeto.planeta)
-		tooltip_text += "\nArrastra para mover o intercambiar."
+			tooltip_text += "\nOrigin: " + str(objeto.planeta)
+		tooltip_text += "\nDrag to move or swap."
 
 
 func _get_drag_data(_posicion: Vector2) -> Variant:

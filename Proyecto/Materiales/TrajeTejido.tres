@@ -1,7 +1,7 @@
 [gd_resource type="StandardMaterial3D" format=3 uid="uid://bymqm2qp4aq1t"]
 
 [ext_resource type="Texture2D" uid="uid://b0qerrgtidv2t" path="res://Proyecto/Materiales/MicrotejidoNormal.tres" id="1"]
-[ext_resource type="Texture2D" path="res://Proyecto/Materiales/SuciedadTraje.tres" id="2_suciedad"]
+[ext_resource type="Texture2D" uid="uid://yydlkvojaflu" path="res://Proyecto/Materiales/SuciedadTraje.tres" id="2_suciedad"]
 
 [sub_resource type="Gradient" id="Gradient_fibras"]
 colors = PackedColorArray(0.84, 0.84, 0.82, 1, 1, 1, 0.98, 1)

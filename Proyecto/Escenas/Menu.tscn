@@ -86,4 +86,5 @@ stretch_mode = 0
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer2D" parent="." unique_id=2099005208]
 stream = ExtResource("11_wx21f")
+bus = &"Musica"
 autoplay = true

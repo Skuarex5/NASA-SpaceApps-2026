@@ -26,8 +26,8 @@ func _ready() -> void:
 	opciones.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	opciones.add_theme_constant_override("separation", 20)
 	aviso.add_child(opciones)
-	_crear_opcion(opciones, "res://Proyecto/Texturas/InteraccionEscritorio/Q.png", "Manejar nave")
-	_crear_opcion(opciones, "res://Proyecto/Texturas/InteraccionEscritorio/E.png", "Planificar ruta")
+	_crear_opcion(opciones, "res://Proyecto/Texturas/InteraccionEscritorio/Q.png", "Pilot ship")
+	_crear_opcion(opciones, "res://Proyecto/Texturas/InteraccionEscritorio/E.png", "Plan route")
 	aviso.hide()
 
 	menu = preload("res://Proyecto/Escenas/Planificador.tscn").instantiate()
@@ -102,7 +102,7 @@ func _abrir_menu() -> void:
 	astronauta.girando_camara = false
 	menu_abierto = true
 	aviso.hide()
-	menu.configurar(nave, get_parent().get_node("Planetas"), get_parent().get_node("MissionMenu"), get_parent().get_node("Inventario"))
+	menu.configurar(nave, get_parent().get_node("Planetas"), get_parent().get_node("MissionMenu"), get_parent().get_node("Inventario"), get_parent().get_node_or_null("Rocky"))
 	menu.abrir()
 	get_tree().paused = true
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE

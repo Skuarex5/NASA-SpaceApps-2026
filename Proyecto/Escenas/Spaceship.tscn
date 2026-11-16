@@ -75,27 +75,30 @@ anchor_bottom = 1.0
 offset_left = -153.0
 offset_top = -40.0
 offset_right = 153.0
-offset_bottom = 14.0
+offset_bottom = -16.0
 grow_horizontal = 2
 grow_vertical = 0
 
 [node name="BarraBoost" type="ProgressBar" parent="RigidBody3D/HUDBoost/VBoxContainer" unique_id=861660051]
-custom_minimum_size = Vector2(260, 10)
+custom_minimum_size = Vector2(260, 24)
 layout_mode = 2
 theme_override_styles/background = SubResource("StyleBoxFlat_bfnnt")
 theme_override_styles/fill = SubResource("StyleBoxFlat_bdgh4")
 value = 100.0
 show_percentage = false
 
-[node name="CanvasLayer" type="CanvasLayer" parent="RigidBody3D/HUDBoost/VBoxContainer" unique_id=389472313]
-layer = 11
-
-[node name="EstadoBoost" type="Label" parent="RigidBody3D/HUDBoost/VBoxContainer/CanvasLayer" unique_id=54889395]
-offset_left = 423.0
-offset_top = 608.0
-offset_right = 729.0
-offset_bottom = 619.0
-theme_override_font_sizes/font_size = 7
+[node name="EstadoBoost" type="Label" parent="RigidBody3D/HUDBoost/VBoxContainer/BarraBoost" unique_id=54889395]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_font_sizes/font_size = 12
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.9)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 1
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -114,14 +117,14 @@ theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.95)
 theme_override_constants/shadow_offset_x = 2
 theme_override_constants/shadow_offset_y = 2
 theme_override_font_sizes/font_size = 14
-text = "CONTROLES DE NAVE
-W / S – Avanzar / retroceder
-A / D – Girar
-Espacio – Subir
-Ctrl – Bajar
-Shift – Turbo
-Clic derecho – Girar camara
-Q – Volver al interior"
+text = "SHIP CONTROLS
+W / S – Forward / reverse
+A / D – Turn
+Space – Ascend
+Ctrl – Descend
+Shift – Boost
+Right click – Rotate camera
+Q – Return inside"
 
 [node name="Recursos" type="PanelContainer" parent="RigidBody3D/HUDControles"]
 anchor_left = 1.0
@@ -150,7 +153,7 @@ theme_override_constants/separation = 6
 layout_mode = 2
 theme_override_colors/font_color = Color(0.3, 0.9, 1, 1)
 theme_override_font_sizes/font_size = 16
-text = "RECURSOS DE NAVE"
+text = "SHIP RESOURCES"
 
 [node name="Salud" type="Label" parent="RigidBody3D/HUDControles/Recursos/Margen/Datos"]
 layout_mode = 2
@@ -200,5 +203,21 @@ custom_minimum_size = Vector2(0, 34)
 layout_mode = 2
 theme_override_font_sizes/font_size = 13
 autowrap_mode = 3
+
+[node name="PestanaRecursos" type="Button" parent="RigidBody3D/HUDControles"]
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_top = 0.45
+anchor_bottom = 0.45
+offset_left = -290.0
+offset_top = 12.0
+offset_right = -262.0
+offset_bottom = 56.0
+focus_mode = 0
+mouse_default_cursor_shape = 2
+theme_override_colors/font_color = Color(0.3, 0.9, 1, 1)
+theme_override_font_sizes/font_size = 24
+text = "›"
+tooltip_text = "Hide ship resources"
 
 [editable path="RigidBody3D/SpaceShip"]

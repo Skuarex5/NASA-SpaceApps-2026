@@ -1,0 +1,42 @@
+[gd_scene load_steps=7 format=3]
+
+[ext_resource type="Shader" path="res://Proyecto/Efectos/planeta_orbital.gdshader" id="superficie"]
+[ext_resource type="Shader" path="res://Proyecto/Efectos/atmosfera_planeta.gdshader" id="atmosfera"]
+
+[sub_resource type="ShaderMaterial" id="Superficie"]
+shader = ExtResource("superficie")
+shader_parameter/color_oscuro = Vector3(0.23, 0.10, 0.035)
+shader_parameter/color_claro = Vector3(0.72, 0.48, 0.22)
+shader_parameter/color_nubes = Vector3(0.66, 0.44, 0.23)
+shader_parameter/cobertura = 0.5
+shader_parameter/semilla = 71.0
+
+[sub_resource type="SphereMesh" id="Planeta"]
+radius = 240.0
+height = 480.0
+radial_segments = 64
+rings = 32
+
+[sub_resource type="ShaderMaterial" id="Bruma"]
+shader = ExtResource("atmosfera")
+shader_parameter/color_atmosfera = Vector3(0.66, 0.44, 0.23)
+
+[sub_resource type="SphereMesh" id="Atmosfera"]
+radius = 248.4
+height = 496.8
+radial_segments = 48
+rings = 24
+
+[node name="Sirocco" type="Node3D"]
+position = Vector3(4600, -600, -1800)
+metadata/bioma_superficie = 5
+metadata/display_name = "Sirocco"
+
+[node name="SuperficieOrbital" type="MeshInstance3D" parent="."]
+mesh = SubResource("Planeta")
+material_override = SubResource("Superficie")
+
+[node name="Atmosfera" type="MeshInstance3D" parent="."]
+mesh = SubResource("Atmosfera")
+material_override = SubResource("Bruma")
+cast_shadow = 0

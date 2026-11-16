@@ -5,6 +5,6 @@
 [resource]
 script = ExtResource("1_rcdbl")
 id = "RoundPlanet"
-titulo = "Viaje al planeta Lukba"
-descripcion = "Pilota tu nave espacial y rodea al planeta Lukba."
+titulo = "Travel to planet Lukba"
+descripcion = "Pilot your spaceship and fly around planet Lukba."
 metadata/_custom_type_script = "uid://mg344itko8aa"

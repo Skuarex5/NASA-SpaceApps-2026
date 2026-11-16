@@ -1,0 +1,8 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://Proyecto/Modelos/Planetas/Cubico/cubico.glb" id="modelo"]
+
+[node name="Cubico" instance=ExtResource("modelo")]
+transform = Transform3D(154.292, 0, 0, 0, 144.77742, 0, 0, 0, 157.28261, -994.148, -1019.69507, -604.8047)
+metadata/bioma_superficie = 4
+metadata/display_name = "Cubic"

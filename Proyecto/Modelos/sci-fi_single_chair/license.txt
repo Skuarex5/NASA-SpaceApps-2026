@@ -1,0 +1,11 @@
+Model Information:
+* title:	Sci-fi Single Chair
+* source:	https://sketchfab.com/3d-models/sci-fi-single-chair-6d1cf835dd3d4e3c8813c4f7d35b4f0a
+* author:	Sousinho (https://sketchfab.com/sousinho)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Sci-fi Single Chair" (https://sketchfab.com/3d-models/sci-fi-single-chair-6d1cf835dd3d4e3c8813c4f7d35b4f0a) by Sousinho (https://sketchfab.com/sousinho) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

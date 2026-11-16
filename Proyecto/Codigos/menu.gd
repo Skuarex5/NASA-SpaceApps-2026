@@ -11,7 +11,7 @@ var escena_juego: String = "res://Proyecto/Escenas/Main.tscn"
 
 @onready var musica: AudioStreamPlayer2D = $AudioStreamPlayer
 
-var ventana_opciones: AcceptDialog
+var ventana_opciones: Control
 var ventana_creditos: AcceptDialog
 var ventana_salida: ConfirmationDialog
 
@@ -56,48 +56,9 @@ func _jugar() -> void:
 func crear_ventanas() -> void:
 
 	# OPCIONES
-	ventana_opciones = AcceptDialog.new()
-	ventana_opciones.title = "Options"
-	ventana_opciones.ok_button_text = "Back"
+	ventana_opciones = Control.new()
+	ventana_opciones.set_script(preload("res://Proyecto/Codigos/menu_opciones.gd"))
 	add_child(ventana_opciones)
-
-	var contenido := VBoxContainer.new()
-	contenido.custom_minimum_size = Vector2(350, 130)
-	contenido.add_theme_constant_override("separation", 15)
-	ventana_opciones.add_child(contenido)
-
-	# CONTROL DE VOLUMEN
-	var texto_volumen := Label.new()
-	texto_volumen.text = "Master Volume"
-	contenido.add_child(texto_volumen)
-
-	var volumen := HSlider.new()
-	volumen.min_value = 0
-	volumen.max_value = 100
-	volumen.step = 1
-	volumen.custom_minimum_size = Vector2(340, 25)
-
-	volumen.value = (
-		db_to_linear(AudioServer.get_bus_volume_db(0)) * 100.0
-	)
-
-	if AudioServer.is_bus_mute(0):
-		volumen.value = 0.0
-
-	volumen.value_changed.connect(_cambiar_volumen)
-	contenido.add_child(volumen)
-
-	# PANTALLA COMPLETA
-	var pantalla_completa := CheckButton.new()
-	pantalla_completa.text = "Fullscreen"
-
-	pantalla_completa.button_pressed = (
-		DisplayServer.window_get_mode()
-		== DisplayServer.WINDOW_MODE_FULLSCREEN
-	)
-
-	pantalla_completa.toggled.connect(_cambiar_pantalla)
-	contenido.add_child(pantalla_completa)
 
 	# CREDITOS
 	ventana_creditos = AcceptDialog.new()
@@ -112,7 +73,9 @@ func crear_ventanas() -> void:
 		+ "Images generated using artificial intelligence (AI).\n\n"
 		+ "Asteroid 1999 RQ36 model:\n"
 		+ "NASA / Christopher R. Meaney\n"
-		+ "NASA 3D Resources (optimized for gameplay)."
+		+ "NASA 3D Resources (optimized for gameplay).\n\n"
+		+ "Additional 3D model credits and licenses:\n"
+		+ "Proyecto/Modelos/RECURSOS_INCORPORADOS.md"
 	)
 
 	add_child(ventana_creditos)
@@ -134,29 +97,7 @@ func crear_ventanas() -> void:
 # =====================================
 
 func _abrir_opciones() -> void:
-	ventana_opciones.popup_centered(Vector2i(440, 250))
-
-
-func _cambiar_volumen(valor: float) -> void:
-	var volumen_lineal: float = valor / 100.0
-
-	AudioServer.set_bus_mute(0, valor <= 0.0)
-
-	AudioServer.set_bus_volume_db(
-		0,
-		linear_to_db(maxf(volumen_lineal, 0.001))
-	)
-
-
-func _cambiar_pantalla(activado: bool) -> void:
-	if activado:
-		DisplayServer.window_set_mode(
-			DisplayServer.WINDOW_MODE_FULLSCREEN
-		)
-	else:
-		DisplayServer.window_set_mode(
-			DisplayServer.WINDOW_MODE_WINDOWED
-		)
+	ventana_opciones.abrir()
 
 
 # =====================================

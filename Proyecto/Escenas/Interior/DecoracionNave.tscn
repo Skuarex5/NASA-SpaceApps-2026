@@ -1,0 +1,43 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://Proyecto/Codigos/Interior/colisiones_muebles.gd" id="colisiones"]
+
+[ext_resource type="PackedScene" path="res://Proyecto/Modelos/Muebles/Bano/ducha.glb" id="24_54t36"]
+[ext_resource type="PackedScene" path="res://Proyecto/Modelos/Muebles/Habitacion/habitacion.glb" id="25_a7jm4"]
+[ext_resource type="PackedScene" path="res://Proyecto/Modelos/Muebles/Cama/cama.glb" id="26_wkny5"]
+[ext_resource type="PackedScene" path="res://Proyecto/Modelos/Muebles/Consola/consola.glb" id="27_f4xn1"]
+[ext_resource type="PackedScene" path="res://Proyecto/Modelos/Muebles/Computadora/computadora.glb" id="28_1p8cx"]
+[ext_resource type="PackedScene" path="res://Proyecto/Modelos/cockpit-chair/source/Cockpit Chair.fbx" id="12_luopn"]
+[ext_resource type="PackedScene" path="res://Proyecto/Modelos/Muebles/MesaTrabajo/mesa_trabajo.glb" id="34_sg75f"]
+[ext_resource type="PackedScene" path="res://Proyecto/Modelos/tools-pack-free/source/ToolsPack.fbx" id="35_c76gv"]
+[ext_resource type="PackedScene" path="res://Proyecto/Modelos/Muebles/ContenedorHerramientas/contenedor.glb" id="36_558qw"]
+
+[node name="DecoracionNave" type="Node3D"]
+script = ExtResource("colisiones")
+
+[node name="Ducha" parent="." instance=ExtResource("24_54t36")]
+transform = Transform3D(0.024604615, 0.009418806, 5.8937454, 0.0035620597, 7.991023, -0.0069704843, -4.689626, 0.006119042, 0.030918349, 8.120819, 13.928675, -66.501945)
+
+[node name="SalaDescanso" parent="." instance=ExtResource("25_a7jm4")]
+transform = Transform3D(11.835897, 1.2854912e-08, 5.355105e-09, 2.1447818e-08, 9.3552885, -1.5133992e-09, 8.8475645e-09, -1.0477379e-08, 9.023221, -19.691559, 0.22502677, -32.748672)
+
+[node name="Cama" parent="." instance=ExtResource("26_wkny5")]
+transform = Transform3D(0.18065311, 0.0045648343, 8.091532, 0.0029188432, 4.0039544, -0.009504562, -4.0422125, 0.0030952126, 0.36161673, -0.45803833, 1.8006049, -58.71125)
+
+[node name="ConsolaMando" parent="." instance=ExtResource("27_f4xn1")]
+transform = Transform3D(-11.663934, 0.016865082, 3.148783, 0.023305643, 8.845142, -0.005310416, -7.513946, 0.0012547306, -4.88788, -16.921997, 2.3910952, 54.32529)
+
+[node name="Computadora" parent="." instance=ExtResource("28_1p8cx")]
+transform = Transform3D(-1.160445, 0.0073551163, -5.2842, 0.009159239, 7.8749366, 0.0038322988, 6.700106, -0.009491336, -0.91521555, 17.788544, 4.7218633, 43.881622)
+
+[node name="SillaAuxiliar" parent="." instance=ExtResource("12_luopn")]
+transform = Transform3D(4.98509, 0.005579554, -0.38581446, -0.005862622, 4.999996, -0.0034419703, 0.38581026, 0.0038840815, 4.985091, 11.846741, 2.568958, 43.652805)
+
+[node name="MesaTrabajo" parent="." instance=ExtResource("34_sg75f")]
+transform = Transform3D(0.007947272, 9.643156e-06, -3.741913e-06, -1.5492767e-05, 0.004952331, -2.2762426e-05, 4.8014863e-06, 1.8425188e-05, 0.0061200527, 9.398773, 2.18258, -43.89042)
+
+[node name="Herramientas" parent="." instance=ExtResource("35_c76gv")]
+transform = Transform3D(7.589016, -2.491504e-09, 9.313226e-10, -8.235872e-09, 8.397756, 1.7462298e-09, 1.1641532e-09, 1.6298145e-09, 6.0380154, 9.7948, 7.0895686, -45.879623)
+
+[node name="ContenedorHerramientas" parent="." instance=ExtResource("36_558qw")]
+transform = Transform3D(-5.149335, 0.013188447, -0.02339971, 0.01003672, 6.7710776, -0.0030006235, 0.016699435, -0.0028593587, -7.2135196, 18.766418, 4.753986, -36.075394)

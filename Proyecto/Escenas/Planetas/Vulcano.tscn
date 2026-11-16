@@ -1,0 +1,8 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://Proyecto/Modelos/Planetas/Lava/lava.glb" id="modelo"]
+
+[node name="Vulcano" instance=ExtResource("modelo")]
+transform = Transform3D(241.694, 0, 0, 0, 265.65768, 0, 0, 0, 271.30304, 2099.6682, -781.1819, 0)
+metadata/bioma_superficie = 1
+metadata/display_name = "Vulcan"

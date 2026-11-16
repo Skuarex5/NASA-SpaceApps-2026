@@ -1,0 +1,7 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://Proyecto/Modelos/Planetas/Asteria/asteria.glb" id="modelo"]
+
+[node name="Asteria" instance=ExtResource("modelo")]
+transform = Transform3D(2.5153334, 0, 0, 0, 2.5000272, 0, 0, 0, 2.5010755, 0, 2487.5498, -2678.814)
+metadata/bioma_superficie = 6

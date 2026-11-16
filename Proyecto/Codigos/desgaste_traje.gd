@@ -3,6 +3,8 @@ extends Node
 const DESGASTE = preload("res://Proyecto/Efectos/desgaste_traje.gdshader")
 
 @export var esqueleto: Skeleton3D
+@export_range(0.0, 1.0, 0.05) var intensidad_suciedad: float = 0.45
+@export_range(0.0, 1.0, 0.05) var intensidad_desgaste: float = 0.45
 
 
 func _ready() -> void:
@@ -36,7 +38,7 @@ func _ready() -> void:
 			elif "casco" in nombre:
 				abrasion = 0.70
 				capa.set_shader_parameter("color_roce", Color(0.38, 0.39, 0.37))
-			capa.set_shader_parameter("suciedad", intensidad)
-			capa.set_shader_parameter("desgaste", abrasion)
+			capa.set_shader_parameter("suciedad", intensidad * intensidad_suciedad)
+			capa.set_shader_parameter("desgaste", abrasion * intensidad_desgaste)
 			material.next_pass = capa
 			malla.set_surface_override_material(indice, material)

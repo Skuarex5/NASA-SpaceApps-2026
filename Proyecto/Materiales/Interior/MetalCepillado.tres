@@ -1,0 +1,19 @@
+[gd_resource type="StandardMaterial3D" load_steps=3 format=3]
+
+[ext_resource type="Texture2D" path="res://Proyecto/Materiales/Interior/VariacionSuave.tres" id="variacion"]
+[ext_resource type="Texture2D" path="res://Proyecto/Materiales/Interior/MicroGrano.tres" id="normal"]
+
+[resource]
+resource_name = "Brushed steel"
+texture_filter = 5
+albedo_color = Color(0.48, 0.55, 0.60, 1)
+albedo_texture = ExtResource("variacion")
+metallic = 0.88
+roughness = 0.34
+normal_enabled = true
+normal_scale = 0.08
+normal_texture = ExtResource("normal")
+uv1_scale = Vector3(6, 6, 6)
+uv1_triplanar = true
+uv1_world_triplanar = true
+uv1_triplanar_sharpness = 8.0

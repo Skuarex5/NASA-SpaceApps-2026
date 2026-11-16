@@ -3,7 +3,7 @@ extends Resource
 
 @export_group("Informacion")
 @export var id: String = ""
-@export var titulo: String = "Nueva mision"
+@export var titulo: String = "New mission"
 @export_multiline var descripcion: String = ""
 
 @export_group("Objetivo")

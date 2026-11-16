@@ -3,11 +3,14 @@ extends Node3D
 const TAMANO := 65
 const PASO := 4.0
 const MITAD := (TAMANO - 1) * PASO * 0.5
+const PERFILES = preload("res://Proyecto/Codigos/Planetas/perfiles_planeta.gd")
 
 var bioma := 0
-var nombre_planeta := "Planeta"
+var nombre_planeta := "Planet"
 var astronauta: CharacterBody3D
 var entorno: Environment
+var perfil: Dictionary
+var clima: Node3D
 var ruido := FastNoiseLite.new()
 var cuerpos: Array[CollisionObject3D] = []
 var polvo_pasos: Array[GPUParticles3D] = []
@@ -18,18 +21,28 @@ var punto_astronauta := Vector3(1.8, 0.08, -3.2)
 
 
 func _ready() -> void:
-	ruido.seed = 6031 + bioma * 873
+	perfil = PERFILES.obtener(bioma)
+	ruido.seed = 6031 + bioma * 873 + int(nombre_planeta.hash() % 100000)
 	ruido.frequency = 0.025
 	ruido.fractal_octaves = 4
 	_crear_entorno()
 	_crear_terreno()
 	_crear_rocas()
 	_crear_particulas()
+	clima = preload("res://Proyecto/Codigos/Planetas/clima_planeta.gd").new()
+	clima.name = "Clima"
+	clima.perfil = perfil
+	clima.astronauta = astronauta
+	add_child(clima)
 
 
 func altura(x: float, z: float) -> float:
 	var distancia := Vector2(x, z).length()
-	var relieve := ruido.get_noise_2d(x, z) * (5.0 if bioma == 0 else 9.0)
+	var relieve: float = ruido.get_noise_2d(x, z) * float(perfil.relieve)
+	if bioma == 5:
+		relieve += sin(x * 0.085 + sin(z * 0.025)) * 2.4
+	elif bioma == 4:
+		relieve += absf(ruido.get_noise_2d(x * 1.8, z * 1.8)) * 3.0
 	if bioma == 0:
 		for centro in [Vector2(-40, -30), Vector2(52, 36), Vector2(-20, 68)]:
 			var d := Vector2(x, z).distance_to(centro)
@@ -44,9 +57,11 @@ func altura(x: float, z: float) -> float:
 func _material_roca() -> ShaderMaterial:
 	var material := ShaderMaterial.new()
 	material.shader = preload("res://Proyecto/Efectos/terreno_planeta.gdshader")
-	if bioma == 1:
-		material.set_shader_parameter("color_oscuro", Vector3(0.18, 0.065, 0.035))
-		material.set_shader_parameter("color_claro", Vector3(0.55, 0.25, 0.10))
+	material.set_shader_parameter("color_oscuro", Vector3(perfil.oscuro.r, perfil.oscuro.g, perfil.oscuro.b))
+	material.set_shader_parameter("color_claro", Vector3(perfil.claro.r, perfil.claro.g, perfil.claro.b))
+	material.set_shader_parameter("rugosidad", perfil.rugosidad)
+	material.set_shader_parameter("color_emision", Vector3(perfil.emision.r, perfil.emision.g, perfil.emision.b))
+	material.set_shader_parameter("brillo_mineral", perfil.brillo)
 	return material
 
 
@@ -100,7 +115,7 @@ func _crear_terreno() -> void:
 func _crear_rocas() -> void:
 	var generador := preload("res://Proyecto/Codigos/campo_asteroides.gd").new()
 	var azar := RandomNumberGenerator.new()
-	azar.seed = 6152 + bioma * 53
+	azar.seed = ruido.seed + 121
 	var material := _material_roca()
 	var variantes: Array[ArrayMesh] = []
 	var formas: Array[ConvexPolygonShape3D] = []
@@ -137,8 +152,8 @@ func _crear_entorno() -> void:
 	entorno = Environment.new()
 	entorno.tonemap_mode = Environment.TONE_MAPPER_AGX
 	entorno.ambient_light_source = Environment.AMBIENT_SOURCE_COLOR
-	entorno.ambient_light_color = Color(0.65, 0.72, 0.85) if bioma == 0 else Color(0.85, 0.55, 0.35)
-	entorno.ambient_light_energy = 0.3
+	entorno.ambient_light_color = Color(0.65, 0.72, 0.85) if bioma == 0 else perfil.horizonte.lightened(0.3)
+	entorno.ambient_light_energy = 0.4
 	entorno.ssao_enabled = true
 	entorno.ssao_radius = 0.5
 	entorno.ssao_intensity = 1.2
@@ -151,17 +166,21 @@ func _crear_entorno() -> void:
 		entorno.sky.sky_material = cielo
 	else:
 		var cielo := ProceduralSkyMaterial.new()
-		cielo.sky_top_color = Color(0.12, 0.055, 0.05)
-		cielo.sky_horizon_color = Color(0.62, 0.25, 0.10)
-		cielo.ground_horizon_color = Color(0.50, 0.20, 0.08)
-		cielo.ground_bottom_color = Color(0.12, 0.06, 0.04)
+		cielo.sky_top_color = perfil.cielo
+		cielo.sky_horizon_color = perfil.horizonte
+		cielo.ground_horizon_color = perfil.horizonte.darkened(0.15)
+		cielo.ground_bottom_color = perfil.oscuro
 		entorno.sky.sky_material = cielo
 	entorno.background_mode = Environment.BG_SKY
+	entorno.fog_enabled = float(perfil.niebla) > 0.0
+	entorno.fog_density = perfil.niebla
+	entorno.fog_light_color = perfil.horizonte
+	entorno.fog_light_energy = 0.65
 	var sol := DirectionalLight3D.new()
 	sol.name = "SolSuperficie"
 	sol.rotation_degrees = Vector3(-35, -40, 0)
-	sol.light_color = Color(1, 0.96, 0.88) if bioma == 0 else Color(1, 0.73, 0.48)
-	sol.light_energy = 1.7
+	sol.light_color = Color(1, 0.96, 0.88) if bioma == 0 else perfil.horizonte.lightened(0.65)
+	sol.light_energy = 1.7 if bioma == 0 else 1.25
 	sol.shadow_enabled = true
 	sol.directional_shadow_max_distance = 100
 	add_child(sol)
@@ -170,7 +189,7 @@ func _crear_entorno() -> void:
 func _crear_particulas() -> void:
 	var material := StandardMaterial3D.new()
 	material.transparency = BaseMaterial3D.TRANSPARENCY_ALPHA
-	material.albedo_color = Color(0.5, 0.49, 0.45, 0.35) if bioma == 0 else Color(0.5, 0.25, 0.12, 0.35)
+	material.albedo_color = Color(perfil.claro.r, perfil.claro.g, perfil.claro.b, 0.35)
 	var mota := SphereMesh.new()
 	mota.radius = 0.007
 	mota.height = 0.014
@@ -186,7 +205,7 @@ func _crear_particulas() -> void:
 		emisor.local_coords = false
 		emisor.draw_pass_1 = mota
 		var proceso := ParticleProcessMaterial.new()
-		proceso.gravity = Vector3(0, -3.7 if bioma == 0 else -8.0, 0)
+		proceso.gravity = Vector3(0, -float(perfil.gravedad), 0)
 		proceso.direction = Vector3.UP
 		proceso.spread = 65
 		proceso.initial_velocity_min = 0.2
@@ -194,7 +213,7 @@ func _crear_particulas() -> void:
 		emisor.process_material = proceso
 		add_child(emisor)
 		polvo_pasos.append(emisor)
-	if bioma == 1:
+	if bioma in [1, 6]:
 		for posicion_ventilacion in [Vector3(-15,0,-20), Vector3(20,0,12), Vector3(-25,0,30)]:
 			_crear_ventilacion(posicion_ventilacion)
 
@@ -247,5 +266,9 @@ func _physics_process(delta: float) -> void:
 func establecer_activa(activa: bool) -> void:
 	visible = activa
 	process_mode = Node.PROCESS_MODE_INHERIT if activa else Node.PROCESS_MODE_DISABLED
+	clima.establecer_activo(activa)
+	for particulas in find_children("*", "GPUParticles3D", true, false):
+		if not clima.is_ancestor_of(particulas):
+			particulas.emitting = activa and not particulas.one_shot
 	for cuerpo in cuerpos:
 		cuerpo.collision_layer = 1 if activa else 0

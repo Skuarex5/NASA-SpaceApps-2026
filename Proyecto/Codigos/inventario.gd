@@ -25,8 +25,8 @@ func _ready() -> void:
 	add_child(aviso)
 	aviso.set_anchors_and_offsets_preset(Control.PRESET_BOTTOM_LEFT)
 	aviso.position += Vector2(16, -98)
-	_crear_aviso_tecla("I", "Mochila")
-	_crear_aviso_tecla("F", "Luces del casco")
+	_crear_aviso_tecla("I", "Backpack")
+	_crear_aviso_tecla("F", "Helmet lights")
 	interfaz = Control.new()
 	add_child(interfaz)
 	interfaz.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
@@ -46,9 +46,9 @@ func _ready() -> void:
 	espacio.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	espacio.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	fila.add_child(espacio)
-	_crear_panel(fila, "mochila", "MOCHILA")
+	_crear_panel(fila, "mochila", "BACKPACK")
 	var instrucciones := Label.new()
-	instrucciones.text = "Arrastra entre slots para mover, apilar o intercambiar.\nI / Esc: volver al juego"
+	instrucciones.text = "Drag between slots to move, stack or swap items.\nI / Esc: return to game"
 	instrucciones.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	instrucciones.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	interfaz.add_child(instrucciones)
@@ -56,7 +56,7 @@ func _ready() -> void:
 	instrucciones.offset_top = -62
 	instrucciones.offset_bottom = -12
 	var cerrar := Button.new()
-	cerrar.text = "Cerrar (I / Esc)"
+	cerrar.text = "Close (I / Esc)"
 	cerrar.pressed.connect(cerrar_inventario)
 	interfaz.add_child(cerrar)
 	cerrar.set_anchors_and_offsets_preset(Control.PRESET_TOP_RIGHT)

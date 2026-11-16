@@ -1,0 +1,9 @@
+[gd_scene format=3]
+
+[ext_resource type="AudioStream" path="res://Proyecto/Sonidos/bckgmusic.mp3" id="ambiente"]
+
+[node name="AmbienteJuego" type="AudioStreamPlayer"]
+stream = ExtResource("ambiente")
+volume_db = -10.0
+autoplay = true
+bus = &"Ambiente"

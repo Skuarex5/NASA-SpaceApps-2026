@@ -3,6 +3,9 @@ shader_type spatial;
 uniform vec3 color_oscuro : source_color = vec3(0.14, 0.14, 0.15);
 uniform vec3 color_claro : source_color = vec3(0.42, 0.41, 0.39);
 uniform float escala_grano = 9.0;
+uniform float rugosidad : hint_range(0.0, 1.0) = 0.92;
+uniform vec3 color_emision : source_color = vec3(0.0);
+uniform float brillo_mineral = 0.0;
 varying vec3 punto_local;
 
 float ruido(vec3 p) {
@@ -24,6 +27,7 @@ void fragment() {
 	float manchas = ruido(punto_local * 0.13);
 	float grano = ruido(punto_local * escala_grano);
 	ALBEDO = mix(color_oscuro, color_claro, manchas) * mix(0.8, 1.12, grano);
-	ROUGHNESS = 0.92;
-	SPECULAR = 0.16;
+	ROUGHNESS = clamp(rugosidad + (grano - 0.5) * 0.12, 0.08, 1.0);
+	SPECULAR = mix(0.5, 0.16, rugosidad);
+	EMISSION = color_emision * smoothstep(0.72, 0.88, manchas) * brillo_mineral;
 }

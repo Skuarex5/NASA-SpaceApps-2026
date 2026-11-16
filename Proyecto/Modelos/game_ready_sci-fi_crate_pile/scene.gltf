@@ -1,0 +1,633 @@
+{
+  "accessors": [
+    {
+      "bufferView": 2,
+      "componentType": 5126,
+      "count": 5196,
+      "max": [
+        14.571561813354492,
+        15.092339515686035,
+        19.465747833251953
+      ],
+      "min": [
+        -10.206730842590332,
+        -12.312762260437012,
+        0.011083079501986504
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 2,
+      "byteOffset": 62352,
+      "componentType": 5126,
+      "count": 5196,
+      "max": [
+        0.9905979633331299,
+        0.9916733503341675,
+        1.0
+      ],
+      "min": [
+        -0.9980525970458984,
+        -0.9936569929122925,
+        -1.0
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 3,
+      "componentType": 5126,
+      "count": 5196,
+      "max": [
+        1.0,
+        1.0,
+        0.9999423623085022,
+        1.0
+      ],
+      "min": [
+        -0.9999956488609314,
+        -0.9999892711639404,
+        -0.9999995827674866,
+        -1.0
+      ],
+      "type": "VEC4"
+    },
+    {
+      "bufferView": 1,
+      "componentType": 5126,
+      "count": 5196,
+      "max": [
+        0.9855430126190186,
+        0.9994313716888428
+      ],
+      "min": [
+        0.0005685832002200186,
+        0.0005685832002200186
+      ],
+      "type": "VEC2"
+    },
+    {
+      "bufferView": 0,
+      "componentType": 5125,
+      "count": 12384,
+      "type": "SCALAR"
+    },
+    {
+      "bufferView": 2,
+      "byteOffset": 124704,
+      "componentType": 5126,
+      "count": 380,
+      "max": [
+        7.286164283752441,
+        3.6711764335632324,
+        18.730180740356445
+      ],
+      "min": [
+        -5.658603668212891,
+        -10.48635482788086,
+        8.318729400634766
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 2,
+      "byteOffset": 129264,
+      "componentType": 5126,
+      "count": 380,
+      "max": [
+        0.9905664324760437,
+        0.9903950691223145,
+        0.71381014585495
+      ],
+      "min": [
+        -0.9905664920806885,
+        -0.9904224276542664,
+        -0.903266191482544
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 1,
+      "byteOffset": 41568,
+      "componentType": 5126,
+      "count": 380,
+      "max": [
+        0.9997618198394775,
+        0.9629597663879395
+      ],
+      "min": [
+        0.00023811323626432568,
+        0.00023811323626432568
+      ],
+      "type": "VEC2"
+    },
+    {
+      "bufferView": 0,
+      "byteOffset": 49536,
+      "componentType": 5125,
+      "count": 888,
+      "type": "SCALAR"
+    },
+    {
+      "bufferView": 2,
+      "byteOffset": 133824,
+      "componentType": 5126,
+      "count": 24080,
+      "max": [
+        7.24006986618042,
+        3.6837167739868164,
+        18.359167098999023
+      ],
+      "min": [
+        -5.610740661621094,
+        -10.489938735961914,
+        6.174758434295654
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 2,
+      "byteOffset": 422784,
+      "componentType": 5126,
+      "count": 24080,
+      "max": [
+        0.9954354763031006,
+        0.9905677437782288,
+        1.0
+      ],
+      "min": [
+        -0.9954347610473633,
+        -0.9923438429832458,
+        -1.0
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 3,
+      "byteOffset": 83136,
+      "componentType": 5126,
+      "count": 24080,
+      "max": [
+        0.9905670285224915,
+        0.9954347610473633,
+        1.0,
+        1.0
+      ],
+      "min": [
+        -0.9905663132667542,
+        -0.9954354763031006,
+        -1.0,
+        -1.0
+      ],
+      "type": "VEC4"
+    },
+    {
+      "bufferView": 1,
+      "byteOffset": 44608,
+      "componentType": 5126,
+      "count": 24080,
+      "max": [
+        0.9878788590431213,
+        1.0
+      ],
+      "min": [
+        0.0,
+        0.0
+      ],
+      "type": "VEC2"
+    },
+    {
+      "bufferView": 0,
+      "byteOffset": 53088,
+      "componentType": 5125,
+      "count": 59946,
+      "type": "SCALAR"
+    },
+    {
+      "bufferView": 2,
+      "byteOffset": 711744,
+      "componentType": 5126,
+      "count": 5440,
+      "max": [
+        13.907913208007813,
+        11.387526512145996,
+        19.466514587402344
+      ],
+      "min": [
+        -9.885942459106445,
+        -10.003732681274414,
+        8.318464279174805
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 2,
+      "byteOffset": 777024,
+      "componentType": 5126,
+      "count": 5440,
+      "max": [
+        0.9999598860740662,
+        0.9974641799926758,
+        1.0
+      ],
+      "min": [
+        -0.9999600052833557,
+        -0.9974669814109802,
+        -1.0
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 3,
+      "byteOffset": 468416,
+      "componentType": 5126,
+      "count": 5440,
+      "max": [
+        0.999036967754364,
+        0.9999926686286926,
+        1.0,
+        1.0
+      ],
+      "min": [
+        -0.9997419714927673,
+        -0.9993104934692383,
+        -0.9999881386756897,
+        -1.0
+      ],
+      "type": "VEC4"
+    },
+    {
+      "bufferView": 1,
+      "byteOffset": 237248,
+      "componentType": 5126,
+      "count": 5440,
+      "max": [
+        0.9836568832397461,
+        0.9994363784790039
+      ],
+      "min": [
+        0.0005636216956190765,
+        0.0005636216956190765
+      ],
+      "type": "VEC2"
+    },
+    {
+      "bufferView": 0,
+      "byteOffset": 292872,
+      "componentType": 5125,
+      "count": 16032,
+      "type": "SCALAR"
+    }
+  ],
+  "asset": {
+    "extras": {
+      "author": "jQueary (https://sketchfab.com/jqueary1991)",
+      "license": "CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)",
+      "source": "https://sketchfab.com/3d-models/game-ready-sci-fi-crate-pile-ab68b62f284d4d91ab19449da793c1cc",
+      "title": "Game Ready Sci-Fi Crate Pile"
+    },
+    "generator": "Sketchfab-12.66.0",
+    "version": "2.0"
+  },
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteLength": 357000,
+      "name": "floatBufferViews",
+      "target": 34963
+    },
+    {
+      "buffer": 0,
+      "byteLength": 280768,
+      "byteOffset": 357000,
+      "byteStride": 8,
+      "name": "floatBufferViews",
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteLength": 842304,
+      "byteOffset": 637768,
+      "byteStride": 12,
+      "name": "floatBufferViews",
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteLength": 555456,
+      "byteOffset": 1480072,
+      "byteStride": 16,
+      "name": "floatBufferViews",
+      "target": 34962
+    }
+  ],
+  "buffers": [
+    {
+      "byteLength": 2035528,
+      "uri": "scene.bin"
+    }
+  ],
+  "images": [
+    {
+      "uri": "textures/crate_baseColor.png"
+    },
+    {
+      "uri": "textures/crate_normal.png"
+    },
+    {
+      "uri": "textures/keypad_attachment_baseColor.png"
+    },
+    {
+      "uri": "textures/keypad_baseColor.png"
+    },
+    {
+      "uri": "textures/keypad_metallicRoughness.png"
+    },
+    {
+      "uri": "textures/keypad_normal.png"
+    },
+    {
+      "uri": "textures/handles_baseColor.png"
+    },
+    {
+      "uri": "textures/handles_metallicRoughness.png"
+    },
+    {
+      "uri": "textures/handles_normal.png"
+    }
+  ],
+  "materials": [
+    {
+      "doubleSided": true,
+      "name": "crate",
+      "normalTexture": {
+        "index": 1
+      },
+      "pbrMetallicRoughness": {
+        "baseColorTexture": {
+          "index": 0
+        },
+        "roughnessFactor": 0.6812118902
+      }
+    },
+    {
+      "doubleSided": true,
+      "name": "keypad_attachment",
+      "pbrMetallicRoughness": {
+        "baseColorTexture": {
+          "index": 2
+        },
+        "roughnessFactor": 0.681
+      }
+    },
+    {
+      "doubleSided": true,
+      "name": "keypad",
+      "normalTexture": {
+        "index": 5
+      },
+      "pbrMetallicRoughness": {
+        "baseColorTexture": {
+          "index": 3
+        },
+        "metallicRoughnessTexture": {
+          "index": 4
+        },
+        "roughnessFactor": 0.681
+      }
+    },
+    {
+      "doubleSided": true,
+      "name": "handles",
+      "normalTexture": {
+        "index": 8
+      },
+      "pbrMetallicRoughness": {
+        "baseColorTexture": {
+          "index": 6
+        },
+        "metallicRoughnessTexture": {
+          "index": 7
+        }
+      }
+    }
+  ],
+  "meshes": [
+    {
+      "name": "Cube_crate_0",
+      "primitives": [
+        {
+          "attributes": {
+            "NORMAL": 1,
+            "POSITION": 0,
+            "TANGENT": 2,
+            "TEXCOORD_0": 3
+          },
+          "indices": 4,
+          "material": 0,
+          "mode": 4
+        }
+      ]
+    },
+    {
+      "name": "Cube_keypad_attachment_0",
+      "primitives": [
+        {
+          "attributes": {
+            "NORMAL": 6,
+            "POSITION": 5,
+            "TEXCOORD_0": 7
+          },
+          "indices": 8,
+          "material": 1,
+          "mode": 4
+        }
+      ]
+    },
+    {
+      "name": "Cube_keypad_0",
+      "primitives": [
+        {
+          "attributes": {
+            "NORMAL": 10,
+            "POSITION": 9,
+            "TANGENT": 11,
+            "TEXCOORD_0": 12
+          },
+          "indices": 13,
+          "material": 2,
+          "mode": 4
+        }
+      ]
+    },
+    {
+      "name": "Cube_handles_0",
+      "primitives": [
+        {
+          "attributes": {
+            "NORMAL": 15,
+            "POSITION": 14,
+            "TANGENT": 16,
+            "TEXCOORD_0": 17
+          },
+          "indices": 18,
+          "material": 3,
+          "mode": 4
+        }
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "children": [
+        1
+      ],
+      "matrix": [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        2.220446049250313e-16,
+        -1.0,
+        0.0,
+        0.0,
+        1.0,
+        2.220446049250313e-16,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "name": "Sketchfab_model"
+    },
+    {
+      "children": [
+        2
+      ],
+      "matrix": [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        -1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "name": "dcfedbcc55184db580c25b5055f234ec.fbx"
+    },
+    {
+      "children": [
+        3
+      ],
+      "name": "RootNode"
+    },
+    {
+      "children": [
+        4,
+        5,
+        6,
+        7
+      ],
+      "matrix": [
+        100.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        -1.629206793918314e-05,
+        -99.99999999999868,
+        0.0,
+        0.0,
+        99.99999999999868,
+        -1.629206793918314e-05,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "name": "Cube"
+    },
+    {
+      "mesh": 0,
+      "name": "Cube_crate_0"
+    },
+    {
+      "mesh": 1,
+      "name": "Cube_keypad_attachment_0"
+    },
+    {
+      "mesh": 2,
+      "name": "Cube_keypad_0"
+    },
+    {
+      "mesh": 3,
+      "name": "Cube_handles_0"
+    }
+  ],
+  "samplers": [
+    {
+      "magFilter": 9729,
+      "minFilter": 9987,
+      "wrapS": 10497,
+      "wrapT": 10497
+    }
+  ],
+  "scene": 0,
+  "scenes": [
+    {
+      "name": "Sketchfab_Scene",
+      "nodes": [
+        0
+      ]
+    }
+  ],
+  "textures": [
+    {
+      "sampler": 0,
+      "source": 0
+    },
+    {
+      "sampler": 0,
+      "source": 1
+    },
+    {
+      "sampler": 0,
+      "source": 2
+    },
+    {
+      "sampler": 0,
+      "source": 3
+    },
+    {
+      "sampler": 0,
+      "source": 4
+    },
+    {
+      "sampler": 0,
+      "source": 5
+    },
+    {
+      "sampler": 0,
+      "source": 6
+    },
+    {
+      "sampler": 0,
+      "source": 7
+    },
+    {
+      "sampler": 0,
+      "source": 8
+    }
+  ]
+}

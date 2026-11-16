@@ -1,0 +1,14 @@
+[gd_resource type="NoiseTexture2D" format=3 uid="uid://c7ckprgpog1mo"]
+
+[sub_resource type="FastNoiseLite" id="ruido"]
+seed = 4096
+frequency = 0.16
+fractal_octaves = 2
+
+[resource]
+width = 256
+height = 256
+noise = SubResource("ruido")
+seamless = true
+as_normal_map = true
+bump_strength = 0.22

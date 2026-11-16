@@ -1,0 +1,9 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://Proyecto/Modelos/Planetas/Marte/marte.glb" id="modelo"]
+
+[node name="Marte" instance=ExtResource("modelo")]
+position = Vector3(5200, 2200, -3000)
+scale = Vector3(0.1, 0.1, 0.1)
+metadata/bioma_superficie = 5
+metadata/display_name = "Mars"

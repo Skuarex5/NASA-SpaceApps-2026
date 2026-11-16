@@ -1,0 +1,18 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://Proyecto/Modelos/Mascotas/Rocky/rocky.glb" id="modelo"]
+[ext_resource type="Script" path="res://Proyecto/Codigos/Mascotas/mascota_seguidora.gd" id="seguimiento"]
+
+[sub_resource type="SphereShape3D" id="cuerpo"]
+radius = 0.20
+
+[node name="Rocky" type="CharacterBody3D" node_paths=PackedStringArray("mascota")]
+script = ExtResource("seguimiento")
+mascota = NodePath("Modelo")
+floor_snap_length = 0.3
+
+[node name="Modelo" parent="." instance=ExtResource("modelo")]
+transform = Transform3D(0.19887562, -0.00798482, -0.3618109, 0.00423091, 0.37533004, -0.00769721, 0.31433258, 0, 0.22901824, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("cuerpo")

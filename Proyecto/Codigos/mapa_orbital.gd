@@ -95,8 +95,8 @@ func _dibujar_indicadores() -> void:
 		var llegada := _proyectar(destino.global_position)
 		indicadores.draw_dashed_line(origen, llegada, Color("46e5eb"), 2.0, 10.0)
 	for planeta in planetas:
-		_dibujar_marcador(_proyectar(planeta.global_position), str(planeta.name), Color("90cddf"))
-	_dibujar_marcador(origen, "NAVE", Color("ffce70"))
+		_dibujar_marcador(_proyectar(planeta.global_position), str(planeta.get_meta("display_name", planeta.name)), Color("90cddf"))
+	_dibujar_marcador(origen, "SHIP", Color("ffce70"))
 
 
 func _dibujar_marcador(punto: Vector2, texto: String, color: Color) -> void:

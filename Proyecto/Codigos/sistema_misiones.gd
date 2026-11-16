@@ -93,7 +93,7 @@ func _ready() -> void:
 func establecer_misiones_ocultas(ocultar: bool) -> void:
 	misiones_ocultas = ocultar
 	pestana_misiones.text = "›" if ocultar else "‹"
-	pestana_misiones.tooltip_text = "Mostrar misiones" if ocultar else "Guardar misiones hacia la izquierda"
+	pestana_misiones.tooltip_text = "Show missions" if ocultar else "Hide missions to the left"
 	if animacion_panel != null and animacion_panel.is_valid():
 		animacion_panel.kill()
 	var objetivo := -panel_misiones.size.x * panel_misiones.scale.x if ocultar else posicion_abierta
@@ -119,18 +119,20 @@ func crear_expedicion(plan: Dictionary, nombre_destino: String) -> String:
 		if existente == null or not existente.has_meta("expedicion"):
 			continue
 		var anterior: Dictionary = existente.get_meta("expedicion")
-		if anterior.get("destino") == plan.get("destino") and anterior.get("objetivo") == plan.get("objetivo") and anterior.get("herramientas") == plan.get("herramientas") and not esta_completada(existente.id):
+		if anterior.get("destino") == plan.get("destino") and anterior.get("objetivo") == plan.get("objetivo") and anterior.get("herramientas") == plan.get("herramientas") and anterior.get("llevar_rocky", true) == plan.get("llevar_rocky", true) and not esta_completada(existente.id):
 			return existente.id
 	var mision := DatosMision.new()
 	var numero := 1
 	while buscar_mision("expedicion_%d" % numero) != null:
 		numero += 1
 	mision.id = "expedicion_%d" % numero
-	mision.titulo = "Expedicion %d: %s" % [numero, nombre_destino]
+	mision.titulo = "Expedition %d: %s" % [numero, nombre_destino]
 	var equipo := ", ".join(plan.get("herramientas", []))
-	mision.descripcion = "%s. Equipo: %s. Peso: %.1f kg." % [
-		plan.get("objetivo", "Viaje"), equipo if not equipo.is_empty() else "Ninguno", plan.get("peso_kg", 0.0)
+	mision.descripcion = "%s. Equipment: %s. Weight: %.1f kg." % [
+		plan.get("objetivo", "Travel"), equipo if not equipo.is_empty() else "None", plan.get("peso_kg", 0.0)
 	]
+	if plan.has("llevar_rocky"):
+		mision.descripcion += " Rocky: %s." % ("joining you" if plan.llevar_rocky else "waiting in the ship")
 	mision.set_meta("expedicion", plan.duplicate(true))
 	misiones.append(mision)
 	progresos[mision.id] = 0

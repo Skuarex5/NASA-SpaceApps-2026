@@ -86,4 +86,4 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_pestana")
 theme_override_styles/hover = SubResource("StyleBoxFlat_pestana")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_pestana")
 text = "‹"
-tooltip_text = "Guardar misiones hacia la izquierda"
+tooltip_text = "Hide missions to the left"

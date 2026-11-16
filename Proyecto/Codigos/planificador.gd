@@ -3,6 +3,10 @@ extends Control
 signal cerrar_solicitado
 
 const MAPA = preload("res://Proyecto/Codigos/mapa_orbital.gd")
+const IDS_HERRAMIENTAS: Array[String] = [
+	"herramienta:camara", "herramienta:radar", "herramienta:kit_de_reparacion", "herramienta:oxigeno",
+	"herramienta:provisiones", "herramienta:escaner_mineral", "herramienta:taladro", "herramienta:baliza_de_senal"
+]
 
 @export_group("Imagenes opcionales")
 @export var imagen_fondo: Texture2D
@@ -12,8 +16,8 @@ const MAPA = preload("res://Proyecto/Codigos/mapa_orbital.gd")
 @export var imagen_herramientas: Texture2D
 @export_group("Herramientas disponibles")
 @export var herramientas: Array[String] = [
-	"Camara", "Radar", "Kit de reparacion", "Oxigeno", "Provisiones",
-	"Escaner mineral", "Taladro", "Baliza de senal"
+	"Camera", "Radar", "Repair kit", "Oxygen", "Supplies",
+	"Mineral scanner", "Drill", "Signal beacon"
 ]
 @export var imagenes_herramientas: Array[Texture2D] = []
 @export var pesos_herramientas: Array[float] = [10.0, 25.0, 15.0, 12.0, 8.0, 6.0, 18.0, 4.0]
@@ -22,6 +26,7 @@ var nave: RigidBody3D
 var planetas: Array[Node3D] = []
 var mapa: Control
 var destinos: OptionButton
+var clima_destino: Label
 var objetivos: OptionButton
 var combustible: Label
 var barra: ProgressBar
@@ -39,6 +44,9 @@ var peso: Label
 var barra_peso: ProgressBar
 var confirmar: Button
 var inventario: Node
+var rocky: CharacterBody3D
+var llevar_rocky: CheckBox
+var distancia_rocky: SpinBox
 
 
 func _ready() -> void:
@@ -64,7 +72,7 @@ func _ready() -> void:
 	var estructura := VBoxContainer.new()
 	estructura.add_theme_constant_override("separation", 12)
 	margen.add_child(estructura)
-	_texto(estructura, "PLANIFICADOR DE MISION", 28)
+	_texto(estructura, "MISSION PLANNER", 28)
 	var scroll := ScrollContainer.new()
 	scroll.size_flags_vertical = Control.SIZE_EXPAND_FILL
 	estructura.add_child(scroll)
@@ -78,9 +86,9 @@ func _ready() -> void:
 	columnas.size_flags_vertical = Control.SIZE_EXPAND_FILL
 	columnas.add_theme_constant_override("separation", 16)
 	contenido.add_child(columnas)
-	_crear_configuracion(_panel(columnas, "CONFIGURACION", 240))
-	_crear_mapa(_panel(columnas, "MAPA ORBITAL", 420, true))
-	_crear_recursos(_panel(columnas, "RECURSOS Y CARGA", 280))
+	_crear_configuracion(_panel(columnas, "CONFIGURATION", 240))
+	_crear_mapa(_panel(columnas, "ORBITAL MAP", 420, true))
+	_crear_recursos(_panel(columnas, "RESOURCES & CARGO", 280))
 	var pie := _panel(contenido, "", 0)
 	resumen = _texto(pie, "", 17)
 	estado = _texto(pie, "", 15)
@@ -88,17 +96,18 @@ func _ready() -> void:
 	var botones := HBoxContainer.new()
 	botones.add_theme_constant_override("separation", 16)
 	pie.add_child(botones)
-	confirmar = _boton(botones, "Crear expedicion")
+	confirmar = _boton(botones, "Create expedition")
 	confirmar.pressed.connect(_guardar_plan)
-	volver = _boton(botones, "Volver al juego (Esc)")
+	volver = _boton(botones, "Return to game (Esc)")
 	volver.pressed.connect(func(): cerrar_solicitado.emit())
 	hide()
 
 
-func configurar(vehiculo: RigidBody3D, sistema: Node3D, misiones: Node, gestor_inventario: Node = null) -> void:
+func configurar(vehiculo: RigidBody3D, sistema: Node3D, misiones: Node, gestor_inventario: Node = null, companero: CharacterBody3D = null) -> void:
 	nave = vehiculo
 	sistema_misiones = misiones
 	inventario = gestor_inventario
+	rocky = companero
 	planetas.clear()
 	if sistema != null:
 		for hijo in sistema.get_children():
@@ -106,10 +115,14 @@ func configurar(vehiculo: RigidBody3D, sistema: Node3D, misiones: Node, gestor_i
 				planetas.append(hijo)
 	destinos.clear()
 	for planeta in planetas:
-		destinos.add_item(str(planeta.name))
+		destinos.add_item(str(planeta.get_meta("display_name", planeta.name)))
 	mapa.nave = nave
 	mapa.planetas = planetas
 	var plan: Dictionary = nave.plan_mision
+	llevar_rocky.disabled = rocky == null
+	distancia_rocky.editable = rocky != null
+	llevar_rocky.set_pressed_no_signal(rocky.llevar_a_expedicion if rocky != null else false)
+	distancia_rocky.set_value_no_signal(rocky.distancia_seguimiento if rocky != null else 1.5)
 	var indice := 0
 	for i in planetas.size():
 		if str(planetas[i].get_path()) == plan.get("destino", ""):
@@ -134,21 +147,38 @@ func abrir() -> void:
 
 
 func _crear_configuracion(columna: VBoxContainer) -> void:
-	_imagen(columna, imagen_configuracion, "Imagen de configuracion", 32)
-	_texto(columna, "ORIGEN", 14)
-	_texto(columna, "Posicion actual de la nave", 16)
-	_texto(columna, "DESTINO", 14)
+	_imagen(columna, imagen_configuracion, "Configuration image", 32)
+	_texto(columna, "ORIGIN", 14)
+	_texto(columna, "Current ship position", 16)
+	_texto(columna, "DESTINATION", 14)
 	destinos = OptionButton.new()
 	columna.add_child(destinos)
 	destinos.item_selected.connect(func(_i): _actualizar())
-	_texto(columna, "OBJETIVO", 14)
+	clima_destino = _texto(columna, "", 13)
+	clima_destino.modulate = Color("9dbec9")
+	_texto(columna, "OBJECTIVE", 14)
 	objetivos = OptionButton.new()
-	for objetivo in ["Reconocimiento", "Exploracion", "Transporte"]:
+	for objetivo in ["Reconnaissance", "Exploration", "Transport"]:
 		objetivos.add_item(objetivo)
 	columna.add_child(objetivos)
 	objetivos.item_selected.connect(func(_i): _actualizar())
-	_texto(columna, "HERRAMIENTAS A LLEVAR", 14)
-	_imagen(columna, imagen_herramientas, "Imagen del equipamiento", 32)
+	_texto(columna, "EXPEDITION COMPANION", 14)
+	llevar_rocky = CheckBox.new()
+	llevar_rocky.text = "Bring Rocky"
+	llevar_rocky.tooltip_text = "If unchecked, Rocky waits inside the ship while you explore the planet. Saved when you create the expedition."
+	columna.add_child(llevar_rocky)
+	llevar_rocky.toggled.connect(func(_valor): _actualizar())
+	_texto(columna, "Following distance", 14)
+	distancia_rocky = SpinBox.new()
+	distancia_rocky.min_value = 0.8
+	distancia_rocky.max_value = 4.0
+	distancia_rocky.step = 0.1
+	distancia_rocky.suffix = "m"
+	distancia_rocky.value = 1.5
+	columna.add_child(distancia_rocky)
+	distancia_rocky.value_changed.connect(func(_valor): _actualizar())
+	_texto(columna, "EXPEDITION EQUIPMENT", 14)
+	_imagen(columna, imagen_herramientas, "Equipment image", 32)
 	for i in herramientas.size():
 		var fila := HBoxContainer.new()
 		columna.add_child(fila)
@@ -167,38 +197,38 @@ func _crear_mapa(columna: VBoxContainer) -> void:
 	mapa.custom_minimum_size = Vector2(400, 300)
 	mapa.size_flags_vertical = Control.SIZE_EXPAND_FILL
 	columna.add_child(mapa)
-	_texto(columna, "Arrastrar: mover  |  Rueda: zoom", 14)
-	mapa.tooltip_text = "La linea discontinua indica el destino; no representa una trayectoria orbital calculada."
-	var centrar := _boton(columna, "Encuadrar nave y planetas")
+	_texto(columna, "Drag: pan  |  Scroll wheel: zoom", 14)
+	mapa.tooltip_text = "The dashed line marks the destination; it is not a calculated orbital trajectory."
+	var centrar := _boton(columna, "Frame ship and planets")
 	centrar.pressed.connect(func(): mapa.reencuadrar())
 
 
 func _crear_recursos(columna: VBoxContainer) -> void:
-	_imagen(columna, imagen_recursos, "Imagen de la nave / recursos", 48)
-	_texto(columna, "SALUD DEL CASCO", 18)
+	_imagen(columna, imagen_recursos, "Ship / resources image", 48)
+	_texto(columna, "HULL HEALTH", 18)
 	salud = _texto(columna, "", 16)
 	barra_salud = ProgressBar.new()
 	barra_salud.custom_minimum_size.y = 20
 	columna.add_child(barra_salud)
-	reparar = _boton(columna, "Reparar nave")
-	reparar.tooltip_text = "Mantenimiento a bordo: restaura por completo la salud del casco, sin consumir objetos."
+	reparar = _boton(columna, "Repair ship")
+	reparar.tooltip_text = "Onboard maintenance: fully restores hull health without consuming items."
 	reparar.pressed.connect(_reparar_nave)
-	_texto(columna, "COMBUSTIBLE", 18)
-	_imagen(columna, imagen_combustible, "Imagen del combustible", 40)
+	_texto(columna, "FUEL", 18)
+	_imagen(columna, imagen_combustible, "Fuel image", 40)
 	combustible = _texto(columna, "", 16)
 	barra = ProgressBar.new()
 	barra.custom_minimum_size.y = 22
 	columna.add_child(barra)
-	_texto(columna, "CARGAR DESDE LA RESERVA (L)", 14)
+	_texto(columna, "LOAD FROM RESERVE (L)", 14)
 	cantidad = SpinBox.new()
 	cantidad.min_value = 0
 	cantidad.step = 1
 	cantidad.allow_greater = false
 	columna.add_child(cantidad)
-	cargar = _boton(columna, "Cargar combustible")
+	cargar = _boton(columna, "Load fuel")
 	cargar.pressed.connect(_cargar_combustible)
-	cargar.tooltip_text = "Transfiere litros de la reserva al tanque sin superar su capacidad."
-	_texto(columna, "PESO TOTAL / LIMITE", 18)
+	cargar.tooltip_text = "Transfers fuel from the onboard reserve without exceeding tank capacity."
+	_texto(columna, "TOTAL WEIGHT / LIMIT", 18)
 	peso = _texto(columna, "", 15)
 	barra_peso = ProgressBar.new()
 	barra_peso.custom_minimum_size.y = 20
@@ -208,7 +238,7 @@ func _crear_recursos(columna: VBoxContainer) -> void:
 func _actualizar() -> void:
 	if nave == null:
 		return
-	salud.text = "%.1f / %.1f puntos" % [nave.salud_actual, nave.salud_maxima]
+	salud.text = "%.1f / %.1f points" % [nave.salud_actual, nave.salud_maxima]
 	barra_salud.max_value = nave.salud_maxima
 	barra_salud.value = nave.salud_actual
 	salud.modulate = Color("ff8979") if nave.salud_actual <= nave.salud_maxima * 0.25 else Color.WHITE
@@ -216,7 +246,7 @@ func _actualizar() -> void:
 	var capacidad: float = maxf(nave.capacidad_combustible, 0)
 	var actual: float = nave.combustible_actual
 	var reserva: float = nave.combustible_reserva
-	combustible.text = "Tanque: %.1f / %.1f L\nReserva a bordo: %.1f L" % [actual, capacidad, reserva]
+	combustible.text = "Tank: %.1f / %.1f L\nOnboard reserve: %.1f L" % [actual, capacidad, reserva]
 	barra.max_value = maxf(capacidad, 1)
 	barra.value = actual
 	cantidad.max_value = maxf(0, minf(reserva, capacidad - actual))
@@ -225,26 +255,33 @@ func _actualizar() -> void:
 		cantidad.value = cantidad.max_value
 	var elegido: Node3D = planetas[destinos.selected] if destinos.selected >= 0 and destinos.selected < planetas.size() else null
 	mapa.destino = elegido
+	if elegido:
+		var perfil := preload("res://Proyecto/Codigos/Planetas/perfiles_planeta.gd").obtener(int(elegido.get_meta("bioma_superficie", 0)))
+		clima_destino.text = "Weather: %s · Gravity: %.1f m/s²" % [perfil.clima, perfil.gravedad]
 	var equipo := _equipo_seleccionado()
 	var herramientas_kg := _peso_seleccionado()
 	var total: float = nave.calcular_peso(herramientas_kg)
 	var exceso: float = maxf(total - nave.peso_limite, 0)
-	peso.text = "%.1f / %.1f kg\nNave: %.1f · Equipo y objetos: %.1f\nCombustible + reserva: %.1f kg" % [
+	peso.text = "%.1f / %.1f kg\nShip: %.1f · Equipment and items: %.1f\nFuel + reserve: %.1f kg" % [
 		total, nave.peso_limite, nave.peso_vacio, herramientas_kg,
 		nave.calcular_peso(0) - nave.peso_vacio
 	]
 	if exceso > 0:
-		peso.text += "\nEXCESO DE PESO: +%.1f kg" % exceso
+		peso.text += "\nOVERWEIGHT: +%.1f kg" % exceso
 	peso.modulate = Color("ffb85c") if exceso > 0 else Color.WHITE
 	barra_peso.max_value = maxf(nave.peso_limite, 1)
 	barra_peso.value = total
 	barra_peso.modulate = Color("ffb85c") if exceso > 0 else Color.WHITE
 	confirmar.disabled = exceso > 0 or elegido == null or sistema_misiones == null
-	resumen.text = "Destino: %s  |  Objetivo: %s\nHerramientas: %s" % [
-		str(elegido.name) if elegido != null else "Sin planetas disponibles",
+	resumen.text = "Destination: %s  |  Objective: %s\nEquipment: %s" % [
+		str(elegido.get_meta("display_name", elegido.name)) if elegido != null else "No planets available",
 		objetivos.get_item_text(objetivos.selected),
-		", ".join(equipo) if not equipo.is_empty() else "Ninguna seleccionada"
+		", ".join(equipo) if not equipo.is_empty() else "None selected"
 	]
+	if rocky != null:
+		resumen.text += "\nRocky: %s | Following distance: %.1f m" % [
+			"joining you" if llevar_rocky.button_pressed else "staying in the ship", distancia_rocky.value
+		]
 
 
 func _equipo_seleccionado() -> Array[String]:
@@ -260,34 +297,34 @@ func _reparar_nave() -> void:
 		return
 	var reparado: float = nave.reparar_nave()
 	_actualizar()
-	estado.text = "Casco reparado: +%.1f puntos de salud." % reparado
+	estado.text = "Hull repaired: +%.1f health points." % reparado
 	estado.show()
 
 
 func _cargar_combustible() -> void:
 	var transferido: float = nave.cargar_combustible(cantidad.value)
 	_actualizar()
-	estado.text = "Se cargaron %.1f L al tanque." % transferido
+	estado.text = "Loaded %.1f L into the tank." % transferido
 	estado.show()
 
 
 func _guardar_plan() -> void:
 	estado.show()
 	if destinos.selected < 0 or destinos.selected >= planetas.size():
-		estado.text = "Selecciona un destino disponible."
+		estado.text = "Select an available destination."
 		return
 	var total: float = nave.calcular_peso(_peso_seleccionado())
 	if total > nave.peso_limite:
-		estado.text = "Reduce el peso antes de crear la expedicion."
+		estado.text = "Reduce the weight before creating the expedition."
 		return
 	if sistema_misiones == null:
-		estado.text = "No se encontro el menu de misiones."
+		estado.text = "Mission menu not found."
 		return
 	var distribucion: Dictionary = {}
 	if inventario != null:
 		distribucion = inventario.objetos.preparar_equipo(_objetos_equipo())
 		if distribucion.is_empty():
-			estado.text = "Libera slots en la mochila antes de crear la expedicion."
+			estado.text = "Free up backpack slots before creating the expedition."
 			return
 	var plan := {
 		"destino": str(planetas[destinos.selected].get_path()),
@@ -295,17 +332,22 @@ func _guardar_plan() -> void:
 		"objetivo_indice": objetivos.selected,
 		"herramientas": _equipo_seleccionado(),
 		"peso_kg": total,
-		"peso_carga_kg": _peso_seleccionado()
+		"peso_carga_kg": _peso_seleccionado(),
+		"llevar_rocky": llevar_rocky.button_pressed,
+		"distancia_rocky": distancia_rocky.value
 	}
-	var id: String = sistema_misiones.crear_expedicion(plan, str(planetas[destinos.selected].name))
+	var destino_elegido := planetas[destinos.selected]
+	var id: String = sistema_misiones.crear_expedicion(plan, str(destino_elegido.get_meta("display_name", destino_elegido.name)))
 	if id.is_empty():
-		estado.text = "No se pudo registrar la expedicion."
+		estado.text = "Could not register the expedition."
 		return
 	plan["mision_id"] = id
 	nave.plan_mision = plan
+	if rocky != null:
+		rocky.configurar_expedicion(plan.llevar_rocky, plan.distancia_rocky)
 	if inventario != null:
 		inventario.objetos.aplicar(distribucion)
-	estado.text = "Expedicion registrada en el menu de misiones."
+	estado.text = "Expedition added to the mission menu."
 
 
 func _peso_herramienta(indice: int) -> float:
@@ -325,6 +367,8 @@ func _peso_seleccionado() -> float:
 
 
 func _id_herramienta(indice: int) -> String:
+	if indice < IDS_HERRAMIENTAS.size():
+		return IDS_HERRAMIENTAS[indice]
 	return "herramienta:" + herramientas[indice].to_snake_case()
 
 

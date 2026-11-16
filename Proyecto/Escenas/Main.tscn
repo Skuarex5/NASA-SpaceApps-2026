@@ -10,7 +10,6 @@
 [ext_resource type="PackedScene" uid="uid://cu1hlcvqxl41x" path="res://Proyecto/Escenas/MissionMenu.tscn" id="8_i7rkf"]
 [ext_resource type="PackedScene" uid="uid://coemrri434td5" path="res://Proyecto/Escenas/FiltroPantalla.tscn" id="9_4tvbl"]
 [ext_resource type="PackedScene" uid="uid://bwvj4xrq8v47i" path="res://Proyecto/Escenas/SpaceshipInterior.tscn" id="10_kg8wx"]
-[ext_resource type="Material" path="res://Proyecto/Materiales/InteriorPaneles.tres" id="11_o884h"]
 [ext_resource type="PackedScene" uid="uid://c3ayyvou6qw1v" path="res://Proyecto/Modelos/cockpit-chair/source/Cockpit Chair.fbx" id="12_luopn"]
 [ext_resource type="Texture2D" uid="uid://16m7bo80f3u6" path="res://Proyecto/Modelos/monitoring-station/textures/hologram_glass_Base_color.png" id="13_7x70b"]
 [ext_resource type="Texture2D" uid="uid://c13jj87viscoi" path="res://Proyecto/Modelos/monitoring-station/textures/table_Base_color.png" id="13_dv60a"]
@@ -19,14 +18,71 @@
 [ext_resource type="Texture2D" uid="uid://bpm8hoky8m5dy" path="res://Proyecto/Modelos/monitoring-station/textures/hologram_glass_Metallic.png" id="15_54t36"]
 [ext_resource type="Texture2D" uid="uid://ceb27x3lgje8t" path="res://Proyecto/Modelos/monitoring-station/textures/hologram_glass_Normal_OpenGL.png" id="16_a7jm4"]
 [ext_resource type="Texture2D" uid="uid://b53l3mr3pcism" path="res://Proyecto/Modelos/monitoring-station/textures/hologram_glass_Roughness.png" id="17_wkny5"]
+[ext_resource type="Texture2D" uid="uid://cyt73aw5nnjia" path="res://Proyecto/Modelos/NaveInterior/216669eb-acd0-4357-9072-c961ca59f3ff.png" id="18_n03hx"]
+[ext_resource type="Texture2D" uid="uid://b0qerrgtidv2t" path="res://Proyecto/Materiales/MicrotejidoNormal.tres" id="19_17ffw"]
 [ext_resource type="Texture2D" uid="uid://gtc8qys5xr53" path="res://Proyecto/Modelos/monitoring-station/textures/table_Metallic.png" id="19_f4xn1"]
 [ext_resource type="Texture2D" uid="uid://deyni01wsfk1w" path="res://Proyecto/Modelos/monitoring-station/textures/table_Normal_OpenGL.png" id="20_1p8cx"]
 [ext_resource type="Texture2D" uid="uid://kmj2lxtd2xww" path="res://Proyecto/Modelos/monitoring-station/textures/table_Roughness.png" id="21_rk1tb"]
+[ext_resource type="Texture2D" uid="uid://c5msybhtbsafo" path="res://Proyecto/Modelos/monitoring-station/textures/hologram_glass_Mixed_AO.png" id="22_exmcq"]
 [ext_resource type="Script" uid="uid://bkbqewa1hree4" path="res://Proyecto/Codigos/interaccion_escritorio.gd" id="22_interaccion"]
 [ext_resource type="Script" uid="uid://bfl76dg55tufk" path="res://Proyecto/Codigos/inventario.gd" id="23_inventario"]
 [ext_resource type="PackedScene" path="res://Proyecto/Efectos/PolvoCabina.tscn" id="24_polvo"]
 [ext_resource type="Script" uid="uid://xaxrexymq82q" path="res://Proyecto/Codigos/campo_asteroides.gd" id="25_asteroides"]
 [ext_resource type="Script" uid="uid://s5b8dbobdbgq" path="res://Proyecto/Codigos/viajes_planetarios.gd" id="26_viajes"]
+[ext_resource type="Texture2D" uid="uid://dtcy7wns14xbm" path="res://Proyecto/Modelos/monitoring-station/textures/table_Mixed_AO.png" id="28_onpwm"]
+[ext_resource type="PackedScene" path="res://Proyecto/Escenas/Planetas/Asteria.tscn" id="30_asteria"]
+[ext_resource type="PackedScene" path="res://Proyecto/Escenas/Planetas/Nereida.tscn" id="31_nereida"]
+[ext_resource type="PackedScene" path="res://Proyecto/Escenas/Planetas/Vulcano.tscn" id="32_vulcano"]
+[ext_resource type="PackedScene" path="res://Proyecto/Escenas/Planetas/Imaginario.tscn" id="33_imaginario"]
+[ext_resource type="PackedScene" uid="uid://ocbd2ntd7npr" path="res://Proyecto/Modelos/sci-fi_single_chair/scene.gltf" id="34_7myli"]
+[ext_resource type="PackedScene" path="res://Proyecto/Escenas/Planetas/Cubico.tscn" id="34_cubico"]
+[ext_resource type="PackedScene" path="res://Proyecto/Escenas/Planetas/Marte.tscn" id="35_marte"]
+[ext_resource type="PackedScene" uid="uid://di6to0n2rgvs8" path="res://Proyecto/Modelos/game_ready_sci-fi_crate_pile/scene.gltf" id="35_qed8x"]
+[ext_resource type="PackedScene" path="res://Proyecto/Escenas/Interior/DecoracionNave.tscn" id="36_decoracion"]
+[ext_resource type="PackedScene" uid="uid://53vxmruu2l2i" path="res://Proyecto/Modelos/sci-fi_furniture_pack_aaa_shelving_unit_c/scene.gltf" id="36_ji8cx"]
+[ext_resource type="PackedScene" uid="uid://0bc5ndjdpwk5" path="res://Proyecto/Modelos/killer-beats-casette-mixstation/source/cablesLP.fbx" id="37_muamt"]
+[ext_resource type="PackedScene" path="res://Proyecto/Escenas/Mascotas/Rocky.tscn" id="37_rocky"]
+[ext_resource type="PackedScene" path="res://Proyecto/Sonidos/Ambiente/AmbienteJuego.tscn" id="38_ambiente"]
+[ext_resource type="Texture2D" uid="uid://bjrl3wgxw36gl" path="res://Proyecto/Modelos/killer-beats-casette-mixstation/textures/GAP_F_Blaase_Mikkel_Keyboard_C.png" id="38_l0kw7"]
+[ext_resource type="PackedScene" path="res://Proyecto/Escenas/MenuPausa.tscn" id="39_pausa"]
+[ext_resource type="Texture2D" uid="uid://cmjnnl84nxmr6" path="res://Proyecto/Modelos/killer-beats-casette-mixstation/textures/GAP_F_Blaase_Mikkel_Keyboard_AO.png" id="39_sleww"]
+[ext_resource type="Texture2D" uid="uid://dte8kejch06qq" path="res://Proyecto/Modelos/killer-beats-casette-mixstation/textures/GAP_F_Blaase_Mikkel_Keyboard_M.png" id="40_l14rv"]
+[ext_resource type="Script" uid="uid://tysjlnnovpve" path="res://Proyecto/Codigos/Interior/materiales_interior.gd" id="40_materiales"]
+[ext_resource type="Texture2D" uid="uid://57g01xmj85sp" path="res://Proyecto/Modelos/killer-beats-casette-mixstation/textures/GAP_F_Blaase_Mikkel_Keyboard_N.png" id="41_g8qoo"]
+[ext_resource type="Texture2D" uid="uid://baao3fkm1p1bb" path="res://Proyecto/Modelos/killer-beats-casette-mixstation/textures/GAP_F_Blaase_Mikkel_Keyboard_R.png" id="42_34s20"]
+[ext_resource type="Texture2D" uid="uid://c1dofsxhbyqh5" path="res://Proyecto/Modelos/killer-beats-casette-mixstation/textures/GAP_F_Blaase_Mikkel_Monitor_C.png" id="43_x3d3l"]
+[ext_resource type="Texture2D" uid="uid://bjcddapjkd7iy" path="res://Proyecto/Modelos/killer-beats-casette-mixstation/textures/GAP_F_Blaase_Mikkel_Monitor_AO.png" id="44_wwx8l"]
+[ext_resource type="Texture2D" uid="uid://dowjshqka63ii" path="res://Proyecto/Modelos/killer-beats-casette-mixstation/textures/GAP_F_Blaase_Mikkel_Monitor_M.png" id="45_wn0d0"]
+[ext_resource type="Texture2D" uid="uid://depjnu8s6xqoe" path="res://Proyecto/Modelos/killer-beats-casette-mixstation/textures/GAP_F_Blaase_Mikkel_Monitor_N.png" id="46_6imho"]
+[ext_resource type="PackedScene" uid="uid://ce0f0gfr8gbf5" path="res://Proyecto/Modelos/sci-fi-office-desk/source/Desk.fbx" id="46_6yhwy"]
+[ext_resource type="Texture2D" uid="uid://jroqt4mvqxr5" path="res://Proyecto/Modelos/killer-beats-casette-mixstation/textures/GAP_F_Blaase_Mikkel_Monitor_R.png" id="47_7boyt"]
+[ext_resource type="PackedScene" uid="uid://b1ui4n61benw3" path="res://Proyecto/Modelos/sci-fi_desk_lamp/scene.gltf" id="47_y6gh8"]
+[ext_resource type="PackedScene" uid="uid://cvl5tngmufbf1" path="res://Proyecto/Modelos/sci-fi-door/source/textures/LOW-Symmetry.FBX" id="48_70jcn"]
+[ext_resource type="Texture2D" uid="uid://svyadho6xd6g" path="res://Proyecto/Modelos/killer-beats-casette-mixstation/textures/GAP_F_Blaase_Mikkel_Details_BC.png" id="48_j1ygp"]
+[ext_resource type="PackedScene" uid="uid://duedq5ynnt3ya" path="res://Proyecto/Modelos/retro_sci-fi_computer_desk/scene.gltf" id="49_2pgt7"]
+[ext_resource type="Texture2D" uid="uid://drfd7jx74y0kf" path="res://Proyecto/Modelos/killer-beats-casette-mixstation/textures/GAP_F_Blaase_Mikkel_Details_AO.png" id="49_alvff"]
+[ext_resource type="Texture2D" uid="uid://ctnyj0vb6bm5a" path="res://Proyecto/Modelos/killer-beats-casette-mixstation/textures/GAP_F_Blaase_Mikkel_Details_M.png" id="50_35ye5"]
+[ext_resource type="PackedScene" uid="uid://bpwnyoy4ytu5h" path="res://Proyecto/Modelos/sci-fi_generator/scene.gltf" id="50_h2o7o"]
+[ext_resource type="Texture2D" uid="uid://jupbwhmicpkv" path="res://Proyecto/Modelos/killer-beats-casette-mixstation/textures/GAP_F_Blaase_Mikkel_Details_N.png" id="51_ci04u"]
+[ext_resource type="Script" uid="uid://dkoaoo4iq73em" path="res://Proyecto/Codigos/Interior/luces_muebles.gd" id="51_luces_muebles"]
+[ext_resource type="PackedScene" path="res://Proyecto/Escenas/Interior/VentanaCabina.tscn" id="52_ventana_cabina"]
+[ext_resource type="Texture2D" uid="uid://ie0dh31jmgdv" path="res://Proyecto/Modelos/killer-beats-casette-mixstation/textures/GAP_F_Blaase_Mikkel_Details_R.png" id="52_vh7in"]
+[ext_resource type="Texture2D" uid="uid://d30n7aew1dpfs" path="res://Proyecto/Modelos/killer-beats-casette-mixstation/textures/GAP_F_Blaase_Mikkel_Speaker_C.png" id="53_g1wc6"]
+[ext_resource type="Texture2D" uid="uid://bd4t3tk810s4c" path="res://Proyecto/Modelos/killer-beats-casette-mixstation/textures/GAP_F_Blaase_Mikkel_Speaker_AO.png" id="54_yyog0"]
+[ext_resource type="Texture2D" uid="uid://brr1rhd70dhiy" path="res://Proyecto/Modelos/killer-beats-casette-mixstation/textures/GAP_F_Blaase_Mikkel_Speaker_M.png" id="55_o6npx"]
+[ext_resource type="Texture2D" uid="uid://e87rhtg8jqbc" path="res://Proyecto/Modelos/killer-beats-casette-mixstation/textures/GAP_F_Blaase_Mikkel_Speaker_N.png" id="56_6bp0e"]
+[ext_resource type="Texture2D" uid="uid://b5ydlf3n5w7fp" path="res://Proyecto/Modelos/killer-beats-casette-mixstation/textures/GAP_F_Blaase_Mikkel_Speaker_R.png" id="57_tflux"]
+[ext_resource type="Texture2D" uid="uid://bncyqom0spp3u" path="res://Proyecto/Modelos/killer-beats-casette-mixstation/textures/GAP_F_Blaase_Mikkel_Floor_C.png" id="58_022tp"]
+[ext_resource type="Texture2D" uid="uid://dki6ftuqelsp7" path="res://Proyecto/Modelos/killer-beats-casette-mixstation/textures/GAP_F_Blaase_Mikkel_Floor_N.png" id="59_hga3v"]
+[ext_resource type="Texture2D" uid="uid://dbsn3o7wolfam" path="res://Proyecto/Modelos/killer-beats-casette-mixstation/textures/GAP_F_Blaase_Mikkel_Floor_R.png" id="60_3lhkp"]
+[ext_resource type="Texture2D" uid="uid://d0x34w3yctbfa" path="res://Proyecto/Modelos/killer-beats-casette-mixstation/textures/GAP_F_Blaase_Mikkel_Floor_O.png" id="60_l14rv"]
+[ext_resource type="PackedScene" path="res://Proyecto/Escenas/Planetas/Borealis.tscn" id="planeta_Borealis"]
+[ext_resource type="PackedScene" path="res://Proyecto/Escenas/Planetas/Cinder.tscn" id="planeta_Cinder"]
+[ext_resource type="PackedScene" path="res://Proyecto/Escenas/Planetas/Ionis.tscn" id="planeta_Ionis"]
+[ext_resource type="PackedScene" path="res://Proyecto/Escenas/Planetas/Pelagia.tscn" id="planeta_Pelagia"]
+[ext_resource type="PackedScene" path="res://Proyecto/Escenas/Planetas/Sirocco.tscn" id="planeta_Sirocco"]
+[ext_resource type="PackedScene" path="res://Proyecto/Escenas/Planetas/Viridia.tscn" id="planeta_Viridia"]
+[ext_resource type="Script" uid="uid://cy0x8okvnv3sy" path="res://Proyecto/Codigos/salud_astronauta.gd" id="salud_astronauta"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_6j3vh"]
 panorama = ExtResource("1_b0vyx")
@@ -81,28 +137,63 @@ size = Vector3(1.3706055, 21.054443, 16.692932)
 [sub_resource type="BoxMesh" id="BoxMesh_cdbmq"]
 size = Vector3(48.47705, 1, 140.04688)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_g8qoo"]
+resource_name = "Cabina - paneles a escala uniforme"
+albedo_texture = ExtResource("18_n03hx")
+metallic = 0.35
+metallic_specular = 0.6
+roughness = 0.65
+normal_enabled = true
+normal_scale = 0.07
+normal_texture = ExtResource("19_17ffw")
+uv1_scale = Vector3(0.6, 0.6, 0.6)
+uv1_triplanar = true
+uv1_triplanar_sharpness = 8.0
+uv1_world_triplanar = true
+texture_filter = 5
+metadata/acabado_interior = true
+metadata/version_acabado = 4
+metadata/material_origen = "Cabina - paneles a escala uniforme"
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_qd08q"]
 size = Vector3(49.3114, 1.0097656, 144.41772)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7rlic"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_34s20"]
 albedo_texture = ExtResource("13_7x70b")
-metallic = 1.0
+metallic = 0.05
 metallic_texture = ExtResource("15_54t36")
+roughness = 0.26
 roughness_texture = ExtResource("17_wkny5")
 emission_enabled = true
-emission_energy_multiplier = 2.0
+emission_energy_multiplier = 0.7
 emission_texture = ExtResource("14_soggu")
 normal_enabled = true
+normal_scale = 0.55
 normal_texture = ExtResource("16_a7jm4")
+ao_enabled = true
+ao_light_affect = 0.3
+ao_texture = ExtResource("22_exmcq")
+texture_filter = 5
+metadata/acabado_interior = true
+metadata/version_acabado = 4
+metadata/material_origen = ""
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dv60a"]
-albedo_color = Color(0.51125896, 0.5112589, 0.5112589, 1)
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_x3d3l"]
+albedo_color = Color(0.7, 0.76, 0.8, 1)
 albedo_texture = ExtResource("13_dv60a")
 metallic = 1.0
 metallic_texture = ExtResource("19_f4xn1")
 roughness_texture = ExtResource("21_rk1tb")
 normal_enabled = true
+normal_scale = 0.55
 normal_texture = ExtResource("20_1p8cx")
+ao_enabled = true
+ao_light_affect = 0.3
+ao_texture = ExtResource("28_onpwm")
+texture_filter = 5
+metadata/acabado_interior = true
+metadata/version_acabado = 4
+metadata/material_origen = ""
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_x1mm8"]
 size = Vector3(1.0776367, 1.171875, 1.9094238)
@@ -112,6 +203,133 @@ size = Vector3(0.053222656, 1.9291382, 2.0488892)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_q4m7x"]
 size = Vector3(1.1079102, 1.6875, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wwx8l"]
+resource_name = "M_Keyboard"
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("38_l0kw7")
+metallic = 1.0
+metallic_texture = ExtResource("40_l14rv")
+roughness_texture = ExtResource("42_34s20")
+normal_enabled = true
+normal_scale = 0.55
+normal_texture = ExtResource("41_g8qoo")
+ao_enabled = true
+ao_light_affect = 0.25
+ao_texture = ExtResource("39_sleww")
+texture_filter = 5
+metadata/acabado_interior = true
+metadata/version_acabado = 4
+metadata/material_origen = "M_Keyboard"
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wn0d0"]
+resource_name = "M_Keyboard_Translucent"
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("38_l0kw7")
+metallic = 1.0
+metallic_texture = ExtResource("40_l14rv")
+roughness_texture = ExtResource("42_34s20")
+normal_enabled = true
+normal_scale = 0.55
+normal_texture = ExtResource("41_g8qoo")
+ao_enabled = true
+ao_light_affect = 0.25
+ao_texture = ExtResource("39_sleww")
+texture_filter = 5
+metadata/acabado_interior = true
+metadata/version_acabado = 4
+metadata/material_origen = "M_Keyboard_Translucent"
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6imho"]
+resource_name = "M_Monitor"
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("43_x3d3l")
+metallic = 1.0
+metallic_texture = ExtResource("45_wn0d0")
+roughness_texture = ExtResource("47_7boyt")
+normal_enabled = true
+normal_scale = 0.55
+normal_texture = ExtResource("46_6imho")
+ao_enabled = true
+ao_light_affect = 0.25
+ao_texture = ExtResource("44_wwx8l")
+texture_filter = 5
+metadata/acabado_interior = true
+metadata/version_acabado = 4
+metadata/material_origen = "M_Monitor"
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7boyt"]
+resource_name = "M_Details"
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("48_j1ygp")
+metallic = 1.0
+metallic_texture = ExtResource("50_35ye5")
+roughness_texture = ExtResource("52_vh7in")
+normal_enabled = true
+normal_scale = 0.55
+normal_texture = ExtResource("51_ci04u")
+ao_enabled = true
+ao_light_affect = 0.25
+ao_texture = ExtResource("49_alvff")
+texture_filter = 5
+metadata/acabado_interior = true
+metadata/version_acabado = 4
+metadata/material_origen = "M_Details"
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_j1ygp"]
+resource_name = "M_Speakers"
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("53_g1wc6")
+metallic = 1.0
+metallic_texture = ExtResource("55_o6npx")
+roughness_texture = ExtResource("57_tflux")
+normal_enabled = true
+normal_scale = 0.55
+normal_texture = ExtResource("56_6bp0e")
+ao_enabled = true
+ao_light_affect = 0.25
+ao_texture = ExtResource("54_yyog0")
+texture_filter = 5
+metadata/acabado_interior = true
+metadata/version_acabado = 4
+metadata/material_origen = "M_Speakers"
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_alvff"]
+resource_name = "M_Details_Translucent"
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("48_j1ygp")
+metallic = 1.0
+metallic_texture = ExtResource("50_35ye5")
+roughness_texture = ExtResource("52_vh7in")
+normal_enabled = true
+normal_scale = 0.55
+normal_texture = ExtResource("51_ci04u")
+ao_enabled = true
+ao_light_affect = 0.25
+ao_texture = ExtResource("49_alvff")
+texture_filter = 5
+metadata/acabado_interior = true
+metadata/version_acabado = 4
+metadata/material_origen = "M_Details_Translucent"
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_35ye5"]
+resource_name = "M_Floor"
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("58_022tp")
+roughness_texture = ExtResource("60_3lhkp")
+normal_enabled = true
+normal_scale = 0.55
+normal_texture = ExtResource("59_hga3v")
+ao_enabled = true
+ao_light_affect = 0.25
+ao_texture = ExtResource("60_l14rv")
+texture_filter = 5
+metadata/acabado_interior = true
+metadata/version_acabado = 4
+metadata/material_origen = "M_Floor"
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_q80nf"]
+size = Vector3(0.41262817, 0.22597504, 0.3996582)
 
 [node name="Main" type="Node3D" unique_id=1564911020]
 
@@ -161,10 +379,14 @@ anchors_preset = -1
 [node name="Recursos" parent="Spaceship/RigidBody3D/HUDControles" index="1"]
 anchors_preset = -1
 
+[node name="PestanaRecursos" parent="Spaceship/RigidBody3D/HUDControles" index="2"]
+anchors_preset = -1
+
 [node name="Planetas" type="Node3D" parent="." unique_id=1472366907]
 
 [node name="Mercury" parent="Planetas" unique_id=1508835386 instance=ExtResource("3_b0vyx")]
 transform = Transform3D(138.15979, 0, 0, 0, 138.15979, 0, 0, 0, 138.15979, -925.104, 542.53894, 1776.4207)
+metadata/bioma_superficie = 0
 
 [node name="Sphere001" parent="Planetas/Mercury" index="0" unique_id=1744049652]
 transform = Transform3D(1.0000001, 0, 0, 0, 0, 1.0000001, 0, -1.0000001, 0, -0.3432846, 1.4604967, 0.33741856)
@@ -172,10 +394,42 @@ surface_material_override/0 = ExtResource("4_asbru")
 
 [node name="Phoenix" parent="Planetas" unique_id=727171191 instance=ExtResource("5_b0vyx")]
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 3383.4856, 1684.1237, 1190.537)
+metadata/bioma_superficie = 1
 
 [node name="Phoenix_LOD0" parent="Planetas/Phoenix" index="0" unique_id=1953664052]
 transform = Transform3D(1500, 0, 0, 0, -6.556708e-05, 1500, 0, -1500, -6.556708e-05, 0, 0, 0)
 surface_material_override/0 = ExtResource("6_asbru")
+
+[node name="Asteria" parent="Planetas" unique_id=997736074 instance=ExtResource("30_asteria")]
+
+[node name="Nereida" parent="Planetas" unique_id=1317130441 instance=ExtResource("31_nereida")]
+
+[node name="Vulcano" parent="Planetas" unique_id=1037872024 instance=ExtResource("32_vulcano")]
+
+[node name="Imaginario" parent="Planetas" unique_id=42734351 instance=ExtResource("33_imaginario")]
+
+[node name="Cubico" parent="Planetas" unique_id=1304467275 instance=ExtResource("34_cubico")]
+
+[node name="Marte" parent="Planetas" unique_id=1402582717 instance=ExtResource("35_marte")]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 5200, 2200, -3000)
+
+[node name="Pelagia" parent="Planetas" unique_id=1448539859 instance=ExtResource("planeta_Pelagia")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2600, -400, 3300)
+
+[node name="Viridia" parent="Planetas" unique_id=750648387 instance=ExtResource("planeta_Viridia")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3700, 1100, -3100)
+
+[node name="Borealis" parent="Planetas" unique_id=1127490625 instance=ExtResource("planeta_Borealis")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1000, 1800, 4300)
+
+[node name="Sirocco" parent="Planetas" unique_id=1250374594 instance=ExtResource("planeta_Sirocco")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4600, -600, -1800)
+
+[node name="Cinder" parent="Planetas" unique_id=1401229789 instance=ExtResource("planeta_Cinder")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2300, -1200, -4000)
+
+[node name="Ionis" parent="Planetas" unique_id=896719324 instance=ExtResource("planeta_Ionis")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1700, 2200, -4500)
 
 [node name="MissionMenu" parent="." unique_id=1451330343 instance=ExtResource("8_i7rkf")]
 
@@ -190,6 +444,30 @@ transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 35.43793, -4.7683716e-0
 
 [node name="PolvoCabina" parent="SpaceshipInterior" unique_id=457684441 instance=ExtResource("24_polvo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 11, -6)
+
+[node name="VentanaCabina" parent="SpaceshipInterior" unique_id=531091404 instance=ExtResource("52_ventana_cabina")]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 21.420715, 11.791512, 1.927063)
+
+[node name="MarcoMetalico" parent="SpaceshipInterior/VentanaCabina" index="0" unique_id=1066098250]
+transform = Transform3D(1, 0, 0, 0, 0.90716374, 0, 0, 0, 1.023581, 0.027309418, 0, 0)
+
+[node name="JuntaHermetica" parent="SpaceshipInterior/VentanaCabina" index="1" unique_id=1733850436]
+transform = Transform3D(1, 0, 0, 0, 0.90716374, 0, 0, 0, 1.023581, 0, 0, 0)
+
+[node name="CristalPresurizado" parent="SpaceshipInterior/VentanaCabina" index="2" unique_id=963801216]
+transform = Transform3D(1, 0, 0, 0, 0.90716374, 0, 0, 0, 1.023581, 0, 0, 0)
+
+[node name="Perno3" parent="SpaceshipInterior/VentanaCabina" index="3" unique_id=1374585715]
+transform = Transform3D(-3.9653386e-08, -1, 0, 0.90716374, -4.371139e-08, 0, 0, 0, 1.023581, -0.13600159, 0.64862216, 0)
+
+[node name="Perno4" parent="SpaceshipInterior/VentanaCabina" index="4" unique_id=1296906685]
+transform = Transform3D(-3.9653386e-08, -1, 0, 0.90716374, -4.371139e-08, 0, 0, 0, 1.023581, -0.13600159, -0.64862204, 0)
+
+[node name="Perno5" parent="SpaceshipInterior/VentanaCabina" index="5" unique_id=844592346]
+transform = Transform3D(-3.9653386e-08, -1, 0, 0.90716374, -4.371139e-08, 0, 0, 0, 1.023581, -0.13600159, 0, 0.7318604)
+
+[node name="Perno6" parent="SpaceshipInterior/VentanaCabina" index="6" unique_id=197893912]
+transform = Transform3D(-3.9653386e-08, -1, 0, 0.90716374, -4.371139e-08, 0, 0, 0, 1.023581, -0.13600159, 0, -0.7318604)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="SpaceshipInterior" unique_id=940103116]
 
@@ -260,7 +538,7 @@ shape = SubResource("BoxShape3D_faclm")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="SpaceshipInterior" unique_id=140972140]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.43774414, 21.152462, -7.4064946)
 mesh = SubResource("BoxMesh_cdbmq")
-surface_material_override/0 = ExtResource("11_o884h")
+surface_material_override/0 = SubResource("StandardMaterial3D_g8qoo")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="SpaceshipInterior/MeshInstance3D" unique_id=239064511]
 
@@ -307,8 +585,8 @@ spot_angle = 65.0
 [node name="Stol2" type="MeshInstance3D" parent="SpaceshipInterior/Muebles" unique_id=891883921]
 transform = Transform3D(-4.3711393e-07, 0, 8.110861, 0, 7.4241376, 0, -10, 0, -3.54537e-07, -1.2503662, 2.580812, 53.074146)
 mesh = ExtResource("13_fult5")
-surface_material_override/0 = SubResource("StandardMaterial3D_7rlic")
-surface_material_override/1 = SubResource("StandardMaterial3D_dv60a")
+surface_material_override/0 = SubResource("StandardMaterial3D_34s20")
+surface_material_override/1 = SubResource("StandardMaterial3D_x3d3l")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="SpaceshipInterior/Muebles/Stol2" unique_id=742276655]
 
@@ -329,6 +607,175 @@ transform = Transform3D(-0.04013338, 0, -4.999839, 0, 5, 0, 4.999839, 0, -0.0401
 transform = Transform3D(0.9999999, 0, 0, 0, 0.99999976, 0, 0, 0, 0.9999999, 0.10334587, 0.767632, -0.00039672852)
 shape = SubResource("BoxShape3D_q4m7x")
 
+[node name="DecoracionNave" parent="SpaceshipInterior/Muebles" unique_id=1468960216 instance=ExtResource("36_decoracion")]
+
+[node name="SalaDescanso" parent="SpaceshipInterior/Muebles/DecoracionNave" index="1"]
+transform = Transform3D(11.835898, 1.2854912e-08, 5.355105e-09, 2.144782e-08, 9.3552885, -1.5133993e-09, 8.8475645e-09, -1.0477379e-08, 9.023221, -18.73764, 0.22502677, -32.748672)
+
+[node name="ContenedorHerramientas" parent="SpaceshipInterior/Muebles/DecoracionNave" index="8"]
+transform = Transform3D(-5.1493354, 0.013188449, -0.02339971, 0.01003672, 6.7710776, -0.0030006235, 0.016699435, -0.0028593587, -7.2135205, 18.766418, 4.753986, -34.75391)
+
+[node name="SillaTecnica" parent="SpaceshipInterior/Muebles/DecoracionNave" unique_id=397588229 instance=ExtResource("34_7myli")]
+transform = Transform3D(-2.1855696e-07, 0, -5, 0, 5, 0, 5, 0, -2.1855696e-07, 19.249695, 3.1681035, 54.8396)
+
+[node name="CajasCarga" parent="SpaceshipInterior/Muebles/DecoracionNave" unique_id=2074199828 instance=ExtResource("35_qed8x")]
+transform = Transform3D(0.0050000004, 0, 0, 0, 0.0050000004, 0, 0, 0, 0.0050000004, -12.791107, 2.5808132, 2.3052025)
+
+[node name="Estanteria" parent="SpaceshipInterior/Muebles/DecoracionNave" unique_id=98754885 instance=ExtResource("36_ji8cx")]
+transform = Transform3D(-3.496911e-07, 0, -8, 0, 8, 0, 8, 0, -3.496911e-07, -11.924805, 2.5808132, -10.044333)
+
+[node name="ConsolaAudio" parent="SpaceshipInterior/Muebles/DecoracionNave" unique_id=2028876821 instance=ExtResource("37_muamt")]
+transform = Transform3D(-8.742278e-09, 0, -0.20000002, 0, 0.20000002, 0, 0.20000002, 0, -8.742278e-09, 17.070465, 7.9608083, -21.595343)
+
+[node name="kb_base_low_001" parent="SpaceshipInterior/Muebles/DecoracionNave/ConsolaAudio" index="0" unique_id=1860627337]
+surface_material_override/0 = SubResource("StandardMaterial3D_wwx8l")
+
+[node name="SM_Keyboard_Lid" parent="SpaceshipInterior/Muebles/DecoracionNave/ConsolaAudio" index="1" unique_id=481684840]
+surface_material_override/0 = SubResource("StandardMaterial3D_wn0d0")
+
+[node name="SM_Monitor" parent="SpaceshipInterior/Muebles/DecoracionNave/ConsolaAudio" index="2" unique_id=356531052]
+surface_material_override/0 = SubResource("StandardMaterial3D_6imho")
+
+[node name="strip_low" parent="SpaceshipInterior/Muebles/DecoracionNave/ConsolaAudio" index="3" unique_id=1837228435]
+surface_material_override/0 = SubResource("StandardMaterial3D_7boyt")
+
+[node name="SM_Cables" parent="SpaceshipInterior/Muebles/DecoracionNave/ConsolaAudio" index="4" unique_id=496945349]
+surface_material_override/0 = SubResource("StandardMaterial3D_7boyt")
+
+[node name="ductTape_low" parent="SpaceshipInterior/Muebles/DecoracionNave/ConsolaAudio" index="5" unique_id=1994888793]
+surface_material_override/0 = SubResource("StandardMaterial3D_7boyt")
+
+[node name="tape_base_low_001" parent="SpaceshipInterior/Muebles/DecoracionNave/ConsolaAudio" index="6" unique_id=1698298680]
+surface_material_override/0 = SubResource("StandardMaterial3D_7boyt")
+
+[node name="SM_Speakers" parent="SpaceshipInterior/Muebles/DecoracionNave/ConsolaAudio" index="7" unique_id=123763841]
+surface_material_override/0 = SubResource("StandardMaterial3D_j1ygp")
+
+[node name="ductTape_low_001" parent="SpaceshipInterior/Muebles/DecoracionNave/ConsolaAudio" index="8" unique_id=1040276716]
+surface_material_override/0 = SubResource("StandardMaterial3D_7boyt")
+
+[node name="ductTape_low_002" parent="SpaceshipInterior/Muebles/DecoracionNave/ConsolaAudio" index="9" unique_id=2119951126]
+surface_material_override/0 = SubResource("StandardMaterial3D_7boyt")
+
+[node name="strip_low_001" parent="SpaceshipInterior/Muebles/DecoracionNave/ConsolaAudio" index="10" unique_id=1430988512]
+surface_material_override/0 = SubResource("StandardMaterial3D_7boyt")
+
+[node name="strip_low_002" parent="SpaceshipInterior/Muebles/DecoracionNave/ConsolaAudio" index="11" unique_id=1932303796]
+surface_material_override/0 = SubResource("StandardMaterial3D_7boyt")
+
+[node name="casette_base_low_002" parent="SpaceshipInterior/Muebles/DecoracionNave/ConsolaAudio" index="12" unique_id=1074493566]
+surface_material_override/0 = SubResource("StandardMaterial3D_7boyt")
+surface_material_override/1 = SubResource("StandardMaterial3D_alvff")
+
+[node name="casette_base_low_003" parent="SpaceshipInterior/Muebles/DecoracionNave/ConsolaAudio" index="13" unique_id=1042624703]
+surface_material_override/0 = SubResource("StandardMaterial3D_7boyt")
+surface_material_override/1 = SubResource("StandardMaterial3D_alvff")
+
+[node name="tape_base_low_003" parent="SpaceshipInterior/Muebles/DecoracionNave/ConsolaAudio" index="14" unique_id=1752401754]
+surface_material_override/0 = SubResource("StandardMaterial3D_7boyt")
+
+[node name="tape_base_low_004" parent="SpaceshipInterior/Muebles/DecoracionNave/ConsolaAudio" index="15" unique_id=2126200063]
+surface_material_override/0 = SubResource("StandardMaterial3D_7boyt")
+
+[node name="tape_base_low_005" parent="SpaceshipInterior/Muebles/DecoracionNave/ConsolaAudio" index="16" unique_id=1856939369]
+surface_material_override/0 = SubResource("StandardMaterial3D_7boyt")
+
+[node name="casette_base_low_005" parent="SpaceshipInterior/Muebles/DecoracionNave/ConsolaAudio" index="17" unique_id=1750599881]
+surface_material_override/0 = SubResource("StandardMaterial3D_alvff")
+
+[node name="casette_lid_low_002" parent="SpaceshipInterior/Muebles/DecoracionNave/ConsolaAudio" index="18" unique_id=1423778272]
+surface_material_override/0 = SubResource("StandardMaterial3D_7boyt")
+
+[node name="casette_base_low_006" parent="SpaceshipInterior/Muebles/DecoracionNave/ConsolaAudio" index="19" unique_id=1628016949]
+surface_material_override/0 = SubResource("StandardMaterial3D_alvff")
+
+[node name="casette_lid_low_003" parent="SpaceshipInterior/Muebles/DecoracionNave/ConsolaAudio" index="20" unique_id=1869983741]
+surface_material_override/0 = SubResource("StandardMaterial3D_7boyt")
+
+[node name="casette_base_low_007" parent="SpaceshipInterior/Muebles/DecoracionNave/ConsolaAudio" index="21" unique_id=1083321009]
+surface_material_override/0 = SubResource("StandardMaterial3D_alvff")
+
+[node name="casette_lid_low_004" parent="SpaceshipInterior/Muebles/DecoracionNave/ConsolaAudio" index="22" unique_id=450290408]
+surface_material_override/0 = SubResource("StandardMaterial3D_7boyt")
+
+[node name="tape_base_low_006" parent="SpaceshipInterior/Muebles/DecoracionNave/ConsolaAudio" index="23" unique_id=1796397007]
+surface_material_override/0 = SubResource("StandardMaterial3D_7boyt")
+
+[node name="tape_base_low_007" parent="SpaceshipInterior/Muebles/DecoracionNave/ConsolaAudio" index="24" unique_id=1781067671]
+surface_material_override/0 = SubResource("StandardMaterial3D_7boyt")
+
+[node name="casette_base_low_004" parent="SpaceshipInterior/Muebles/DecoracionNave/ConsolaAudio" index="25" unique_id=1120126035]
+surface_material_override/0 = SubResource("StandardMaterial3D_7boyt")
+surface_material_override/1 = SubResource("StandardMaterial3D_alvff")
+
+[node name="casette_base_low_009" parent="SpaceshipInterior/Muebles/DecoracionNave/ConsolaAudio" index="26" unique_id=1125115819]
+surface_material_override/0 = SubResource("StandardMaterial3D_7boyt")
+surface_material_override/1 = SubResource("StandardMaterial3D_alvff")
+
+[node name="tape_base_low_008" parent="SpaceshipInterior/Muebles/DecoracionNave/ConsolaAudio" index="27" unique_id=850775857]
+surface_material_override/0 = SubResource("StandardMaterial3D_7boyt")
+
+[node name="tape_base_low_009" parent="SpaceshipInterior/Muebles/DecoracionNave/ConsolaAudio" index="28" unique_id=922095620]
+surface_material_override/0 = SubResource("StandardMaterial3D_7boyt")
+
+[node name="tape_base_low_010" parent="SpaceshipInterior/Muebles/DecoracionNave/ConsolaAudio" index="29" unique_id=105963585]
+surface_material_override/0 = SubResource("StandardMaterial3D_7boyt")
+
+[node name="tape_base_low_011" parent="SpaceshipInterior/Muebles/DecoracionNave/ConsolaAudio" index="30" unique_id=607230009]
+surface_material_override/0 = SubResource("StandardMaterial3D_7boyt")
+
+[node name="casette_base_low_010" parent="SpaceshipInterior/Muebles/DecoracionNave/ConsolaAudio" index="31" unique_id=1614010455]
+surface_material_override/0 = SubResource("StandardMaterial3D_7boyt")
+surface_material_override/1 = SubResource("StandardMaterial3D_alvff")
+
+[node name="casette_base_low_011" parent="SpaceshipInterior/Muebles/DecoracionNave/ConsolaAudio" index="32" unique_id=2080523658]
+surface_material_override/0 = SubResource("StandardMaterial3D_7boyt")
+surface_material_override/1 = SubResource("StandardMaterial3D_alvff")
+
+[node name="casette_base_low_012" parent="SpaceshipInterior/Muebles/DecoracionNave/ConsolaAudio" index="33" unique_id=1593652533]
+surface_material_override/0 = SubResource("StandardMaterial3D_7boyt")
+surface_material_override/1 = SubResource("StandardMaterial3D_alvff")
+
+[node name="tape_base_low_012" parent="SpaceshipInterior/Muebles/DecoracionNave/ConsolaAudio" index="34" unique_id=2086788007]
+surface_material_override/0 = SubResource("StandardMaterial3D_7boyt")
+
+[node name="tape_base_low_013" parent="SpaceshipInterior/Muebles/DecoracionNave/ConsolaAudio" index="35" unique_id=83859815]
+surface_material_override/0 = SubResource("StandardMaterial3D_7boyt")
+
+[node name="tape_base_low_014" parent="SpaceshipInterior/Muebles/DecoracionNave/ConsolaAudio" index="36" unique_id=1036975414]
+surface_material_override/0 = SubResource("StandardMaterial3D_7boyt")
+
+[node name="Plane" parent="SpaceshipInterior/Muebles/DecoracionNave/ConsolaAudio" index="37" unique_id=2029325799]
+visible = false
+surface_material_override/0 = SubResource("StandardMaterial3D_35ye5")
+
+[node name="EscritorioAuxiliar" parent="SpaceshipInterior/Muebles/DecoracionNave" unique_id=1514989501 instance=ExtResource("46_6yhwy")]
+transform = Transform3D(-6.5567086e-08, 0, -1.5, 0, 1.5, 0, 1.5, 0, -6.5567086e-08, 17.126465, 2.48913, -19.387012)
+
+[node name="LamparaEscritorio" parent="SpaceshipInterior/Muebles/DecoracionNave" unique_id=1085462539 instance=ExtResource("47_y6gh8")]
+transform = Transform3D(6.2041545, 0, 3.2416768, 0, 7, 0, -3.2416768, 0, 6.2041545, 21.635101, 7.7807627, -15.403198)
+
+[node name="PuertaInterior" parent="SpaceshipInterior/Muebles/DecoracionNave" unique_id=858868325 instance=ExtResource("48_70jcn")]
+transform = Transform3D(-4.371139e-06, 0, -100, 0, 100, 0, 100, 0, -4.371139e-06, -24.699799, 2.58081, 19.890146)
+
+[node name="ComputadoraRetro" parent="SpaceshipInterior/Muebles/DecoracionNave" unique_id=1846564449 instance=ExtResource("49_2pgt7")]
+transform = Transform3D(-6.556708e-09, 0, -0.14999999, 0, 0.14999999, 0, 0.14999999, 0, -6.556708e-09, 16.8779, 2.5808642, 23.3022)
+
+[node name="Generador" parent="SpaceshipInterior/Muebles/DecoracionNave" unique_id=726034875 instance=ExtResource("50_h2o7o")]
+transform = Transform3D(-6.5567086e-08, 0, -1.5, 0, 1.5, 0, 1.5, 0, -6.5567086e-08, 3.5370178, 2.5808108, -68.20218)
+
+[node name="Rocky" parent="." unique_id=924328952 node_paths=PackedStringArray("jugador", "nave") instance=ExtResource("37_rocky")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35.4232, 0.36504778, -1.9677)
+jugador = NodePath("../Character/CharacterBody3D")
+nave = NodePath("../Spaceship/RigidBody3D")
+
+[node name="CollisionShape3D" parent="Rocky" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0021514893, 0.0048103034, -0.036987305)
+shape = SubResource("BoxShape3D_q80nf")
+
+[node name="AmbienteJuego" parent="." unique_id=282084296 instance=ExtResource("38_ambiente")]
+bus = &"Master"
+
 [node name="InteraccionEscritorio" type="CanvasLayer" parent="." unique_id=325027251 node_paths=PackedStringArray("astronauta", "camara", "escritorio", "nave")]
 script = ExtResource("22_interaccion")
 astronauta = NodePath("../Character/CharacterBody3D")
@@ -346,11 +793,29 @@ script = ExtResource("25_asteroides")
 nave = NodePath("../Spaceship/RigidBody3D")
 planetas = NodePath("../Planetas")
 
-[node name="ViajesPlanetarios" type="CanvasLayer" parent="." unique_id=1302029100 node_paths=PackedStringArray("nave", "astronauta", "planetas")]
+[node name="ViajesPlanetarios" type="CanvasLayer" parent="." unique_id=1302029100 node_paths=PackedStringArray("nave", "astronauta", "planetas", "rocky")]
 script = ExtResource("26_viajes")
 nave = NodePath("../Spaceship/RigidBody3D")
 astronauta = NodePath("../Character/CharacterBody3D")
 planetas = NodePath("../Planetas")
+rocky = NodePath("../Rocky")
+
+[node name="MenuPausa" parent="." unique_id=1131165245 node_paths=PackedStringArray("astronauta", "nave") instance=ExtResource("39_pausa")]
+astronauta = NodePath("../Character/CharacterBody3D")
+nave = NodePath("../Spaceship/RigidBody3D")
+
+[node name="AcabadosInterior" type="Node" parent="." unique_id=1892127534 node_paths=PackedStringArray("interior")]
+script = ExtResource("40_materiales")
+interior = NodePath("../SpaceshipInterior")
+
+[node name="LucesMuebles" type="Node" parent="." unique_id=2127740651 node_paths=PackedStringArray("decoracion")]
+script = ExtResource("51_luces_muebles")
+decoracion = NodePath("../SpaceshipInterior/Muebles/DecoracionNave")
+
+[node name="SaludAstronauta" type="CanvasLayer" parent="." unique_id=535519982 node_paths=PackedStringArray("nave", "viajes")]
+script = ExtResource("salud_astronauta")
+nave = NodePath("../Spaceship/RigidBody3D")
+viajes = NodePath("../ViajesPlanetarios")
 
 [editable path="Character"]
 [editable path="Character/CharacterBody3D/Model/Idle"]
@@ -358,3 +823,7 @@ planetas = NodePath("../Planetas")
 [editable path="Spaceship/RigidBody3D/SpaceShip"]
 [editable path="Planetas/Mercury"]
 [editable path="Planetas/Phoenix"]
+[editable path="SpaceshipInterior/VentanaCabina"]
+[editable path="SpaceshipInterior/Muebles/DecoracionNave"]
+[editable path="SpaceshipInterior/Muebles/DecoracionNave/ConsolaAudio"]
+[editable path="Rocky"]

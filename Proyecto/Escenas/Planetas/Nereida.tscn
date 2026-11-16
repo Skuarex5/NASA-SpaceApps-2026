@@ -1,0 +1,7 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://Proyecto/Modelos/Planetas/Nereida/nereida.glb" id="modelo"]
+
+[node name="Nereida" instance=ExtResource("modelo")]
+transform = Transform3D(1.4983798, 0, 0, 0, 1.5035024, 0, 0, 0, 1.5028236, -669.9014, 296.11304, -2165.668)
+metadata/bioma_superficie = 2

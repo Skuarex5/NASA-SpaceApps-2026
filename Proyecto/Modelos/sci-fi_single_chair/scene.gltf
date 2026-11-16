@@ -1,0 +1,881 @@
+{
+  "accessors": [
+    {
+      "bufferView": 2,
+      "componentType": 5126,
+      "count": 745,
+      "max": [
+        47.524227142333984,
+        8.144624710083008,
+        48.58892059326172
+      ],
+      "min": [
+        -47.524227142333984,
+        -61.82305908203125,
+        -51.641876220703125
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 2,
+      "byteOffset": 8940,
+      "componentType": 5126,
+      "count": 745,
+      "max": [
+        1.0,
+        0.9999997019767761,
+        1.0
+      ],
+      "min": [
+        -1.0,
+        -1.0,
+        -1.0
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 3,
+      "componentType": 5126,
+      "count": 745,
+      "max": [
+        0.9999999403953552,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "min": [
+        -0.5731098055839539,
+        -1.0,
+        -1.0,
+        1.0
+      ],
+      "type": "VEC4"
+    },
+    {
+      "bufferView": 1,
+      "componentType": 5126,
+      "count": 745,
+      "max": [
+        0.9928330779075623,
+        0.9860687255859375
+      ],
+      "min": [
+        0.007166914641857147,
+        0.007166922092437744
+      ],
+      "type": "VEC2"
+    },
+    {
+      "bufferView": 0,
+      "componentType": 5125,
+      "count": 2664,
+      "type": "SCALAR"
+    },
+    {
+      "bufferView": 2,
+      "byteOffset": 17880,
+      "componentType": 5126,
+      "count": 488,
+      "max": [
+        38.74285888671875,
+        13.857926368713379,
+        43.132720947265625
+      ],
+      "min": [
+        -38.915802001953125,
+        -2.649749517440796,
+        -42.96133041381836
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 2,
+      "byteOffset": 23736,
+      "componentType": 5126,
+      "count": 488,
+      "max": [
+        0.9863667488098145,
+        0.9999752640724182,
+        0.9852444529533386
+      ],
+      "min": [
+        -0.9826669692993164,
+        -0.9999949932098389,
+        -0.9846420884132385
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 3,
+      "byteOffset": 11920,
+      "componentType": 5126,
+      "count": 488,
+      "max": [
+        0.693674623966217,
+        0.8419246673583984,
+        0.665400505065918,
+        1.0
+      ],
+      "min": [
+        -1.0,
+        -0.9908236265182495,
+        -0.6511815190315247,
+        1.0
+      ],
+      "type": "VEC4"
+    },
+    {
+      "bufferView": 1,
+      "byteOffset": 5960,
+      "componentType": 5126,
+      "count": 488,
+      "max": [
+        0.9627821445465088,
+        0.8360081315040588
+      ],
+      "min": [
+        0.0071668922901153564,
+        0.007166916038841009
+      ],
+      "type": "VEC2"
+    },
+    {
+      "bufferView": 0,
+      "byteOffset": 10656,
+      "componentType": 5125,
+      "count": 2316,
+      "type": "SCALAR"
+    },
+    {
+      "bufferView": 2,
+      "byteOffset": 29592,
+      "componentType": 5126,
+      "count": 736,
+      "max": [
+        10.766385078430176,
+        126.27395629882813,
+        40.32533264160156
+      ],
+      "min": [
+        -4.724132537841797,
+        -2.040468454360962,
+        -40.32533264160156
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 2,
+      "byteOffset": 38424,
+      "componentType": 5126,
+      "count": 736,
+      "max": [
+        1.0,
+        1.0,
+        0.9999999403953552
+      ],
+      "min": [
+        -1.0,
+        -0.9569661021232605,
+        -0.9999999403953552
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 3,
+      "byteOffset": 19728,
+      "componentType": 5126,
+      "count": 736,
+      "max": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "min": [
+        -0.99996417760849,
+        -1.0,
+        -0.9704887270927429,
+        1.0
+      ],
+      "type": "VEC4"
+    },
+    {
+      "bufferView": 1,
+      "byteOffset": 9864,
+      "componentType": 5126,
+      "count": 736,
+      "max": [
+        0.8290119171142578,
+        0.9910678267478943
+      ],
+      "min": [
+        0.008932288736104965,
+        0.008932288736104965
+      ],
+      "type": "VEC2"
+    },
+    {
+      "bufferView": 0,
+      "byteOffset": 19920,
+      "componentType": 5125,
+      "count": 2688,
+      "type": "SCALAR"
+    },
+    {
+      "bufferView": 2,
+      "byteOffset": 47256,
+      "componentType": 5126,
+      "count": 600,
+      "max": [
+        7.581151485443115,
+        5.221395015716553,
+        13.612220764160156
+      ],
+      "min": [
+        -61.75847625732422,
+        -41.56901550292969,
+        -3.4013266563415527
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 2,
+      "byteOffset": 54456,
+      "componentType": 5126,
+      "count": 600,
+      "max": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "min": [
+        -1.0,
+        -1.0,
+        -1.0
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 3,
+      "byteOffset": 31504,
+      "componentType": 5126,
+      "count": 600,
+      "max": [
+        1.0,
+        1.0,
+        1.0,
+        -1.0
+      ],
+      "min": [
+        -0.9999556541442871,
+        -1.0,
+        -1.0,
+        -1.0
+      ],
+      "type": "VEC4"
+    },
+    {
+      "bufferView": 1,
+      "byteOffset": 15752,
+      "componentType": 5126,
+      "count": 600,
+      "max": [
+        0.9913426041603088,
+        0.8692246079444885
+      ],
+      "min": [
+        0.008657455444335938,
+        0.008657455444335938
+      ],
+      "type": "VEC2"
+    },
+    {
+      "bufferView": 0,
+      "byteOffset": 30672,
+      "componentType": 5125,
+      "count": 1716,
+      "type": "SCALAR"
+    },
+    {
+      "bufferView": 2,
+      "byteOffset": 61656,
+      "componentType": 5126,
+      "count": 600,
+      "max": [
+        61.75847625732422,
+        5.221395015716553,
+        13.612220764160156
+      ],
+      "min": [
+        -7.581151485443115,
+        -41.56901550292969,
+        -3.4013266563415527
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 2,
+      "byteOffset": 68856,
+      "componentType": 5126,
+      "count": 600,
+      "max": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "min": [
+        -1.0,
+        -1.0,
+        -1.0
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 3,
+      "byteOffset": 41104,
+      "componentType": 5126,
+      "count": 600,
+      "max": [
+        0.9999556541442871,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "min": [
+        -1.0,
+        -1.0,
+        -1.0,
+        1.0
+      ],
+      "type": "VEC4"
+    },
+    {
+      "bufferView": 1,
+      "byteOffset": 20552,
+      "componentType": 5126,
+      "count": 600,
+      "max": [
+        0.9748541712760925,
+        0.8692246079444885
+      ],
+      "min": [
+        0.040371865034103394,
+        0.008657455444335938
+      ],
+      "type": "VEC2"
+    },
+    {
+      "bufferView": 0,
+      "byteOffset": 37536,
+      "componentType": 5125,
+      "count": 1716,
+      "type": "SCALAR"
+    }
+  ],
+  "asset": {
+    "extras": {
+      "author": "Sousinho (https://sketchfab.com/sousinho)",
+      "license": "CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)",
+      "source": "https://sketchfab.com/3d-models/sci-fi-single-chair-6d1cf835dd3d4e3c8813c4f7d35b4f0a",
+      "title": "Sci-fi Single Chair"
+    },
+    "generator": "Sketchfab-12.56.0",
+    "version": "2.0"
+  },
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteLength": 44400,
+      "name": "floatBufferViews",
+      "target": 34963
+    },
+    {
+      "buffer": 0,
+      "byteLength": 25352,
+      "byteOffset": 44400,
+      "byteStride": 8,
+      "name": "floatBufferViews",
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteLength": 76056,
+      "byteOffset": 69752,
+      "byteStride": 12,
+      "name": "floatBufferViews",
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteLength": 50704,
+      "byteOffset": 145808,
+      "byteStride": 16,
+      "name": "floatBufferViews",
+      "target": 34962
+    }
+  ],
+  "buffers": [
+    {
+      "byteLength": 196512,
+      "uri": "scene.bin"
+    }
+  ],
+  "images": [
+    {
+      "uri": "textures/sci-fi_chair_3_base_baseColor.png"
+    },
+    {
+      "uri": "textures/sci-fi_chair_3_base_metallicRoughness.png"
+    },
+    {
+      "uri": "textures/sci-fi_chair_3_base_emissive.png"
+    },
+    {
+      "uri": "textures/sci-fi_chair_3_base_normal.png"
+    },
+    {
+      "uri": "textures/sci-fi_chair_3_back_rest_baseColor.png"
+    },
+    {
+      "uri": "textures/sci-fi_chair_3_back_rest_metallicRoughness.png"
+    },
+    {
+      "uri": "textures/sci-fi_chair_3_back_rest_emissive.png"
+    },
+    {
+      "uri": "textures/sci-fi_chair_3_back_rest_normal.png"
+    },
+    {
+      "uri": "textures/sci-fi_chair_3_arms_baseColor.png"
+    },
+    {
+      "uri": "textures/sci-fi_chair_3_arms_metallicRoughness.png"
+    },
+    {
+      "uri": "textures/sci-fi_chair_3_arms_emissive.png"
+    },
+    {
+      "uri": "textures/sci-fi_chair_3_arms_normal.png"
+    }
+  ],
+  "materials": [
+    {
+      "doubleSided": true,
+      "emissiveFactor": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "emissiveTexture": {
+        "index": 2
+      },
+      "name": "sci-fi_chair_3_base",
+      "normalTexture": {
+        "index": 3
+      },
+      "pbrMetallicRoughness": {
+        "baseColorTexture": {
+          "index": 0
+        },
+        "metallicRoughnessTexture": {
+          "index": 1
+        }
+      }
+    },
+    {
+      "doubleSided": true,
+      "emissiveFactor": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "emissiveTexture": {
+        "index": 6
+      },
+      "name": "sci-fi_chair_3_back_rest",
+      "normalTexture": {
+        "index": 7
+      },
+      "pbrMetallicRoughness": {
+        "baseColorTexture": {
+          "index": 4
+        },
+        "metallicRoughnessTexture": {
+          "index": 5
+        }
+      }
+    },
+    {
+      "doubleSided": true,
+      "emissiveFactor": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "emissiveTexture": {
+        "index": 10
+      },
+      "name": "sci-fi_chair_3_arms",
+      "normalTexture": {
+        "index": 11
+      },
+      "pbrMetallicRoughness": {
+        "baseColorTexture": {
+          "index": 8
+        },
+        "metallicRoughnessTexture": {
+          "index": 9
+        }
+      }
+    }
+  ],
+  "meshes": [
+    {
+      "name": "Cube.019_sci-fi chair 3 base_0",
+      "primitives": [
+        {
+          "attributes": {
+            "NORMAL": 1,
+            "POSITION": 0,
+            "TANGENT": 2,
+            "TEXCOORD_0": 3
+          },
+          "indices": 4,
+          "material": 0,
+          "mode": 4
+        }
+      ]
+    },
+    {
+      "name": "Cube.049_sci-fi chair 3 base_0",
+      "primitives": [
+        {
+          "attributes": {
+            "NORMAL": 6,
+            "POSITION": 5,
+            "TANGENT": 7,
+            "TEXCOORD_0": 8
+          },
+          "indices": 9,
+          "material": 0,
+          "mode": 4
+        }
+      ]
+    },
+    {
+      "name": "Cube.050_sci-fi chair 3 back rest_0",
+      "primitives": [
+        {
+          "attributes": {
+            "NORMAL": 11,
+            "POSITION": 10,
+            "TANGENT": 12,
+            "TEXCOORD_0": 13
+          },
+          "indices": 14,
+          "material": 1,
+          "mode": 4
+        }
+      ]
+    },
+    {
+      "name": "Cube.052_sci-fi chair 3 arms_0",
+      "primitives": [
+        {
+          "attributes": {
+            "NORMAL": 16,
+            "POSITION": 15,
+            "TANGENT": 17,
+            "TEXCOORD_0": 18
+          },
+          "indices": 19,
+          "material": 2,
+          "mode": 4
+        }
+      ]
+    },
+    {
+      "name": "Cube.059_sci-fi chair 3 arms_0",
+      "primitives": [
+        {
+          "attributes": {
+            "NORMAL": 21,
+            "POSITION": 20,
+            "TANGENT": 22,
+            "TEXCOORD_0": 23
+          },
+          "indices": 24,
+          "material": 2,
+          "mode": 4
+        }
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "children": [
+        1
+      ],
+      "matrix": [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        2.220446049250313e-16,
+        -1.0,
+        0.0,
+        0.0,
+        1.0,
+        2.220446049250313e-16,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "name": "Sketchfab_model"
+    },
+    {
+      "children": [
+        2
+      ],
+      "matrix": [
+        0.009999999776482582,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.009999999776482582,
+        0.0,
+        0.0,
+        -0.009999999776482582,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "name": "sci-fi_single_chair.fbx"
+    },
+    {
+      "children": [
+        3,
+        5,
+        7,
+        9,
+        11
+      ],
+      "name": "RootNode"
+    },
+    {
+      "children": [
+        4
+      ],
+      "matrix": [
+        1.9470718870540082e-07,
+        0.0,
+        -0.9999999999999811,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.9999999999999811,
+        0.0,
+        1.9470718870540082e-07,
+        0.0,
+        -631.2342529296875,
+        55.95013427734375,
+        91.82040405273438,
+        1.0
+      ],
+      "name": "Cube.019"
+    },
+    {
+      "mesh": 0,
+      "name": "Cube.019_sci-fi chair 3 base_0"
+    },
+    {
+      "children": [
+        6
+      ],
+      "matrix": [
+        1.9470718870540082e-07,
+        0.0,
+        -0.9999999999999811,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.9999999999999811,
+        0.0,
+        1.9470718870540082e-07,
+        0.0,
+        -634.0369873046875,
+        53.52767562866211,
+        89.01689147949219,
+        1.0
+      ],
+      "name": "Cube.049"
+    },
+    {
+      "mesh": 1,
+      "name": "Cube.049_sci-fi chair 3 base_0"
+    },
+    {
+      "children": [
+        8
+      ],
+      "matrix": [
+        -2.829088226162711e-08,
+        0.17364819696765493,
+        -0.9848076285606834,
+        0.0,
+        2.4751320678969415e-09,
+        0.9848076285606838,
+        0.17364819696765493,
+        0.0,
+        0.9999999999999996,
+        2.475132362955712e-09,
+        -2.8290885634163487e-08,
+        0.0,
+        -631.2342529296875,
+        58.10429382324219,
+        132.77978515625,
+        1.0
+      ],
+      "name": "Cube.050"
+    },
+    {
+      "mesh": 2,
+      "name": "Cube.050_sci-fi chair 3 back rest_0"
+    },
+    {
+      "children": [
+        10
+      ],
+      "matrix": [
+        -2.829088226162711e-08,
+        -0.17364819696765493,
+        0.9848076285606834,
+        0.0,
+        -2.4751320678969415e-09,
+        0.9848076285606838,
+        0.17364819696765493,
+        0.0,
+        -0.9999999999999996,
+        2.475132362955712e-09,
+        -2.8290885634163487e-08,
+        0.0,
+        -670.2657470703125,
+        97.72249603271484,
+        136.57781982421875,
+        1.0
+      ],
+      "name": "Cube.052"
+    },
+    {
+      "mesh": 3,
+      "name": "Cube.052_sci-fi chair 3 arms_0"
+    },
+    {
+      "children": [
+        12
+      ],
+      "matrix": [
+        -2.829088226162711e-08,
+        0.17364819696765493,
+        -0.9848076285606834,
+        0.0,
+        2.4751320678969415e-09,
+        0.9848076285606838,
+        0.17364819696765493,
+        0.0,
+        0.9999999999999996,
+        2.475132362955712e-09,
+        -2.8290885634163487e-08,
+        0.0,
+        -592.104248046875,
+        97.72249603271484,
+        136.57781982421875,
+        1.0
+      ],
+      "name": "Cube.059"
+    },
+    {
+      "mesh": 4,
+      "name": "Cube.059_sci-fi chair 3 arms_0"
+    }
+  ],
+  "samplers": [
+    {
+      "magFilter": 9729,
+      "minFilter": 9987,
+      "wrapS": 10497,
+      "wrapT": 10497
+    }
+  ],
+  "scene": 0,
+  "scenes": [
+    {
+      "name": "Sketchfab_Scene",
+      "nodes": [
+        0
+      ]
+    }
+  ],
+  "textures": [
+    {
+      "sampler": 0,
+      "source": 0
+    },
+    {
+      "sampler": 0,
+      "source": 1
+    },
+    {
+      "sampler": 0,
+      "source": 2
+    },
+    {
+      "sampler": 0,
+      "source": 3
+    },
+    {
+      "sampler": 0,
+      "source": 4
+    },
+    {
+      "sampler": 0,
+      "source": 5
+    },
+    {
+      "sampler": 0,
+      "source": 6
+    },
+    {
+      "sampler": 0,
+      "source": 7
+    },
+    {
+      "sampler": 0,
+      "source": 8
+    },
+    {
+      "sampler": 0,
+      "source": 9
+    },
+    {
+      "sampler": 0,
+      "source": 10
+    },
+    {
+      "sampler": 0,
+      "source": 11
+    }
+  ]
+}
