@@ -6,7 +6,7 @@
 
 **Plan your expedition. Pilot your ship. Explore another world.**
 
-A 3D space exploration game built with **Godot 4.7**, developed in the **NASA-SpaceApps-2026** repository. Prepare a mission inside your spacecraft, navigate an asteroid field, and land on one of **14 destinations** to explore on foot. Bring your equipment, keep an eye on the ship's resources, and decide whether Rocky joins the expedition.
+**Space Explorer** is a 3D space exploration game built with **Godot 4.7**. Prepare a mission inside your spacecraft, navigate an asteroid field, and land on one of **14 destinations** to explore on foot. Bring your equipment, keep an eye on the ship's resources, and decide whether Rocky joins the expedition.
 
 ![Space Explorer main menu](docs/images/main-menu.png)
 
